@@ -47,7 +47,7 @@ disable =
     consider-using-f-string       # NE:  can't since py2
 
 [BASIC]
-good-names=_,i,j,k,m,ex,fd,id,mb,ns,log,e
+good-names=_,a,b,c,d,e,f,i,j,k,m,n,x,y,z,ex,fd,id,log
 
 [FORMAT]
 max-line-length=180

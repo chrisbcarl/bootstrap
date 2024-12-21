@@ -1,68 +1,3 @@
-# MY Cheat Sheet
-- $% invisible comment$ - comment (invisible in presentation)
-- $\text{visible comment}$ - comment (invisible in presentation)
-- $X$ - ascii upper
-- $n$ - ascii lower
-- $\Zeta$ - greek upper
-- $\zeta$ - greek lower
-- $Y = Ax + b$ - formula
-- $1 + 2 - 3 * 4 /  5 ^ {(6)} \times \div \pm$ - pemdas
-- $\bar{X}$ - bar
-- $X_{(i + 1)}$ - underscript
-- $X^{(i + 1)}$ - upperscript
-- $\frac{1}{n - 1}$ - fraction
-- $\sum_{i=1}^n$ - sum small
-- $\displaystyle\sum_{i=1}^n$ - sum big
-- $\sqrt{4i}$ - square root
-- multiline center aligned
-    $$
-    \begin{aligned}
-    p & = \hbar k \\
-    E & = \hbar \omega \\
-    \end{aligned}
-    $$
-- freeform alignment
-    $$
-    \begin{align*}
-    A = 1 \\
-    A = &1 \\
-    A& = 1 \\
-    A& = &1 \\
-    &A= 1 \\
-    &A &= 1 \\
-    &A &= &1 \\
-    \end{align*}
-    $$
-- formula definition alignment
-    $$
-    \begin{alignat}{5}
-    10& x + &3 &y = 2 \\
-    3& x + &13 &y = 4 \\
-
-    &A &= &\text{has} \\
-    &\neg{B} &= &\text{not has} \\
-    &B &= &\text{test positive} \\
-    &\neg{B} &= &\text{not test positive}
-    \end{alignat}
-    $$
-- diagram
-    $$
-    \begin{CD}
-    A @>a>> B \\
-    @VbVV @AAcA \\
-    C @= D
-    \end{CD}
-    $$
-- $A\newline{A}$  - A newline A
-- $A\\{A}$  - A newline A (version 2)
-- markdown table with latex in there
-    | header | header |
-    | --- | --- |
-    | $\Rho(A\|B)$ | $\text{escapes usually work well in this area}$ |
-
-
-
-
 # [LaTeX Cheat Sheet & Quick Reference](https://quickref.me/latex) -> [GitHub source](https://github.com/Fechin/reference/blob/main/source/_posts/latex.md)
 ---
 title: LaTeX
@@ -95,8 +30,8 @@ And [KaTeX](https://katex.org/) handles only a smaller subset of LaTeX's mathema
 ```KaTeX
 % \f is defined as #1f(#2) using the macro
 f\relax(x) = \int_{-\infty}^\infty
-    f\hat\xi\,e^{2 \pi i \xi x}
-    \,d\xi
+  f\hat\xi\,e^{2 \pi i \xi x}
+  \,d\xi
 ```
 
 ---
@@ -104,8 +39,8 @@ f\relax(x) = \int_{-\infty}^\infty
 ```LaTeX
 % \f is defined as #1f(#2) using the macro
 f\relax(x) = \int_{-\infty}^\infty
-    f\hat\xi\,e^{2 \pi i \xi x}
-    \,d\xi
+  f\hat\xi\,e^{2 \pi i \xi x}
+  \,d\xi
 ```
 
 ### Inline
