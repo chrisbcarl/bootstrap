@@ -7539,30 +7539,12 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="IPython-Notebook">IPython Notebook<a class="anchor-link" href="#IPython-Notebook">¶</a></h1><p>the actual data structure of an ipynb is just... json.</p>
-<h2 id="TOC-(Raw-HTML-Anchors)">TOC (Raw HTML Anchors)<a class="anchor-link" href="#TOC-(Raw-HTML-Anchors)">¶</a></h2><ul>
+<p>$LaTeX$ support available</p>
+<h2 id="Anchoring">Anchoring<a class="anchor-link" href="#Anchoring">¶</a></h2><ul>
 <li><a href="#Setup">Setup</a></li>
 <li><a href="#just-json">IPython Notebooks are Just JSON</a></li>
 <li><a href="#shortcuts">VS Code Shortcuts</a></li>
 </ul>
-<h2 id="Tables-(Raw-HTML-Style-to-Help-w/-Renders)">Tables (Raw HTML Style to Help w/ Renders)<a class="anchor-link" href="#Tables-(Raw-HTML-Style-to-Help-w/-Renders)">¶</a></h2><div style="display: inline-block">
-<!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Key</th>
-<th style="text-align:left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">author</td>
-<td style="text-align:left"><a href="mailto:chrisbcarl@outlook.com">Chris Carl</a></td>
-</tr>
-</tbody>
-</table>
-<!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
-</div>
-<h2 id="LaTeX">LaTeX<a class="anchor-link" href="#LaTeX">¶</a></h2><p>$LaTeX$ support available</p>
 </div>
 </div>
 </div>
@@ -7582,7 +7564,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># setup</span>
@@ -7661,7 +7643,83 @@ a.anchor-link {
 <pre>{ 'dir': 'c:\\Users\\chris\\src\\bootstrap\\jupyter',
   'fn': 'ipynb',
   'fp': 'c:\\Users\\chris\\src\\bootstrap\\jupyter\\ipynb.ipynb'}
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>pip install pandas numpy seaborn requests
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Collecting pandasNote: you may need to restart the kernel to use updated packages.
+
+  Using cached pandas-2.2.3-cp312-cp312-win_amd64.whl.metadata (19 kB)
+Collecting numpy
+  Downloading numpy-2.2.1-cp312-cp312-win_amd64.whl.metadata (60 kB)
+Collecting seaborn
+  Using cached seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: requests in c:\users\chris\src\bootstrap\.venv\lib\site-packages (2.32.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from pandas) (2.9.0.post0)
+Collecting pytz&gt;=2020.1 (from pandas)
+  Using cached pytz-2024.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata&gt;=2022.7 (from pandas)
+  Using cached tzdata-2024.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting matplotlib!=3.6.1,&gt;=3.4 (from seaborn)
+  Downloading matplotlib-3.10.0-cp312-cp312-win_amd64.whl.metadata (11 kB)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from requests) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from requests) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from requests) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from requests) (2024.12.14)
+Collecting contourpy&gt;=1.0.1 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Using cached contourpy-1.3.1-cp312-cp312-win_amd64.whl.metadata (5.4 kB)
+Collecting cycler&gt;=0.10 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools&gt;=4.22.0 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Downloading fonttools-4.55.3-cp312-cp312-win_amd64.whl.metadata (168 kB)
+Collecting kiwisolver&gt;=1.3.1 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Downloading kiwisolver-1.4.8-cp312-cp312-win_amd64.whl.metadata (6.3 kB)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (24.2)
+Collecting pillow&gt;=8 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Downloading pillow-11.1.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+Collecting pyparsing&gt;=2.3.1 (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn)
+  Downloading pyparsing-3.2.1-py3-none-any.whl.metadata (5.0 kB)
+Requirement already satisfied: six&gt;=1.5 in c:\users\chris\src\bootstrap\.venv\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Using cached pandas-2.2.3-cp312-cp312-win_amd64.whl (11.5 MB)
+Downloading numpy-2.2.1-cp312-cp312-win_amd64.whl (12.6 MB)
+   ---------------------------------------- 0.0/12.6 MB ? eta -:--:--
+   ---------------------------------------- 12.6/12.6 MB 78.7 MB/s eta 0:00:00
+Using cached seaborn-0.13.2-py3-none-any.whl (294 kB)
+Downloading matplotlib-3.10.0-cp312-cp312-win_amd64.whl (8.0 MB)
+   ---------------------------------------- 0.0/8.0 MB ? eta -:--:--
+   ---------------------------------------- 8.0/8.0 MB 82.7 MB/s eta 0:00:00
+Downloading pytz-2024.2-py2.py3-none-any.whl (508 kB)
+Downloading tzdata-2024.2-py2.py3-none-any.whl (346 kB)
+Downloading contourpy-1.3.1-cp312-cp312-win_amd64.whl (220 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.55.3-cp312-cp312-win_amd64.whl (2.2 MB)
+   ---------------------------------------- 0.0/2.2 MB ? eta -:--:--
+   ---------------------------------------- 2.2/2.2 MB 62.8 MB/s eta 0:00:00
+Downloading kiwisolver-1.4.8-cp312-cp312-win_amd64.whl (71 kB)
+Downloading pillow-11.1.0-cp312-cp312-win_amd64.whl (2.6 MB)
+   ---------------------------------------- 0.0/2.6 MB ? eta -:--:--
+   ---------------------------------------- 2.6/2.6 MB 76.3 MB/s eta 0:00:00
+Downloading pyparsing-3.2.1-py3-none-any.whl (107 kB)
+Installing collected packages: pytz, tzdata, pyparsing, pillow, numpy, kiwisolver, fonttools, cycler, pandas, contourpy, matplotlib, seaborn
+Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.55.3 kiwisolver-1.4.8 matplotlib-3.10.0 numpy-2.2.1 pandas-2.2.3 pillow-11.1.0 pyparsing-3.2.1 pytz-2024.2 seaborn-0.13.2 tzdata-2024.2
 hello ipynb
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>[NbConvertApp] Converting notebook c:\Users\chris\src\bootstrap\jupyter\ipynb.ipynb to html
+[NbConvertApp] Writing 284577 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.html
 </pre>
 </div>
 </div>
@@ -7683,7 +7741,7 @@ hello ipynb
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -7710,24 +7768,12 @@ hello ipynb
     "# IPython Notebook\n",
     "the actual data structure of an ipynb is just... json.\n",
     "\n",
-    "## TOC (Raw HTML Anchors)\n",
+    "$LaTeX$ support available\n",
+    "\n",
+    "## Anchoring\n",
     "* [Setup](#Setup)\n",
     "* [IPython Notebooks are Just JSON](#just-json)\n",
-    "* [VS Code Shortcuts](#shortcuts)\n",
-    "\n",
-    "## Tables (Raw HTML Style to Help w/ Renders)\n",
-    "&lt;div style=\"display: inline-block\"&gt;\n",
-    "&lt;!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 --&gt;\n",
-    "\n",
-    "| Key | Value |\n",
-    "| :--- | :--- |\n",
-    "| author | [Chris Carl](mailto:chrisbcarl@outlook.com) |\n",
-    "\n",
-    "&lt;!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 --&gt;\n",
-    "&lt;/div&gt;\n",
-    "\n",
-    "## LaTeX\n",
-    "$LaTeX$ support available"
+    "* [VS Code Shortcuts](#shortcuts)"
   ]
 }
 {
