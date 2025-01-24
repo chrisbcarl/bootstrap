@@ -1,6 +1,7 @@
 ## Setup
 This is from MY perspective, a retrospective history of how I started this whole thing.
 
+### Windows
 1. `poetry new chriscarl --src`
     - creates a pyproject.toml and file structure in the `src/module` packaging vein
     - add `packages` in `[tools.poetry]`
@@ -21,6 +22,23 @@ This is from MY perspective, a retrospective history of how I started this whole
 6. install project in editable mode
 7. `pip install -e .`
 
+### WSL
+```bash
+apt update --fix-missing
+apt upgrade -y
+sudo apt install python3-pip -y
+sudo apt install python3-venv -y
+sudo apt install pipx -y
+pipx ensurepath
+pipx install poetry
+poetry config virtualenvs.in-project true
+mkdir ~/src/new-project
+cd ~/src/new-project
+poetry init --quiet
+pipx inject poetry poetry-plugin-shell
+poetry add Flask
+poetry shell
+```
 
 # Additional Setup
 1. configure `.vscode/settings.json`

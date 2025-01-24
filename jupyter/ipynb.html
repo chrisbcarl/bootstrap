@@ -7582,7 +7582,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># setup</span>
@@ -7627,6 +7627,15 @@ a.anchor-link {
 <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">'display.max_rows'</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">999</span><span class="p">):</span>
     <span class="k">pass</span>
 
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">'win32'</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>where.exe<span class="w"> </span>shitlatex
+    <span class="n">latex_exists</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'INFO'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>which<span class="w"> </span>latex
+    <span class="n">latex_exists</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'text.usetex'</span><span class="p">:</span> <span class="n">latex_exists</span><span class="p">})</span>  <span class="c1"># , 'font.family': 'Helvetica'  # requires latex installed</span>
+
+
 <span class="c1"># command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()</span>
 <span class="c1"># %matplotlib inline</span>
 
@@ -7634,6 +7643,8 @@ a.anchor-link {
 <span class="o">!</span><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>ipynb
 <span class="c1"># change cli arguments with variables</span>
 <span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>html<span class="w"> </span>--template<span class="w"> </span>lab<span class="w"> </span><span class="o">{</span>SCRIPT_FILEPATH<span class="o">}</span>
+<span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>python<span class="w"> </span>--no-prompt<span class="w"> </span><span class="o">{</span>SCRIPT_FILEPATH<span class="o">}</span>
+<span class="c1"># !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}</span>
 <span class="c1"># !pip install matplotlib</span>
 
 <span class="mi">5</span><span class="p">;</span>  <span class="c1"># normally the 5 would be printed, adding ; disables the print</span>
@@ -7661,6 +7672,7 @@ a.anchor-link {
 <pre>{ 'dir': 'c:\\Users\\chris\\src\\bootstrap\\jupyter',
   'fn': 'ipynb',
   'fp': 'c:\\Users\\chris\\src\\bootstrap\\jupyter\\ipynb.ipynb'}
+True
 hello ipynb
 </pre>
 </div>
@@ -7683,7 +7695,7 @@ hello ipynb
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>

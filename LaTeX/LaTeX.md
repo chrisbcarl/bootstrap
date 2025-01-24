@@ -1,3 +1,15 @@
+# "official" docs or cheatsheets
+- reference: [Comprehensive TeX Archive Network](https://ctan.org/) and a [directory](https://tug.ctan.org/) to file browse, check out even [info](https://tug.ctan.org/info/) for bunch of random stuff
+- cheat sheets
+    - https://katex.org/docs/supported.html
+    - [Every friggen symbol](https://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
+    - [symbols in a wiki but its incomplete](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
+- issues / bugs
+    - https://github.com/KaTeX/KaTeX/issues/2003
+- guides / courses
+    - [lshort--the bible](https://www.ctan.org/tex-archive/info/lshort/) for lots of lanugages which end up hosting [pdfs like this](https://mirror.las.iastate.edu/tex-archive/info/lshort/english/lshort.pdf)
+    - [overleaf intro guide, see left hand side](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) but dont pay for it
+
 # MY Cheat Sheet
 - $% invisible comment$ - comment (invisible in presentation)
 - $\text{visible comment}$ - comment (invisible in presentation)
@@ -53,7 +65,7 @@
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh $ - symbols infinity, sets, negate, iff if only if congruence
-- $\{ \backslash $ - escapes
+- $\{ \backslash \$5.00 $ - escapes
 - cases
     $$
     CE(p, y) =

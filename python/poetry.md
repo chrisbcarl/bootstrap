@@ -43,6 +43,7 @@
     ```
 - misc cool funcs:
     ```powershell
+    pipx inject poetry poetry-plugin-shell
     poetry shell  # invokes a new shell with the venv activated
     poetry run main.py  # invokes main.py with your venv
     poetry show --tree  # list deps in graph form
