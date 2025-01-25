@@ -42,7 +42,7 @@ if SCRIPT_FILEPATH:
     SCRIPT_FILENAME = os.path.splitext(os.path.basename(SCRIPT_FILEPATH))[0]
 pprint.pprint(dict(dir=SCRIPT_DIRPATH, fp=SCRIPT_FILEPATH, fn=SCRIPT_FILENAME), indent=2)
 
-requirements = ['pandas', 'numpy', 'seaborn', 'requests']
+requirements = ['pandas', 'numpy', 'seaborn', 'requests', 'ipympl']
 install_string = ' '.join(requirements)
 try:
     for requirement in requirements:
@@ -78,6 +78,8 @@ plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetic
 
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
 # %matplotlib inline
+# command to tell the notebook to render interactable matplotlib, requires pip install ipympl
+get_ipython().run_line_magic('matplotlib', 'widget')
 
 # run shell commands like installing packages and other wild stuff
 get_ipython().system('echo hello ipynb')
@@ -118,3 +120,34 @@ with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
 # 6. A - insert above current
 # 7. B - insert below current
 # 
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+
+def randrange(n, vmin, vmax):
+    """
+    Helper function to make an array of random numbers having shape (n, )
+    with each number distributed Uniform(vmin, vmax).
+    """
+    return (vmax - vmin)*np.random.rand(n) + vmin
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+n = 100
+
+# For each set of style and range settings, plot n random points in the box
+# defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].
+for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
+    xs = randrange(n, 23, 32)
+    ys = randrange(n, 0, 100)
+    zs = randrange(n, zlow, zhigh)
+    ax.scatter(xs, ys, zs, marker=m)
+
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+
+plt.show()
+

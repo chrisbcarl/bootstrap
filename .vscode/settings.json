@@ -16,4 +16,6 @@
         "editor.formatOnType": false
     },
     "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",  // consolas
+    // jupyter
+    "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],  // FEATURE: ipynb-matplotlib-widgets
 }
