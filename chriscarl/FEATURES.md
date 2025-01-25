@@ -37,4 +37,5 @@ Features are a way to "link" ideas together across multiple files. For example, 
 # Prod
 |version |author |deployed |created |feature-name |description |
 --- | --- | --- | --- | --- | ---
-|0.0.0|chriscarl|2025-01-24|0000-00-00|`FEATURE: chriscarl-features`|added the features file|
+|0.0.0|chriscarl|2025-01-24|2025-01-24|`FEATURE: ipynb-matplotlib-widgets`|added the features file|
+|0.0.0|chriscarl|2025-01-24|2025-01-24|`FEATURE: chriscarl-features`|added the features file|
