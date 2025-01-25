@@ -4,21 +4,28 @@
 # # IPython Notebook
 # the actual data structure of an ipynb is just... json.
 # 
-# ## TOC (Raw HTML Anchors)
-# * [Setup](#Setup)
-# * [IPython Notebooks are Just JSON](#just-json)
-# * [VS Code Shortcuts](#shortcuts)
-# 
-# ## Tables (Raw HTML Style to Help w/ Renders)
+# ## Metadata
 # <div style="display: inline-block">
 # <!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
 # 
 # | Key | Value |
 # | :--- | :--- |
 # | author | [Chris Carl](mailto:chrisbcarl@outlook.com) |
+# | date | 2025-12-20 |
+# | dataset | na.csv © 2024 Chris Carl |
+# | url | https://chriscarl.com |
 # 
 # <!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
 # </div>
+# 
+# ## Changelog
+# - 2025-01-24 - jupyter.ipynb.ipynb - FEATURE: ipynb-matplotlib-widgets
+# - 2024-12-20 - jupyter.ipynb.ipynb - initial commit
+# 
+# ## TOC (Raw HTML Anchors)
+# * [Setup](#Setup)
+# * [IPython Notebooks are Just JSON](#just-json)
+# * [VS Code Shortcuts](#shortcuts)
 # 
 # ## LaTeX
 # $LaTeX$ support available
@@ -79,6 +86,7 @@ plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetic
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
 # %matplotlib inline
 # command to tell the notebook to render interactable matplotlib, requires pip install ipympl
+# FEATURE: ipynb-matplotlib-widgets
 get_ipython().run_line_magic('matplotlib', 'widget')
 
 # run shell commands like installing packages and other wild stuff
@@ -139,15 +147,19 @@ n = 100
 
 # For each set of style and range settings, plot n random points in the box
 # defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].
-for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
+for m, zlow, zhigh in [('o', -50, -5), ('^', 50, 5)]:
     xs = randrange(n, 23, 32)
     ys = randrange(n, 0, 100)
     zs = randrange(n, zlow, zhigh)
     ax.scatter(xs, ys, zs, marker=m)
 
+xx, yy = np.meshgrid(np.linspace(23, 32, 10), np.linspace(0, 100, 10))
+a, b, c = -50, 1, 1
+zz = a + b * xx + c * yy
+ax.plot_surface(xx, yy, zz, color='blue', alpha=0.5)  # 2d plane
+
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
-
 plt.show()
 
