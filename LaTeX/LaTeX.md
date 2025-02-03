@@ -65,6 +65,10 @@
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh $ - symbols infinity, sets, negate, iff if only if congruence
+- [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
+    - operators: $\neg \lnot \lor \land \oplus $
+    - sayings: $\exists \nexists \forall \implies \iff$
+    - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
 - $\{ \backslash \$5.00 $ - escapes
 - cases
     $$
