@@ -58,18 +58,53 @@
 - $X_{(i + 1)}$ - subscript underscript
 - $X^{(i + 1)}$ - superscript upperscript
 - $\frac{1 + 1}{n - 1}$ - fraction
+- $1 \over {2}$ - alternate fraction
 - $\sum_{i=1}^n$ - sum small
+- $\mathbf {p} \text{ vs. } p \mathbf {\text{ doesnt work on text }} \text{text}$ - bold
 - $\displaystyle\sum_{i=1}^{n}( \bar{a} + \hat{b}^{i}_{i} )$ - sum big
+- displaystyle just means alternate display style
+    $$
+    a_0+{1\over a_1+
+        {1\over a_2+
+            {1 \over a_3 +
+            {1 \over a_4}}}}
+    $$
+    > vs
+    $$
+    a_0+{1\over\displaystyle a_1+
+        {1\over\displaystyle a_2+
+            {1 \over\displaystyle a_3 +
+            {1 \over\displaystyle a_4}}}}
+    $$
 - $\lim_{x\to\infty} f(x)$ - limit
 - $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\int^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
-- $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh $ - symbols infinity, sets, negate, iff if only if congruence
+- $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots
 - [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
     - operators: $\neg \lnot \lor \land \oplus $
     - sayings: $\exists \nexists \forall \implies \iff$
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
+- [set](???)
+    - operators: $$
+    - sayings / isms: $\in$
 - $\{ \backslash \$5.00 $ - escapes
+- number theory
+$$
+\begin{aligned}
+\mathbb{P} & \text{ - prime}      \\
+\mathbb{W} & \text{ - whole}      \\
+\mathbb{N} & \text{ - natural}        \\
+\mathbb{Z} & \text{ - integers}       \\
+\mathbb{I} & \text{ - irrational}     \\
+\mathbb{Q} & \text{ - rational}       \\
+\mathbb{R} & \text{ - real}       \\
+\mathbb{C} & \text{ - complex}        \\
+\mathbb{H} & \text{ - quaternions}        \\
+\mathbb{O} & \text{ - octonions}      \\
+\mathbb{S} & \text{ - sedenions}      \\
+\end{aligned}
+$$
 - cases
     $$
     CE(p, y) =
@@ -80,6 +115,19 @@
         \end{cases}
     $$
 - best alignment method I know (2 "columns", one aligned left, another aligned left starting center )
+    $$
+    \begin{aligned}
+        & y = f(x) = \alpha \plusmn \beta{x}  && \text{after the double amps is all left aligned TO the center } \\
+        & \text{text on left} && \text{text on right} \\
+        & y = f(x) = \alpha \plusmn \beta{x}   \\
+        \text{if you type here, you push things }  \\
+        & && \text{empty on the left} \\
+        & \text{empty on the right} &&  \\
+    \end{aligned} \\
+    $$
+    > the reason you want to use "aligned" rather than "align*" is "align*" does something funk and declares a new "math space" in latex itself. so it renders correctly in vscode, but in pandoc conversions, pdflatex chokes.
+    >
+- previous best alignment method I know (2 "columns", one aligned left, another aligned left starting center )
     $$
     \begin{align*}
         & y = f(x) = \alpha \plusmn \beta{x}  && \text{after the double amps is all left aligned TO the center } \\
