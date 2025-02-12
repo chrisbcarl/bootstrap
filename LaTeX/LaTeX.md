@@ -41,7 +41,7 @@
         four spaces and you get a small indent like this
                     hello?
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
-- $\leq, \geq \equiv \approx \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
+- $\neq, \leq, \geq \equiv \approx \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
 - $\Zeta ~ \zeta$ - greek
 - $Y = Ax + b$ - formula equation
     $$
