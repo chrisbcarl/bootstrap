@@ -41,7 +41,7 @@
         four spaces and you get a small indent like this
                     hello?
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
-- $\leq, \geq \equiv \approx \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
+- $\neq, \leq, \geq \equiv \approx \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
 - $\Zeta ~ \zeta$ - greek
 - $Y = Ax + b$ - formula equation
     $$
@@ -85,7 +85,7 @@
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots
 - [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
     - operators: $\neg \lnot \lor \land \oplus $
-    - sayings: $\exists \nexists \forall \implies \iff$
+    - sayings: $\exists \nexists \forall \implies \iff \equiv$
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
 - [set](???)
     - operators: $$
