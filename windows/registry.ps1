@@ -12,3 +12,9 @@ New-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control\FileSystem" -Name "Lo
 # disabling with 0 results in jump list recents going away, Quick Access going away, Recent Items going away, so to be hidden with file access you n
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Start_TrackDocs" -Value 1 -PropertyType DWORD -Force
 New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Start_TrackDocs" -Value 1 -PropertyType DWORD -Force
+
+
+# Disable fast startup
+# https://www.tenforums.com/tutorials/4189-turn-off-fast-startup-windows-10-a.html
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Value 0 -PropertyType DWORD -Force
+
