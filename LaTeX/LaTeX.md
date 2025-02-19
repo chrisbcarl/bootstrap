@@ -61,8 +61,9 @@
 - $\frac{1 + 1}{n - 1}$ - fraction
 - $1 \over {2}$ - alternate fraction
 - $\sum_{i=1}^n$ - sum small
-- $\mathbf {p} \text{ vs. } p \mathbf {\text{ doesnt work on text }} \text{text}$ - bold
 - $\displaystyle\sum_{i=1}^{n}( \bar{a} + \hat{b}^{i}_{i} )$ - sum big
+- $\displaystyle\prod_{i=1}^n \displaystyle\bigwedge_{i=1}^n  \displaystyle\bigcup_{i=1}^n  \displaystyle\bigvee_{i=1}^n  \displaystyle\bigcap_{i=1}^n  \displaystyle\bigoplus_{i=1}^n  \displaystyle\int_{i=1}^n  \displaystyle\oint_{i=1}^n$ - other sums, sum logic, sum conjunction, sum disjunction, sum union, sum disunion, product, etc.
+- $\mathbf {p} \text{ vs. } p \mathbf {\text{ doesnt work on text }} \text{text}$ - bold
 - displaystyle just means alternate display style
     $$
     a_0+{1\over a_1+
@@ -78,7 +79,7 @@
             {1 \over\displaystyle a_4}}}}
     $$
 - $\lim_{x\to\infty} f(x)$ - limit
-- $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\int^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
+- $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\iint^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots
@@ -251,3 +252,15 @@ $$
         \blindtext[10]
         \end{document}
         ```
+- janky proof but it looks ok:
+    $$
+    \begin{aligned}
+    \text{let } p &: it is hotter than 100 degrees today. \\
+                q &: the pollution is dangerous. \\
+    \\
+    & p \lor q \\
+    & \lnot p \\
+    \hline
+    & \blacksquare q \\
+    \end{aligned}
+    $$

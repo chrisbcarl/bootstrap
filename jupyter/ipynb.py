@@ -26,13 +26,15 @@
 # * [Setup](#Setup)
 # * [IPython Notebooks are Just JSON](#just-json)
 # * [VS Code Shortcuts](#shortcuts)
+# * [Input/Output Widgets](#input-output-widgets)
+# * [Useful Magics](#useful-magics)
 # 
 # ## LaTeX
 # $LaTeX$ support available
 
 # # Setup <a id="Setup"></a>
 
-# setup
+# stdlib imports
 import __main__
 import os
 import sys
@@ -49,14 +51,21 @@ if SCRIPT_FILEPATH:
     SCRIPT_FILENAME = os.path.splitext(os.path.basename(SCRIPT_FILEPATH))[0]
 pprint.pprint(dict(dir=SCRIPT_DIRPATH, fp=SCRIPT_FILEPATH, fn=SCRIPT_FILENAME), indent=2)
 
-requirements = ['pandas', 'numpy', 'seaborn', 'requests', 'ipympl']
-install_string = ' '.join(requirements)
+modules = {'pandas': '', 'numpy': '', 'seaborn': '', 'ipympl': '', 'flask': 'Flask', 'ipywidgets': ''}
+module, package = '', ''
+install_string = ' '.join(modules)
 try:
-    for requirement in requirements:
-        importlib.import_module(requirement)
+    for module, package in modules.items():
+        if not package:
+            package = module
+        importlib.import_module(module)
 except ImportError:
-    print(f'pip install {install_string}', file=sys.stderr)
+    print(f'pip install {package}', file=sys.stderr)
     get_ipython().run_line_magic('pip', 'install {install_string}')
+
+# third imports
+from IPython.display import display
+import ipywidgets as widgets
 
 import pandas as pd
 import numpy as np
@@ -66,16 +75,17 @@ import seaborn as sns
 np.set_printoptions(precision=4, edgeitems=2, linewidth=9999)  # threshold=4,
 
 pd.set_option('display.precision', 4)
-pd.set_option('display.max_columns', 32)
-pd.set_option('display.max_colwidth', 999)
-pd.set_option('display.width', 9999)
-pd.set_option('display.max_rows', 8)  # for .describe()
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+pd.set_option('display.max_rows', None)  # .describe has 9
+pd.set_option('display.max_columns', None)
+pd.set_option('display.expand_frame_repr', False)  # prevents wrapping when colwidth exceeds width
 
-with pd.option_context('display.max_rows', 999, 'display.max_columns', 999):
+with pd.option_context('display.max_rows', 9, 'display.max_columns', 32):
     pass
 
 if sys.platform == 'win32':
-    res = get_ipython().getoutput('where.exe shitlatex')
+    res = get_ipython().getoutput('where.exe latex')
     latex_exists = res[0].startswith('INFO')
 else:
     res = get_ipython().getoutput('which latex')
@@ -84,18 +94,11 @@ plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetic
 
 
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
-# %matplotlib inline
+get_ipython().run_line_magic('matplotlib', 'inline')
 # command to tell the notebook to render interactable matplotlib, requires pip install ipympl
 # FEATURE: ipynb-matplotlib-widgets
-get_ipython().run_line_magic('matplotlib', 'widget')
-
-# run shell commands like installing packages and other wild stuff
-get_ipython().system('echo hello ipynb')
-# change cli arguments with variables
-get_ipython().system('jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}')
-get_ipython().system('jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}')
-# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}
-# !pip install matplotlib
+# this is only really usefull when doing ipynb + 3d. otherwise, eh
+# %matplotlib widget
 
 5;  # normally the 5 would be printed, adding ; disables the print
 
@@ -162,4 +165,74 @@ ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 plt.show()
+
+
+# # Input/Output Widgets <a id="input-output-widgets"></a>
+# 
+
+print('enter some values!')
+
+wgs = []
+
+int_slider = widgets.IntSlider(
+    value=69,
+    min=0,
+    max=100,
+    step=1,
+    description='int values',
+    disabled=False,
+    continuous_update=False,
+    orientation='horizontal',
+    readout=True,
+    readout_format='d'
+)
+wgs.append(int_slider)
+
+float_slider = widgets.FloatSlider(
+    value=69,
+    min=0,
+    max=100,
+    step=0.01,
+    description='float values',
+    disabled=False,
+    continuous_update=False,
+    orientation='horizontal',
+    readout=True,
+    readout_format='.2f',
+)
+wgs.append(float_slider)
+
+text_box = widgets.Text(
+    value='',
+    placeholder='Type something',
+    description='Whatever you like',
+    disabled=False
+)
+wgs.append(text_box)
+
+
+for widget in wgs:
+    display(widget)
+
+
+def print_widget_values(x):
+    print(x)
+    for w, widget in enumerate(wgs):
+        print(w, widget.value)
+
+button = widgets.Button(
+    description='Click me!',
+    disabled=False,
+    button_style='', # 'success', 'info', 'warning', 'danger' or ''
+    tooltip='Change the values with the sliders to try things out!',
+    icon='check' # (FontAwesome names without the `fa-` prefix)
+)
+display(button)
+button.on_click(print_widget_values)
+
+
+# # Useful Magics <a id="useful-magics"></a>
+# 
+
+get_ipython().run_cell_magic('time', '', "# %%time has to be at the top of the cell, works like a context manager\n\n# change cli arguments with variables\nprint_me = 'ipynb'\n\n# run shell commands like installing packages and other wild stuff\nstdout = !echo hello {print_me}\nprint(stdout)\n\n# jupyter nb commands\n!jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}\n!jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}\n# # the following line would cause infinite recursion lol\n# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}\n\n# !pip install matplotlib\n")
 
