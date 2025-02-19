@@ -234,3 +234,20 @@ $$
         }
     $$
 - $\vdots \cdots \ddots$ - elipses
+- ![dimenison setting](./Layout-dimensions.png) which comes from [Overleaf](https://www.overleaf.com/learn/latex/Page_size_and_margins)
+    - ez recomend:
+        ```tex
+        \documentclass{article}
+        \usepackage{blindtext}
+        \usepackage{geometry}
+        % this shit right here.
+        \geometry{
+            a4paper,
+            total={170mm,257mm},
+            left=20mm,
+            top=20mm,}
+        \begin{document}
+        \section{Some dummy text}
+        \blindtext[10]
+        \end{document}
+        ```
