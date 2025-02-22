@@ -34,11 +34,31 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\P
 
 Write-Host -ForegroundColor Cyan "Find out how often it's waking up"
 Powercfg /batteryreport
+$output_html = [IO.Path]::GetFullPath("$((Get-Location).Path)/battery-report.html")
+Copy-Item -Path $output_html -Destination "C:\temp"
+chrome.exe "C:\temp\battery-report.html"
 
 
 # https://www.tenforums.com/tutorials/63064-view-wake-timers-windows-10-a.html
 Write-Host -ForegroundColor Cyan "Find out how often it's waking up"
 Get-ScheduledTask | ? {$_.Settings.WakeToRun} | Out-GridView
+
+
+
+
+# removes the right click start > sleep possibility...
+# # https://www.elevenforum.com/t/disable-modern-standby-in-windows-10-and-windows-11.3929/
+# Write-Host -ForegroundColor Cyan "Disabling 'Standby (S0 Low Power Idle) Network Connected'"
+# New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power" -Name "PlatformAoAcOverride" -Value 0 -PropertyType DWORD -Force
+
+
+# https://www.elevenforum.com/t/enable-or-disable-network-connectivity-in-modern-standby-in-windows-11.3286/
+Write-Host -ForegroundColor Cyan "GPO > Computer Configuration > Administrative Templates > System > Power Management > Sleep Settings​ > Allow network connectivity during connected-standby (plugged in)"
+# Computer Configuration > Administrative Templates > System > Power Management > Sleep Settings​ > Allow network connectivity during connected-standby (plugged in)
+# run gpo (group policy editor)
+powercfg /a
+
+
 
 
 # https://www.tenforums.com/tutorials/63070-enable-disable-wake-timers-windows-10-a.html
