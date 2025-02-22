@@ -41,8 +41,9 @@
         four spaces and you get a small indent like this
                     hello?
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
-- $\neq, \leq, \geq \equiv \approx \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
+- $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
 - $\Zeta ~ \zeta$ - greek
+- $e \pi i$ - constants
 - $Y = Ax + b$ - formula equation
     $$
     \begin{equation}
@@ -78,7 +79,7 @@
             {1 \over\displaystyle a_3 +
             {1 \over\displaystyle a_4}}}}
     $$
-- $\lim_{x\to\infty} f(x)$ - limit
+- $\lim_{x\to\infty} f(x) \displaystyle\lim_{x\to\infty} f(x)$ - limit
 - $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\iint^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
@@ -90,7 +91,7 @@
 - [set](???)
     - operators: $$
     - sayings / isms: $\in$
-- $\{ \backslash \$5.00 $ - escapes
+- $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \}$ - escapes [via so](https://stackoverflow.com/a/5422751)
 - number theory
 $$
 \begin{aligned}
