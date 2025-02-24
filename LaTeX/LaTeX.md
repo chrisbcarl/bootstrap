@@ -88,9 +88,11 @@
     - operators: $\neg \lnot \lor \land \oplus $
     - sayings: $\exists \nexists \forall \implies \iff \equiv$
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
+    - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
     - operators: $$
     - sayings / isms: $\in$
+- divides / indivisible: $\mid \nmid$
 - $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \}$ - escapes [via so](https://stackoverflow.com/a/5422751)
 - number theory
 $$
