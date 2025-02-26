@@ -92,7 +92,13 @@
 - [set](???)
     - operators: $$
     - sayings / isms: $\in$
-- divides / indivisible: $\mid \nmid$
+- divides / indivisible / modulo: $\mid \nmid \bmod$
+- big braces big brackets
+    $$
+    (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
+    [   \big[   \Big[   \bigg[  \Bigg[  \Bigg]  \bigg]  \Big]   \big]   ] \\
+    \{  \big\{  \Big\{  \bigg\{ \Bigg\{ \Bigg\} \bigg\} \Big\}  \big\} \} \\
+    $$
 - $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \}$ - escapes [via so](https://stackoverflow.com/a/5422751)
 - number theory
 $$
