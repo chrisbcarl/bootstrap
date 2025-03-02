@@ -93,7 +93,7 @@
     - operators: $$
     - sayings / isms: $\in$
 - divides / indivisible / modulo: $\mid \nmid \bmod$
-- big braces big brackets
+- [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
     [   \big[   \Big[   \bigg[  \Bigg[  \Bigg]  \bigg]  \Big]   \big]   ] \\
@@ -244,6 +244,21 @@ $$
         }
     $$
 - $\vdots \cdots \ddots$ - elipses
+- big matrix from https://latex-tutorial.com/ellipses-in-latex/
+$$
+\begin{bmatrix}
+-10 & -20 & 15 & 20 & -15 & -20 \\
+22 & -10 & \cdots & \cdots & -10 & -15 \\
+-11 & -10 & \cdots & \cdots & -10 & -10 \\
+-10 & -10 & \cdots & \cdots & -10 & -10 \\
+\vdots & \vdots & \ddots & & \vdots & \vdots \\
+\vdots & \vdots & & \ddots & \vdots & \vdots \\
+-10 & 10 & \cdots & \cdots & -10 & -10 \\
+-10 & 10 & \cdots & \cdots & -10 & -10 \\
+11 & 10 & \cdots & \cdots & -10 & -20 \\
+-20 & -11 & -10 & -1 & -20 & -10
+\end{bmatrix}
+$$
 - ![dimenison setting](./Layout-dimensions.png) which comes from [Overleaf](https://www.overleaf.com/learn/latex/Page_size_and_margins)
     - ez recomend:
         ```tex
