@@ -15,11 +15,11 @@
 - $\text{visible comment}$ - comment (invisible in presentation)
 - $X$ - ascii upper
 - $\mathrm{X} \rm{X}$ - ascii upper in roman style non-italic
+- $\rm X y z a b c D$ - remove math styling during this inline, doesnt behave well with blocks
 - spaces
     $$
     % \url{https://tex.stackexchange.com/a/74354}{source} \\
-    \mathrm{newline}
-    \newline
+    \mathrm{newline} \newline
     \text{also newline} \\
     a~ b \\  % nbsp
     a\, b  \\  % 3/18 of \quad (= 3 mu)
@@ -90,8 +90,9 @@
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
     - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
-    - operators: $$
-    - sayings / isms: $\in$
+    - sets: $\emptyset$
+    - operators: $\cup \cap \complement \bar{A} \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
+    - sayings / isms: $\in \notin$
 - divides / indivisible / modulo: $\mid \nmid \bmod$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
@@ -103,6 +104,7 @@
 - number theory
 $$
 \begin{aligned}
+\mathbb{U} & \text{ - universal}      \\
 \mathbb{P} & \text{ - prime}      \\
 \mathbb{W} & \text{ - whole}      \\
 \mathbb{N} & \text{ - natural}        \\
