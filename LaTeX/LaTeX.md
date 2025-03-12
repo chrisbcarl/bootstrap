@@ -91,7 +91,7 @@
     - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
     - sets: $\emptyset$
-    - operators: $\cup \cap \complement \overline{A} \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
+    - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
 - divides / indivisible / modulo: $\mid \nmid \bmod$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
