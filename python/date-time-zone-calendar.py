@@ -22,6 +22,7 @@ now_tz = datetime.datetime.now(tz=tz)
 print(now_tz)
 
 # to utc
+UTC = datetime.timezone.utc
 now_utc = datetime.datetime(
     year=now_tz.year,
     month=now_tz.month,
@@ -30,7 +31,7 @@ now_utc = datetime.datetime(
     minute=now_tz.minute,
     second=now_tz.second,
     microsecond=now_tz.microsecond,
-    tzinfo=datetime.UTC,
+    tzinfo=UTC,
 )
 now_utc -= offset  # "undo" the offset
 print(now_utc)
