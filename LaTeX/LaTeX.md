@@ -9,6 +9,8 @@
 - guides / courses
     - [lshort--the bible](https://www.ctan.org/tex-archive/info/lshort/) for lots of lanugages which end up hosting [pdfs like this](https://mirror.las.iastate.edu/tex-archive/info/lshort/english/lshort.pdf)
     - [overleaf intro guide, see left hand side](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) but dont pay for it
+- really cool websites
+    - [draw and get a symbol](https://detexify.kirelabs.org/classify.html)
 
 # MY Cheat Sheet
 - $% invisible comment$ - comment (invisible in presentation)
@@ -55,7 +57,7 @@
     \end{equation}
     % The beautiful equation \ref{eu_eqn} is known as the Euler equation.  % or \ref  % https://github.com/KaTeX/KaTeX/issues/2003
     $$
-- $1 + 2 - 3 * 4 /    5 ^ {(6)} \times \div \pm \plusmn$ - pemdas plus minus
+- $1 + 2 - 3 * 4 /    5 ^ {(6)} \times 7 \cdot 8 \div \pm \plusmn$ - pemdas plus minus
 - $\bar{X} \hat{X}$ - bar    hat
 - $X_{(i + 1)}$ - subscript underscript
 - $X^{(i + 1)}$ - superscript upperscript
@@ -93,7 +95,11 @@
     - sets: $\emptyset$
     - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
-- divides / indivisible / modulo: $\mid \nmid \bmod$
+- functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert $
+    $$
+    \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
+    $$
+- divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
