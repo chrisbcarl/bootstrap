@@ -100,6 +100,7 @@
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
     $$
 - divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b$
+- misc anything - $\checkmark$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
