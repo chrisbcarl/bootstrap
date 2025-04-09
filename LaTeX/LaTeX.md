@@ -4,6 +4,7 @@
     - https://katex.org/docs/supported.html
     - [Every friggen symbol](https://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
     - [symbols in a wiki but its incomplete](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
+    - [overleaf version](https://assets.ctfassets.net/nrgyaltdicpt/4e825etqMUW8vTF8drfRbw/d4f3d9adcb2980b80818f788e36316b2/A_quick_guide_to_LaTeX__Overleaf_version.pdf)
 - issues / bugs
     - https://github.com/KaTeX/KaTeX/issues/2003
 - guides / courses
@@ -95,11 +96,18 @@
     - sets: $\emptyset$
     - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
+- overs:
+    $$
+    \overline{ABC} \\
+    \overrightarrow{ABC} \\
+    \hat{ABC} \\
+    \tilde{ABC} \\
+    $$
 - functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert $
     $$
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
     $$
-- divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b$
+- divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b a \pmod b a \pod b a \operatorname{div} b \equiv a \bmod c$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
@@ -296,4 +304,26 @@ $$
     & \blacksquare q \\
     & \therefore q \\
     \end{aligned}
+    $$
+- linear algebra / statistics / machine learning / deep learning
+    - sigmoid function or sigma field $\mathcal{F} \mathscr{F}$
+    - gradient $\nabla$
+    - unit vectors (i and j without the dots): $\hat{\imath} \hat{\jmath}$
+- math fonts (Table 348 in [symbols-a4.pdf](./symbols-a4.pdf) or [by name](https://www.physicsread.com/latex-mathematical-font/))
+    $$
+    \begin{align*}
+    3x^2 \in R \subset Q \\
+    \mathrm{3x^2 \in R \subset Q}       & \quad \text{math roman} \\
+    \mathbb{3x^2 \in R \subset Q}       & \quad \text{math blackboard} \\
+    \mathbf{3x^2 \in R \subset Q}       & \quad \text{math boldface} \\
+    \mathit{3x^2 \in R \subset Q}       & \quad \text{math italic} \\
+    \mathsf{3x^2 \in R \subset Q}       & \quad \text{math san serif} \\
+    \mathtt{3x^2 \in R \subset Q}       & \quad \text{math typewriter} \\
+    % \mathds{3x^2 \in R \subset Q}       & \quad \text{math double stroke} \\
+    \mathcal{3x^2 \in R \subset Q}      & \quad \text{math caligraphy} \\
+    \mathscr{3x^2 \in R \subset Q}      & \quad \text{math RSFS (Ralph Smith's Formal Script)} \\
+    % \mathrsfs{3x^2 \in R \subset Q}     & \quad \text{math Ralph Smith's Formal Script} \\
+    \mathfrak{3x^2 \in R \subset Q}     & \quad \text{math Fraktur gothic} \\
+    \mathnormal{3x^2 \in R \subset Q}   & \quad \text{math standard} \\
+    \end{align*}
     $$
