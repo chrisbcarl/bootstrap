@@ -45,6 +45,7 @@
                     hello?
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
 - $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
+- $\sim$ - tilde
 - $\Phi ~ \phi$ - greek
 - $e \pi i$ - constants
 - $Y = Ax + b$ - formula equation
