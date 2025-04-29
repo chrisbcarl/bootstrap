@@ -311,6 +311,10 @@ $$
     - sigmoid function or sigma field $\mathcal{F} \mathscr{F}$
     - gradient $\nabla$
     - unit vectors (i and j without the dots): $\hat{\imath} \hat{\jmath}$
+    - combinatorics / binomial
+        $$
+        \binom{a}{b}
+        $$
 - math fonts (Table 348 in [symbols-a4.pdf](./symbols-a4.pdf) or [by name](https://www.physicsread.com/latex-mathematical-font/))
     $$
     \begin{align*}

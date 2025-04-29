@@ -48,3 +48,7 @@
     poetry run main.py  # invokes main.py with your venv
     poetry show --tree  # list deps in graph form
     ```
+- update / upgrade
+    ```powershell
+    poetry update  # update the packages to the best of its ability
+    ```
