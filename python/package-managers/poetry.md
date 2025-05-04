@@ -52,3 +52,10 @@
     ```powershell
     poetry update  # update the packages to the best of its ability
     ```
+- pytorch, some special stuff
+    ```powershell
+    # https://stackoverflow.com/a/76359919
+    poetry remove torch torchvision torchaudio  # remove if you've already got it installed
+    poetry source add --priority explicit pytorch-cu128 https://download.pytorch.org/whl/cu128  # similar to --index-url in pip
+    poetry add --source pytorch-cu128 torch torchvision torchaudio  # actually install
+    ```
