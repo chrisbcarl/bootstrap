@@ -1,3 +1,10 @@
+- install
+    typically suggets `pipx`, i find that cumbersome because then you need to install `scoop` so that's 2 extra dependencies to get to the one I give a damn about
+    ```powershell
+    where.exe python | foreach {
+        & $_ -m pip install poetry
+    }
+    ```
 - config
     ```toml
     [tools.poetry]package-mode = false  # if you're only using poetry for dep management, not package development
@@ -58,4 +65,10 @@
     poetry remove torch torchvision torchaudio  # remove if you've already got it installed
     poetry source add --priority explicit pytorch-cu128 https://download.pytorch.org/whl/cu128  # similar to --index-url in pip
     poetry add --source pytorch-cu128 torch torchvision torchaudio  # actually install
+    ```
+- delete environment
+    ```powershell
+    poetry env list --full-path
+    poetry env remove /full/path/to/python python3.7 3.7 test-O3eWbxRl-py3.7 etc
+    poetry env remove --all
     ```
