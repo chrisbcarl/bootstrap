@@ -3,32 +3,32 @@
 
 # # IPython Notebook
 # the actual data structure of an ipynb is just... json.
-# 
+#
 # ## Metadata
 # <div style="display: inline-block">
 # <!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
-# 
+#
 # | Key | Value |
 # | :--- | :--- |
 # | author | [Chris Carl](mailto:chrisbcarl@outlook.com) |
 # | date | 2025-12-20 |
 # | dataset | na.csv © 2024 Chris Carl |
 # | url | https://chriscarl.com |
-# 
+#
 # <!-- get the table rendered to the left rather than default center, the spaces after the raw html are important for markdown https://stackoverflow.com/a/78525025 -->
 # </div>
-# 
+#
 # ## Changelog
 # - 2025-01-24 - jupyter.ipynb.ipynb - FEATURE: ipynb-matplotlib-widgets
 # - 2024-12-20 - jupyter.ipynb.ipynb - initial commit
-# 
+#
 # ## TOC (Raw HTML Anchors)
 # * [Setup](#Setup)
 # * [IPython Notebooks are Just JSON](#just-json)
 # * [VS Code Shortcuts](#shortcuts)
 # * [Input/Output Widgets](#input-output-widgets)
 # * [Useful Magics](#useful-magics)
-# 
+#
 # ## LaTeX
 # $LaTeX$ support available
 
@@ -40,15 +40,24 @@ import os
 import sys
 import pprint
 import importlib
-SCRIPT_DIRPATH = get_ipython().run_line_magic('pwd', ' # %pwd is a "magic" command  https://ipython.readthedocs.io/en/stable/interactive/magics.html')
-SCRIPT_FILEPATH = None
-SCRIPT_FILENAME = None
-if hasattr(__main__, '__vsc_ipynb_file__'):  # vscode
-    SCRIPT_FILEPATH = __main__.__vsc_ipynb_file__
-elif hasattr(__main__, '__session__'):  # localhost:8888/notebooks
-    SCRIPT_FILEPATH = __main__.__session__
-if SCRIPT_FILEPATH:
-    SCRIPT_FILENAME = os.path.splitext(os.path.basename(SCRIPT_FILEPATH))[0]
+import subprocess
+from IPython import get_ipython
+
+SCRIPT_FILEPATH = ''
+SCRIPT_FILENAME = ''
+IPYTHON_SHELL = get_ipython()  # None if running in vanilla python
+if IPYTHON_SHELL:
+    SCRIPT_DIRPATH = IPYTHON_SHELL.run_line_magic('pwd', ' # %pwd is a "magic" command  https://ipython.readthedocs.io/en/stable/interactive/magics.html')
+    if hasattr(__main__, '__vsc_ipynb_file__'):  # vscode
+        SCRIPT_FILEPATH = __main__.__vsc_ipynb_file__
+    elif hasattr(__main__, '__session__'):  # localhost:8888/notebooks
+        SCRIPT_FILEPATH = __main__.__session__
+else:
+    SCRIPT_FILEPATH = __file__
+    SCRIPT_DIRPATH = os.path.dirname(SCRIPT_FILEPATH)
+
+SCRIPT_FILENAME = os.path.splitext(os.path.basename(SCRIPT_FILEPATH))[0]
+
 pprint.pprint(dict(dir=SCRIPT_DIRPATH, fp=SCRIPT_FILEPATH, fn=SCRIPT_FILENAME), indent=2)
 
 modules = {'pandas': '', 'numpy': '', 'seaborn': '', 'ipympl': '', 'flask': 'Flask', 'ipywidgets': ''}
@@ -61,7 +70,10 @@ try:
         importlib.import_module(module)
 except ImportError:
     print(f'pip install {package}', file=sys.stderr)
-    get_ipython().run_line_magic('pip', 'install {install_string}')
+    if IPYTHON_SHELL:
+        IPYTHON_SHELL.run_line_magic('pip', 'install {install_string}')
+    else:
+        subprocess.check_call(f'pip install {install_string}', stdout=sys.stdout, stderr=sys.stderr, stdin=sys.stdin)
 
 # third imports
 from IPython.display import display
@@ -84,23 +96,34 @@ pd.set_option('display.expand_frame_repr', False)  # prevents wrapping when colw
 with pd.option_context('display.max_rows', 9, 'display.max_columns', 32):
     pass
 
-if sys.platform == 'win32':
-    res = get_ipython().getoutput('where.exe latex')
-    latex_exists = res[0].startswith('INFO')
+if IPYTHON_SHELL:
+    if sys.platform == 'win32':
+        res = IPYTHON_SHELL.getoutput('where.exe latex')
+        latex_exists = res[0].startswith('INFO')
+    else:
+        res = IPYTHON_SHELL.getoutput('which latex')
+        latex_exists = bool(res)
 else:
-    res = get_ipython().getoutput('which latex')
-    latex_exists = bool(res)
+    if sys.platform == 'win32':
+        res = subprocess.check_output('where.exe latex', universal_newlines=True)
+        print(res)
+        latex_exists = res.startswith('INFO')
+    else:
+        res = subprocess.check_output('which latex', universal_newlines=True)
+        latex_exists = bool(res)
+
 plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetica'  # requires latex installed
 
-
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
-get_ipython().run_line_magic('matplotlib', 'inline')
+if IPYTHON_SHELL:
+    IPYTHON_SHELL.run_line_magic('matplotlib', 'inline')
 # command to tell the notebook to render interactable matplotlib, requires pip install ipympl
 # FEATURE: ipynb-matplotlib-widgets
 # this is only really usefull when doing ipynb + 3d. otherwise, eh
 # %matplotlib widget
 
-5;  # normally the 5 would be printed, adding ; disables the print
+5
+# normally the 5 would be printed, adding ; disables the print
 
 # keyboard shortcuts
 # 1. Shift + Enter - exec current cell
@@ -111,15 +134,19 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # 6. A - insert above current
 # 7. B - insert below current
 
-
 # # IPython Notebooks are Just JSON <a id="just-json"></a>
 
 import json
-with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
-    body = json.load(r)
-    print(json.dumps(body['cells'][0], indent=2))
-    print(json.dumps(body['cells'][1], indent=2))
-
+if IPYTHON_SHELL:
+    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
+        body = json.load(r)
+        print(json.dumps(body['cells'][0], indent=2))
+        print(json.dumps(body['cells'][1], indent=2))
+else:
+    print('WARNING: NOT RUNNING AN IPYNB, THIS FILE IS NOT A JSON')
+    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
+        body = r.read()
+        print(print(repr(body[50:150])))
 
 # # VS Code Keyboard Shortcuts <a id="shortcuts"></a>
 # [VS Code Keyboard Shortcuts](https://blog.chaitanyashahare.com/posts/vscode-jupyter-notebooks-keyboard-shortcuts/)
@@ -130,7 +157,7 @@ with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
 # 5. M - change the cell type to markdown
 # 6. A - insert above current
 # 7. B - insert below current
-# 
+#
 
 # Fixing random state for reproducibility
 np.random.seed(19680801)
@@ -141,7 +168,8 @@ def randrange(n, vmin, vmax):
     Helper function to make an array of random numbers having shape (n, )
     with each number distributed Uniform(vmin, vmax).
     """
-    return (vmax - vmin)*np.random.rand(n) + vmin
+    return (vmax - vmin) * np.random.rand(n) + vmin
+
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
@@ -166,25 +194,15 @@ ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 plt.show()
 
-
 # # Input/Output Widgets <a id="input-output-widgets"></a>
-# 
+#
 
 print('enter some values!')
 
 wgs = []
 
 int_slider = widgets.IntSlider(
-    value=69,
-    min=0,
-    max=100,
-    step=1,
-    description='int values',
-    disabled=False,
-    continuous_update=False,
-    orientation='horizontal',
-    readout=True,
-    readout_format='d'
+    value=69, min=0, max=100, step=1, description='int values', disabled=False, continuous_update=False, orientation='horizontal', readout=True, readout_format='d'
 )
 wgs.append(int_slider)
 
@@ -202,14 +220,8 @@ float_slider = widgets.FloatSlider(
 )
 wgs.append(float_slider)
 
-text_box = widgets.Text(
-    value='',
-    placeholder='Type something',
-    description='Whatever you like',
-    disabled=False
-)
+text_box = widgets.Text(value='', placeholder='Type something', description='Whatever you like', disabled=False)
 wgs.append(text_box)
-
 
 for widget in wgs:
     display(widget)
@@ -220,19 +232,22 @@ def print_widget_values(x):
     for w, widget in enumerate(wgs):
         print(w, widget.value)
 
+
 button = widgets.Button(
     description='Click me!',
     disabled=False,
-    button_style='', # 'success', 'info', 'warning', 'danger' or ''
+    button_style='',  # 'success', 'info', 'warning', 'danger' or ''
     tooltip='Change the values with the sliders to try things out!',
-    icon='check' # (FontAwesome names without the `fa-` prefix)
+    icon='check'  # (FontAwesome names without the `fa-` prefix)
 )
 display(button)
 button.on_click(print_widget_values)
 
-
 # # Useful Magics <a id="useful-magics"></a>
-# 
+#
 
-get_ipython().run_cell_magic('time', '', "# %%time has to be at the top of the cell, works like a context manager\n\n# change cli arguments with variables\nprint_me = 'ipynb'\n\n# run shell commands like installing packages and other wild stuff\nstdout = !echo hello {print_me}\nprint(stdout)\n\n# jupyter nb commands\n!jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}\n!jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}\n# # the following line would cause infinite recursion lol\n# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}\n\n# !pip install matplotlib\n")
-
+if IPYTHON_SHELL:
+    IPYTHON_SHELL.run_cell_magic(
+        'time', '',
+        "# %%time has to be at the top of the cell, works like a context manager\n\n# change cli arguments with variables\nprint_me = 'ipynb'\n\n# run shell commands like installing packages and other wild stuff\nstdout = !echo hello {print_me}\nprint(stdout)\n\n# jupyter nb commands\n!jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}\n!jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}\n# # the following line would cause infinite recursion lol\n# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}\n\n# !pip install matplotlib\n"
+    )

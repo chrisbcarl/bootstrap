@@ -7609,27 +7609,37 @@ a.anchor-link {
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">pprint</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
-<span class="n">SCRIPT_DIRPATH</span> <span class="o">=</span> <span class="o">%</span><span class="k">pwd</span>  # %pwd is a "magic" command  https://ipython.readthedocs.io/en/stable/interactive/magics.html
-<span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">SCRIPT_FILENAME</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">__main__</span><span class="p">,</span> <span class="s1">'__vsc_ipynb_file__'</span><span class="p">):</span>  <span class="c1"># vscode</span>
-    <span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="n">__main__</span><span class="o">.</span><span class="n">__vsc_ipynb_file__</span>
-<span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">__main__</span><span class="p">,</span> <span class="s1">'__session__'</span><span class="p">):</span>  <span class="c1"># localhost:8888/notebooks</span>
-    <span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="n">__main__</span><span class="o">.</span><span class="n">__session__</span>
-<span class="k">if</span> <span class="n">SCRIPT_FILEPATH</span><span class="p">:</span>
-    <span class="n">SCRIPT_FILENAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+
+<span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">SCRIPT_FILENAME</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">IPYTHON_SHELL</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>  <span class="c1"># None if running in vanilla python</span>
+<span class="k">if</span> <span class="n">IPYTHON_SHELL</span><span class="p">:</span>
+    <span class="n">SCRIPT_DIRPATH</span> <span class="o">=</span> <span class="n">IPYTHON_SHELL</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">'pwd'</span><span class="p">,</span> <span class="s1">' # %pwd is a "magic" command  https://ipython.readthedocs.io/en/stable/interactive/magics.html'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">__main__</span><span class="p">,</span> <span class="s1">'__vsc_ipynb_file__'</span><span class="p">):</span>  <span class="c1"># vscode</span>
+        <span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="n">__main__</span><span class="o">.</span><span class="n">__vsc_ipynb_file__</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">__main__</span><span class="p">,</span> <span class="s1">'__session__'</span><span class="p">):</span>  <span class="c1"># localhost:8888/notebooks</span>
+        <span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="n">__main__</span><span class="o">.</span><span class="n">__session__</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">SCRIPT_FILEPATH</span> <span class="o">=</span> <span class="vm">__file__</span>
+    <span class="n">SCRIPT_DIRPATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">)</span>
+
+<span class="n">SCRIPT_FILENAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
 <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="n">SCRIPT_DIRPATH</span><span class="p">,</span> <span class="n">fp</span><span class="o">=</span><span class="n">SCRIPT_FILEPATH</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">SCRIPT_FILENAME</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'pandas'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'numpy'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'seaborn'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'ipympl'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'flask'</span><span class="p">:</span> <span class="s1">'Flask'</span><span class="p">,</span> <span class="s1">'ipywidgets'</span><span class="p">:</span> <span class="s1">''</span><span class="p">}</span>
-<span class="n">module</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">''</span>
-<span class="n">install_string</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">modules</span><span class="p">)</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Werkzeug'</span><span class="p">:</span> <span class="s1">'werkzeug'</span><span class="p">}</span>  <span class="c1"># package name: module name</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pandas'</span><span class="p">,</span> <span class="s1">'numpy'</span><span class="p">,</span> <span class="s1">'seaborn'</span><span class="p">,</span> <span class="s1">'ipympl'</span><span class="p">,</span> <span class="s1">'ipywidgets'</span><span class="p">]</span>  <span class="c1"># , 'paramiko', 'requests'</span>
+<span class="n">packages</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">m</span><span class="p">:</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">})</span>
+<span class="n">package</span><span class="p">,</span> <span class="n">module</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">''</span>
+<span class="n">install_string</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">packages</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'this ipynb uses the following packages:'</span><span class="p">,</span> <span class="n">install_string</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">package</span><span class="p">:</span>
-            <span class="n">package</span> <span class="o">=</span> <span class="n">module</span>
+    <span class="k">for</span> <span class="n">package</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">packages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'pip install </span><span class="si">{</span><span class="n">package</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'executing "pip install </span><span class="si">{</span><span class="n">package</span><span class="si">}</span><span class="s1">"'</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
     <span class="o">%</span><span class="k">pip</span> install {install_string}
 
 <span class="c1"># third imports</span>
@@ -7653,17 +7663,36 @@ a.anchor-link {
 <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">'display.max_rows'</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">32</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">'win32'</span><span class="p">:</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>where.exe<span class="w"> </span>latex
-    <span class="n">latex_exists</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'INFO'</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">IPYTHON_SHELL</span><span class="p">:</span>
+    <span class="c1"># if sys.platform == 'win32':</span>
+    <span class="c1">#     res = IPYTHON_SHELL.getoutput('where.exe latex')</span>
+    <span class="c1">#     latex_exists = res[0].startswith('INFO')</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     res = IPYTHON_SHELL.getoutput('which latex')</span>
+    <span class="c1">#     latex_exists = bool(res)</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">'win32'</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>where.exe<span class="w"> </span>latex
+        <span class="n">latex_exists</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'INFO'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>which<span class="w"> </span>latex
+        <span class="n">latex_exists</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="o">!</span>which<span class="w"> </span>latex
-    <span class="n">latex_exists</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">'win32'</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s1">'where.exe latex'</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">latex_exists</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'INFO'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s1">'which latex'</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">latex_exists</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'text.usetex'</span><span class="p">:</span> <span class="n">latex_exists</span><span class="p">})</span>  <span class="c1"># , 'font.family': 'Helvetica'  # requires latex installed</span>
 
 
 <span class="c1"># command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">if</span> <span class="n">IPYTHON_SHELL</span><span class="p">:</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">IPYTHON_SHELL</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">'matplotlib'</span><span class="p">,</span> <span class="s1">'inline'</span><span class="p">)</span>
 <span class="c1"># command to tell the notebook to render interactable matplotlib, requires pip install ipympl</span>
 <span class="c1"># FEATURE: ipynb-matplotlib-widgets</span>
 <span class="c1"># this is only really usefull when doing ipynb + 3d. otherwise, eh</span>
@@ -7715,14 +7744,20 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">IPYTHON_SHELL</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'WARNING: NOT RUNNING AN IPYNB, THIS FILE IS NOT A JSON'</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">SCRIPT_FILEPATH</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">150</span><span class="p">])))</span>
 </pre></div>
 </div>
 </div>
@@ -8028,7 +8063,7 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="c1"># %%time has to be at the top of the cell, works like a context manager</span>
+<span class="c1"># %%time has to be at the top of the cell with NOTHING else, not even comments, works like a context manager</span>
 
 <span class="c1"># change cli arguments with variables</span>
 <span class="n">print_me</span> <span class="o">=</span> <span class="s1">'ipynb'</span>
@@ -8065,16 +8100,15 @@ a.anchor-link {
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>[NbConvertApp] Converting notebook c:\Users\chris\src\bootstrap\jupyter\ipynb.ipynb to html
 [NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
-[NbConvertApp] Writing 417427 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.html
+[NbConvertApp] Writing 418133 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.html
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>hello
-CPU times: total: 15.6 ms
-Wall time: 11 s
+<pre>CPU times: total: 31.2 ms
+Wall time: 10.7 s
 </pre>
 </div>
 </div>
@@ -8082,7 +8116,7 @@ Wall time: 11 s
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>[NbConvertApp] Converting notebook c:\Users\chris\src\bootstrap\jupyter\ipynb.ipynb to python
-[NbConvertApp] Writing 7426 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.py
+[NbConvertApp] Writing 7539 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.py
 </pre>
 </div>
 </div>
