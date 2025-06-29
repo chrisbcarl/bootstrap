@@ -7600,7 +7600,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># stdlib imports</span>
@@ -7723,6 +7723,7 @@ a.anchor-link {
 <pre>{ 'dir': 'c:\\Users\\chris\\src\\bootstrap\\jupyter',
   'fn': 'ipynb',
   'fp': 'c:\\Users\\chris\\src\\bootstrap\\jupyter\\ipynb.ipynb'}
+this ipynb uses the following packages: Werkzeug pandas numpy seaborn ipympl ipywidgets
 </pre>
 </div>
 </div>
@@ -7744,7 +7745,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -7843,7 +7844,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
@@ -7912,7 +7913,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'enter some values!'</span><span class="p">)</span>
@@ -7999,7 +8000,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_widget_values</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -8031,16 +8032,6 @@ a.anchor-link {
 <pre>Button(description='Click me!', icon='check', style=ButtonStyle(), tooltip='Change the values with the sliders…</pre>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Button(description='Click me!', icon='check', style=ButtonStyle(), tooltip='Change the values with the sliders to try things out!')
-0 51
-1 35.94
-2 fuck me
-</pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -8065,6 +8056,9 @@ a.anchor-link {
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># %%time has to be at the top of the cell with NOTHING else, not even comments, works like a context manager</span>
 
+<span class="o">%%</span><span class="n">writefile</span> <span class="p">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SCRIPT_DIRPATH</span><span class="p">,</span> <span class="s1">'ipynb-magics.txt'</span><span class="p">)}</span>
+<span class="c1"># top comment</span>
+
 <span class="c1"># change cli arguments with variables</span>
 <span class="n">print_me</span> <span class="o">=</span> <span class="s1">'ipynb'</span>
 
@@ -8074,7 +8068,11 @@ a.anchor-link {
 
 <span class="c1"># jupyter nb commands</span>
 <span class="err">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span> <span class="o">--</span><span class="n">template</span> <span class="n">lab</span> <span class="p">{</span><span class="n">SCRIPT_FILEPATH</span><span class="p">}</span>
-<span class="err">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">python</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">prompt</span> <span class="p">{</span><span class="n">SCRIPT_FILEPATH</span><span class="p">}</span>
+
+<span class="c1"># WARNING: SEE ipynb.py for IPYTHON_SHELL which replaces get_ipython()</span>
+<span class="c1">#   the default export just litters get_ipython() everywhere, but it wont work in a normal script...</span>
+<span class="c1"># !jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}</span>
+
 <span class="c1"># # the following line would cause infinite recursion lol</span>
 <span class="c1"># !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}</span>
 
@@ -8090,33 +8088,8 @@ a.anchor-link {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>['hello ipynb']
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[NbConvertApp] Converting notebook c:\Users\chris\src\bootstrap\jupyter\ipynb.ipynb to html
-[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
-[NbConvertApp] Writing 418133 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.html
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CPU times: total: 31.2 ms
-Wall time: 10.7 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[NbConvertApp] Converting notebook c:\Users\chris\src\bootstrap\jupyter\ipynb.ipynb to python
-[NbConvertApp] Writing 7539 bytes to c:\Users\chris\src\bootstrap\jupyter\ipynb.py
+<pre>UsageError: Line magic function `%%writefile` not found.
 </pre>
 </div>
 </div>
