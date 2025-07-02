@@ -1,1 +1,1 @@
-# %%writefile must be at the top of the file
+# %%writefile must be at the top of the cell, cannot be mixed with %%time

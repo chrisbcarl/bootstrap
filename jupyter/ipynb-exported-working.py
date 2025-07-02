@@ -45,7 +45,8 @@ from IPython import get_ipython
 
 SCRIPT_FILEPATH = ''
 SCRIPT_FILENAME = ''
-IPYTHON_SHELL = get_ipython()  # None if running in vanilla python
+# None if running in vanilla python, usual export just litters get_ipython() everywhere, so for the diff's sake, I leave it. You could replace it with the variable name.
+IPYTHON_SHELL = get_ipython()
 if IPYTHON_SHELL:
     SCRIPT_DIRPATH = IPYTHON_SHELL.run_line_magic('pwd', ' # %pwd is a "magic" command  https://ipython.readthedocs.io/en/stable/interactive/magics.html')
     if hasattr(__main__, '__vsc_ipynb_file__'):  # vscode
@@ -71,7 +72,10 @@ try:
         importlib.import_module(module)
 except ImportError:
     print(f'executing "pip install {package}"', file=sys.stderr)
-    get_ipython().run_line_magic('pip', 'install {install_string}')
+    if get_ipython():
+        get_ipython().run_line_magic('pip', 'install {install_string}')
+    else:
+        subprocess.check_call(f'pip install {install_string}', stdout=sys.stdout, stderr=sys.stderr, stdin=sys.stdin)
 
 # third imports
 from IPython.display import display
@@ -103,7 +107,7 @@ if IPYTHON_SHELL:
     #     latex_exists = bool(res)
     if sys.platform == 'win32':
         res = get_ipython().getoutput('where.exe latex')
-        latex_exists = not res[0].startswith('INFO')
+        latex_exists = res[0].startswith('INFO')
     else:
         res = get_ipython().getoutput('which latex')
         latex_exists = bool(res)
@@ -119,7 +123,8 @@ else:
 plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetica'  # requires latex installed
 
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
-get_ipython().run_line_magic('matplotlib', 'inline')
+if IPYTHON_SHELL:
+    get_ipython().run_line_magic('matplotlib', 'inline')
 # command to tell the notebook to render interactable matplotlib, requires pip install ipympl
 # FEATURE: ipynb-matplotlib-widgets
 # this is only really usefull when doing ipynb + 3d. otherwise, eh
@@ -270,9 +275,11 @@ button.on_click(print_widget_values)
 # # Useful Magics <a id="useful-magics"></a>
 #
 
-get_ipython().run_cell_magic(
-    'time', '',
-    "# %%time has to be at the top of the cell with NOTHING else, not even comments, works like a context manager\n\n# change cli arguments with variables\nprint_me = 'ipynb'\n\n# run shell commands like installing packages and other wild stuff\nstdout = !echo hello {print_me}\nprint(stdout)\n\n# jupyter nb commands\n!jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}\n\n# WARNING: SEE ipynb.py for IPYTHON_SHELL which replaces get_ipython()\n#   the default export just litters get_ipython() everywhere, so it wont work as a normal script...\n#   see `ipynb-exported-working.py` for details\n!jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}\n\n# # the following line would cause infinite recursion lol\n# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}\n\n# !pip install matplotlib\n"
-)
+if IPYTHON_SHELL:
+    get_ipython().run_cell_magic(
+        'time', '',
+        "# %%time has to be at the top of the cell, works like a context manager\n\n# change cli arguments with variables\nprint_me = 'ipynb'\n\n# run shell commands like installing packages and other wild stuff\nstdout = !echo hello {print_me}\nprint(stdout)\n\n# jupyter nb commands\n!jupyter nbconvert --to html --template lab {SCRIPT_FILEPATH}\n!jupyter nbconvert --to python --no-prompt {SCRIPT_FILEPATH}\n# # the following line would cause infinite recursion lol\n# !jupyter nbconvert --execute --to notebook --inplace {SCRIPT_FILEPATH}\n\n# !pip install matplotlib\n"
+    )
 
-get_ipython().run_cell_magic('writefile', "{os.path.join(SCRIPT_DIRPATH, 'ipynb-magics.txt')}", '# %%writefile must be at the top of the cell, cannot be mixed with %%time\n')
+if IPYTHON_SHELL:
+    get_ipython().run_cell_magic('writefile', "{os.path.join(SCRIPT_DIRPATH, 'ipynb-magics.txt')}", '# %%writefile must be at the top of the cell, cannot be mixed with %%time\n')
