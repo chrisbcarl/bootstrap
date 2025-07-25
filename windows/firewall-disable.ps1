@@ -1,3 +1,6 @@
+# TODO: instead of port blocking, do IP blocking with CIDR notation
+
+
 [CmdletBinding()]
 param (
     [Parameter()][Int[]]$PortsExclude=@(
@@ -37,11 +40,7 @@ for ($i = 0; $i -lt $port_midpoints.Count; $i+=2) {
         "New-NetFirewallRule -DisplayName 'TempBlockInTCP-$i' -Profile 'Any' -Direction Inbound -Action Block -Protocol TCP -LocalPort '$lo-$hi'",
         "New-NetFirewallRule -DisplayName 'TempBlockInUDP-$i' -Profile 'Any' -Direction Inbound -Action Block -Protocol UDP -LocalPort '$lo-$hi'",
         "New-NetFirewallRule -DisplayName 'TempBlockOutTCP-$i' -Profile 'Any' -Direction Outbound -Action Block -Protocol TCP -LocalPort '$lo-$hi'",
-        "New-NetFirewallRule -DisplayName 'TempBlockOutUDP-$i' -Profile 'Any' -Direction Outbound -Action Block -Protocol UDP -LocalPort '$lo-$hi'",
-        "Set-NetFirewallRule -DisplayName 'TempBlockInTCP-$i' -Enabled True",
-        "Set-NetFirewallRule -DisplayName 'TempBlockInUDP-$i' -Enabled True",
-        "Set-NetFirewallRule -DisplayName 'TempBlockOutTCP-$i' -Enabled True",
-        "Set-NetFirewallRule -DisplayName 'TempBlockOutUDP-$i' -Enabled True"
+        "New-NetFirewallRule -DisplayName 'TempBlockOutUDP-$i' -Profile 'Any' -Direction Outbound -Action Block -Protocol UDP -LocalPort '$lo-$hi'"
     )
     $profiles += @(
         "TempBlockInTCP-$i",
