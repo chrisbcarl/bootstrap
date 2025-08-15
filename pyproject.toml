@@ -5,11 +5,11 @@ description = "Project that contains my methodologies, snippets, templates, code
 authors = ["Chris Carl <chrisbcarl@outlook.com>"]
 license = "MIT"
 readme = "README.md"
-package-mode = true
+package-mode = false
 
 
 [tool.poetry.dependencies]
-python = "^3.12,<3.14"
+python = "^3.10,<3.14"
 jupyterlab = "^4.3.3"
 notebook = "^7.3.1"
 ipywidgets = "^8.1.5"

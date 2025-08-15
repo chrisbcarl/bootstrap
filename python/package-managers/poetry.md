@@ -19,6 +19,10 @@
     ```powershell
     $env:POETRY_VIRTUALENVS_CREATE = 1
     $env:POETRY_VIRTUALENVS_IN_PROJECT = 1
+    poetry config virtualenvs.create true
+    # poetry config virtualenvs.create --unset
+    poetry config virtualenvs.in-project true
+    # poetry config virtualenvs.in-project --unset
     poetry new directory --src  # creates a pypa project
     ```
 - install requirements from a .txt
@@ -46,6 +50,10 @@
     # option B (preferred)
     $env:POETRY_VIRTUALENVS_CREATE = 1
     $env:POETRY_VIRTUALENVS_IN_PROJECT = 1
+    poetry config virtualenvs.create true
+    # poetry config virtualenvs.create --unset
+    poetry config virtualenvs.in-project true
+    # poetry config virtualenvs.in-project --unset
     poetry install
     ```
 - misc cool funcs:
