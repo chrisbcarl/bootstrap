@@ -2,6 +2,7 @@
     typically suggets `pipx`, i find that cumbersome because then you need to install `scoop` so that's 2 extra dependencies to get to the one I give a damn about
     ```powershell
     where.exe python | foreach {
+        & $_ -m pip install --upgrade pip
         & $_ -m pip install poetry
     }
     ```
