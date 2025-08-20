@@ -2,6 +2,10 @@
     // vscode
     "editor.wordWrap": "off",
     "debug.inlineValues": "off",  // truly awful otherwise
+    // copilot
+    "chat.commandCenter.enabled": false,
+    "chat.agent.enabled": false,
+    // file explorer
     "search.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
@@ -10,9 +14,6 @@
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
     },
-    // copilot
-    "chat.commandCenter.enabled": false,
-    "chat.agent.enabled": false,
     // python
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
