@@ -1,3 +1,12 @@
+# confirm virtualization enabled
+Get-WmiObject -Class Win32_Processor | Select-Object Name, Manufacturer, Caption, AddressWidth, CoreCount, VirtualizationFirmwareEnabled
+# Name                          : AMD Ryzen 9 9950X3D 16-Core Processor
+# Manufacturer                  : AuthenticAMD
+# Caption                       : AMD64 Family 26 Model 68 Stepping 0
+# AddressWidth                  : 64
+# CoreCount                     :
+# VirtualizationFirmwareEnabled : True
+
 choco install docker-desktop docker-cli -y
 # TODO: WARNING: set start at login thorugh the gui
 
@@ -51,13 +60,11 @@ docker exec ubu ls -lah
 docker stop ubu
 docker rm ubu
 
-
 # extras
 docker rmi python:3.9-slim  # remove image from downloaded images
 docker image prune  # remove all images period
 docker stop $(docker ps -a -q)  # stop all images
 docker rm $(docker ps -a -q)  # remove all images
-
 
 # notable images
 docker pull hello-world:linux  # it just prints, cannot be interacted with
