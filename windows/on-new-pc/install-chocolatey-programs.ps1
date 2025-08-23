@@ -18,7 +18,7 @@ choco install sql-server-express --yes
 # dev ops
 choco install git git-lfs svn tortoisesvn sysinternals nginx rabbitmq docker-desktop docker-cli --yes
 # dev tools
-choco install vscode sublimetext3 notepadplusplus --yes
+choco install vscode sublimetext3 notepadplusplus grepwin --yes
 choco install visualstudio2022buildtools visualstudio2022community --yes
 # utils
 choco install 7zip putty winscp everything InnoSetup rufus --yes                       # dope programs to have
@@ -43,3 +43,5 @@ choco install msiafterburner evga-precision-x1 --yes
 choco install crystaldiskmark crystaldiskinfo cpu-z gpu-z hwinfo cinebench --yes
 # gaming
 choco install razer-synapse-3 steam ea-app --yes
+# misc
+choco install spacesniffer --yes

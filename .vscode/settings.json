@@ -13,6 +13,11 @@
     "files.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
+        // renpy
+        "**/*.rpyc": true,
+        "**/*.rpa": true,
+        "**/*.rpymc": true,
+        "**/cache/": true
     },
     // python
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
