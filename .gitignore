@@ -5,6 +5,7 @@
 ignoreme**
 **/venv
 **.log
+**.pkl
 
 
 # certificates, PKI, and configs

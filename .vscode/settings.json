@@ -1,6 +1,11 @@
 {
+    // vscode
     "editor.wordWrap": "off",
     "debug.inlineValues": "off",  // truly awful otherwise
+    // copilot
+    "chat.commandCenter.enabled": false,
+    "chat.agent.enabled": false,
+    // file explorer
     "search.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
@@ -8,7 +13,13 @@
     "files.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
+        // renpy
+        "**/*.rpyc": true,
+        "**/*.rpa": true,
+        "**/*.rpymc": true,
+        "**/cache/": true
     },
+    // python
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
         "editor.defaultFormatter": "eeyore.yapf",
@@ -16,7 +27,19 @@
         "editor.formatOnSaveMode": "file",
         "editor.formatOnType": false
     },
+    // // stubgen "{workspaceFolder}/src" -o "dist/typing"  // generates .pyi files
+    // "python.analysis.stubPath": "${workspaceFolder}\\dist\\typing",
+    // "python.analysis.extraPaths": ["${workspaceFolder}\\src", "${workspaceFolder}\\..\\chriscarl-python\\src"],  // TODO: undo once i packegize
+    // "python.REPL.sendToNativeREPL": false,
+    // "mypy-type-checker.args": [
+    //     // "--ignore-missing-imports",
+    //     "--follow-imports=silent"
+    // ],
+    // markdown
     "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",  // consolas
+    // ipython notebook
+    "notebook.output.scrolling": true,
+    "notebook.output.wordWrap": false,
     // jupyter
     "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],  // FEATURE: ipynb-matplotlib-widgets
 }

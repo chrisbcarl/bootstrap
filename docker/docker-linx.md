@@ -1,0 +1,16 @@
+https://hub.docker.com/r/dockurr/windows
+https://umatechnology.org/how-to-enable-virtualization-windows-11-amd-using-command/
+https://rumn.medium.com/docker-in-10-minute-guide-for-beginners-a87c156fbd60
+https://stackoverflow.com/questions/44347397/what-is-docker-attach
+https://stackoverflow.com/questions/41916435/practically-what-is-the-difference-between-docker-run-dit-itd-vs-docker-run
+https://superuser.com/questions/1051520/docker-windows-container-how-to-mount-a-host-folder-as-data-volume-on-windows
+https://linuxcapable.com/dnf5-group-commands-guide-fedora/
+https://www.pragmaticlinux.com/2022/05/how-to-install-build-essential-on-fedora/
+https://stackoverflow.com/questions/44480740/how-to-save-a-docker-container-state
+https://www.geeksforgeeks.org/devops/docker-commit/
+https://linuxhandbook.com/run-docker-container/
+https://docs.docker.com/engine/containers/resource_constraints/
+https://medium.com/@PedalsUp/how-to-limit-cpu-and-memory-usage-in-docker-containers-26eac6bbe06c
+https://thelinuxcode.com/useful_linux_stress_test_benchmark_cpu_perf/
+https://docs.docker.com/reference/cli/docker/container/exec/#env
+https://www.golinuxcloud.com/docker-stop-all-containers/

@@ -5,6 +5,7 @@
     - [Every friggen symbol](https://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
     - [symbols in a wiki but its incomplete](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
     - [overleaf version](https://assets.ctfassets.net/nrgyaltdicpt/4e825etqMUW8vTF8drfRbw/d4f3d9adcb2980b80818f788e36316b2/A_quick_guide_to_LaTeX__Overleaf_version.pdf)
+    - [LaTeX2e: An unofficial reference manual](https://latexref.xyz/Math-symbols.html)
 - issues / bugs
     - https://github.com/KaTeX/KaTeX/issues/2003
 - guides / courses
@@ -43,6 +44,7 @@
       only two spaces comments under the thingy (only happens when tabs are 4 spaces)
         four spaces and you get a small indent like this
                     hello?
+- text symbols - $`` <quoted text here> "$
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
 - $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
 - $\sim$ - tilde
@@ -89,13 +91,13 @@
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots
 - [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
-    - operators: $\neg \lnot \lor \land \oplus $
+    - operators: $\neg \lnot \lor \land \oplus \otimes$
     - sayings: $\exists \nexists \forall \implies \iff \equiv$
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
     - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
-    - sets: $\emptyset$
-    - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, power set, proper subset, subset, superset, use rm to make bold face
+    - sets: $\emptyset \mathfrak{P} \wp(A)$ - empty set, power set
+    - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
 - overs:
     $$
