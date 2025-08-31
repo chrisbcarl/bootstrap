@@ -16,13 +16,12 @@ choco install dotnet-9.0-runtime dotnet-8.0-runtime --yes
 choco install sqlserver-odbcdriver sql-server-management-studio --yes
 choco install sql-server-express --yes
 # dev ops
-choco install git git-lfs svn tortoisesvn sysinternals nginx rabbitmq docker-desktop docker-cli --yes
+choco install git git-lfs svn tortoisesvn sysinternals nginx rabbitmq docker-desktop docker-cli InnoSetup --yes
 # dev tools
-choco install vscode sublimetext3 notepadplusplus grepwin --yes
+choco install vscode sublimetext3 notepadplusplus --yes
 choco install visualstudio2022buildtools visualstudio2022community --yes
-# utils
-choco install 7zip putty winscp everything InnoSetup rufus --yes                       # dope programs to have
-
+# utils - dope programs to have
+choco install 7zip putty winscp everything rufus spacesniffer grepwin --yes                       
 # cloud
 choco install googledrive dropbox --yes
 # web browsers
@@ -38,10 +37,8 @@ choco install nordvpn --yes
 choco install malwarebytes --yes
 # overclocking
 # choco install intel-rst-driver intel-ipdt intel-xtu --yes
-choco install msiafterburner evga-precision-x1 --yes
+choco install msiafterburner evga-precision-x1 razer-synapse-3 --yes
 # benchmarks
 choco install crystaldiskmark crystaldiskinfo cpu-z gpu-z hwinfo cinebench --yes
 # gaming
-choco install razer-synapse-3 steam ea-app --yes
-# misc
-choco install spacesniffer --yes
+choco install steam ea-app --yes
