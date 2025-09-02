@@ -20,6 +20,7 @@ choco install git git-lfs svn tortoisesvn sysinternals nginx rabbitmq docker-des
 # dev tools
 choco install vscode sublimetext3 notepadplusplus --yes
 choco install visualstudio2022buildtools visualstudio2022community --yes
+choco install mingw --yes  # gets you gcc.exe, etc.
 # utils - dope programs to have
 choco install 7zip putty winscp everything rufus spacesniffer grepwin --yes                       
 # cloud
@@ -28,7 +29,7 @@ choco install googledrive dropbox --yes
 choco install googlechrome firefox microsoft-edge opera --yes
 # media
 choco install k-litecodecpackmega --yes
-choco install gimp imagemagick audacity obs vlc qbittorrent --yes
+choco install gimp imagemagick audacity obs vlc qbittorrent ffmpeg --yes
 # messaging
 choco install discord zoom --yes
 # networking

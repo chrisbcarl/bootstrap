@@ -1,3 +1,7 @@
+git config core.autocrlf false  // set everything to LF rather than CRLF
+
+
+
 # does it for the whole branch...
 # https://github.com/newren/git-filter-repo/blob/main/INSTALL.md
 pip install git-filter-repo
