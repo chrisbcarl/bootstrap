@@ -1,8 +1,19 @@
-gimme perf
+function isadmin {
+    # https://ss64.com/ps/syntax-elevate.html
+    return ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+If (-NOT (isadmin)) {
+    # Relaunch as an elevated process:
+    Start-Process powershell.exe "-noprofile", "-executionpolicy", "bypass", "-File", ('"{0}"' -f $MyInvocation.MyCommand.Path) -Verb RunAs
+    exit
+}
+
+taskkill /f /t /im discord.exe
+
 
 taskkill /f /t /im python.exe
 
-taskkill /f /t /im code.exe
+# taskkill /f /t /im code.exe
 
 taskkill /f /t /im zoom.exe
 taskkill /f /t /im "Creative Cloud.exe"
@@ -27,6 +38,6 @@ taskkill /f /t /im ONENOTE.exe
 taskkill /f /t /im ONENOTEM.exe
 
 
-
+pause
 
 
