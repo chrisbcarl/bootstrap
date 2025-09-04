@@ -7,6 +7,9 @@ Get-WmiObject -Class Win32_Processor | Select-Object Name, Manufacturer, Caption
 # CoreCount                     :
 # VirtualizationFirmwareEnabled : True
 
+wsl --install  # the foundation that docker actually runs on
+wsl --shutdown  # WARNING: shutdown wsl if ram usage too high TODO: doesnt actually shut things down... not sure why
+
 choco install docker-desktop docker-cli -y
 # TODO: WARNING: set start at login thorugh the gui
 

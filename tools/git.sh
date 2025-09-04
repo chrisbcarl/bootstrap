@@ -2,6 +2,7 @@ git config --global user.name "Chris Carl"
 git config --global user.email "chrisbcarl@outlook.com"
 
 git config --global pull.rebase false
+git config core.autocrlf false  // set everything to LF rather than CRLF
 
 
 

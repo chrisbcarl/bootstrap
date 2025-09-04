@@ -10,6 +10,7 @@
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
     },
+    "files.eol": "\n",
     "files.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
