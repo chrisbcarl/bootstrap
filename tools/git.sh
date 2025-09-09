@@ -1,4 +1,9 @@
-git config core.autocrlf false  // set everything to LF rather than CRLF
+git config --global user.name "Chris Carl"
+git config --global user.email "chrisbcarl@outlook.com"
+
+git config --global pull.rebase false  # makes merge the default rather than rebase
+
+git config --global core.autocrlf false  # set everything to LF rather than CRLF
 
 
 
