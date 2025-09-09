@@ -20,6 +20,7 @@ sudo apt install -y gcc g++ make cmake gdb valgrind
 sudo apt install python3 -y
 sudo ln -s $(which python3) /usr/bin/python -f
 sudo apt install vim -y
+sudo apt install moreutils -y  # provides access to errno -l, useful in C programming with errno.h errorhandling lookup table
 
 
 # quality of life

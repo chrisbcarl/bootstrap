@@ -20,6 +20,8 @@
         "**/*.rpymc": true,
         "**/cache/": true
     },
+    // trailing-spaces
+    "trailing-spaces.trimOnSave": true,
     // python
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
