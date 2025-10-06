@@ -3,6 +3,7 @@
     "editor.wordWrap": "off",
     "debug.inlineValues": "off",  // truly awful otherwise
     // copilot
+    "chat.disableAIFeatures": false,
     "chat.commandCenter.enabled": false,
     "chat.agent.enabled": false,
     // file explorer
