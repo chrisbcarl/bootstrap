@@ -96,7 +96,7 @@
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
     - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
-    - sets: $\emptyset \mathfrak{P} \wp(A)$ - empty set, power set
+    - sets: $\emptyset \mathfrak{P} \wp(A)$ - empty null set, power set
     - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
 - overs:
