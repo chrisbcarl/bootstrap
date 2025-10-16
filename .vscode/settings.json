@@ -41,6 +41,8 @@
     // ],
     // markdown
     "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",  // consolas
+    // markdown all-in-one
+    "markdown.extension.list.indentationSize": "inherit",
     // ipython notebook
     "notebook.output.scrolling": true,
     "notebook.output.wordWrap": false,
