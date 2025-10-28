@@ -2,6 +2,7 @@
 # svn propset svn:ignore -RF .gitignore .
 
 # PROJECT SPECIFIC
+dist
 ignoreme**
 **/venv
 **.log
