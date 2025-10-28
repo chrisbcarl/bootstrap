@@ -70,3 +70,13 @@ def func():
 
 # Other Great Cheatsheets
 - [adam-p](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+
+# force page break
+
+<div style="page-break-after: always;"></div>
+
+<!-- using latex actually... -->
+$\pagebreak$
+
+# even if unnecessary

@@ -46,7 +46,7 @@
                     hello?
 - text symbols - $`` <quoted text here> "$
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
-- $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/)
+- $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/) - not equal, less than or equal, greater than or equal
 - $\sim$ - tilde
 - $\Phi ~ \phi$ - greek
 - $e \pi i$ - constants
@@ -96,7 +96,7 @@
     - misc: $\veebar \vee \parallel \bot \top \rightarrow \longrightarrow \Rightarrow  \Longrightarrow \leftarrow \longleftarrow \Leftarrow \Longleftarrow \leftrightarrow \Leftrightarrow \longleftrightarrow \Longleftrightarrow$
     - contradiction: $\Rightarrow\!\Leftarrow$
 - [set](???)
-    - sets: $\emptyset \mathfrak{P} \wp(A)$ - empty set, power set
+    - sets: $\emptyset \mathfrak{P} \wp(A)$ - empty null set, power set
     - operators: $\cup \cap \overline{A} A^\prime A^\complement \wp \subset \subseteq \supset \rm A \subseteq B$ - union, intersection, proper subset, subset, superset, use rm to make bold face
     - sayings / isms: $\in \notin$
 - overs:
@@ -111,7 +111,7 @@
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
     $$
 - divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b a \pmod b a \pod b a \operatorname{div} b \equiv a \bmod c$
-- misc anything - $\checkmark \times$
+- misc anything, check, multiply, wide tilde, is distributed as - $\checkmark \times \sim$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\

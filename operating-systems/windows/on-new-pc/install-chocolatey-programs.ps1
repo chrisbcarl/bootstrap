@@ -1,4 +1,4 @@
-if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {    
+if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "Not admin!"
     exit 1
 }
@@ -22,7 +22,7 @@ choco install vscode sublimetext3 notepadplusplus --yes
 choco install visualstudio2022buildtools visualstudio2022community --yes
 choco install mingw --yes  # gets you gcc.exe, etc.
 # utils - dope programs to have
-choco install 7zip putty winscp everything rufus spacesniffer grepwin --yes                       
+choco install 7zip putty winscp everything rufus spacesniffer grepwin --yes
 # cloud
 choco install googledrive dropbox --yes
 # web browsers
