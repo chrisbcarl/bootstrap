@@ -14,6 +14,12 @@
 - really cool websites
     - [draw and get a symbol](https://detexify.kirelabs.org/classify.html)
 
+
+# The Language Infrastructure
+- install packages
+    - open `MiKTeX Console` in admin mode
+
+
 # MY Cheat Sheet
 - $% invisible comment$ - comment (invisible in presentation)
 - $\text{visible comment}$ - comment (invisible in presentation)

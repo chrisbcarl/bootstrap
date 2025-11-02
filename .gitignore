@@ -7,6 +7,12 @@ ignoreme**
 **/venv
 **.log
 **.pkl
+# latex
+**.aux
+**.data.minted
+*.bbl
+*.blg
+*.out
 
 
 # certificates, PKI, and configs
