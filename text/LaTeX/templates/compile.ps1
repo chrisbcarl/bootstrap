@@ -2,6 +2,7 @@ $cwd = Get-Location
 Set-Location $PSScriptRoot
 
 try {
+    # not trolling, you need to run pdflatex FOUR TIMES...
     # pdflatex ieee-conference-template-compiles.tex
     # https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex
     latexmk -C  # clean all aux files
