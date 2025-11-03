@@ -17,16 +17,12 @@
 \usepackage{pythonhighlight}  % external, console install if you must, should auto-download
 
 % https://stackoverflow.com/a/3175141
-% https://tex.stackexchange.com/a/83883 - python extra custy
-% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted may be an option
 \usepackage{listings}  % https://www.ctan.org/tex-archive/macros/latex/contrib/listings/
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted may be an option
 % \usepackage{minted}
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{deepblue}{rgb}{0,0,0.5}
-\definecolor{deepred}{rgb}{0.6,0,0}
-\definecolor{deepgreen}{rgb}{0,0.5,0}
 \lstset{
     frame=tb,
     language=Java,
@@ -45,6 +41,7 @@
     tabsize=3
 }
 % C++ already included, yipee
+% https://tex.stackexchange.com/a/83883 - python extra custy
 
 
 \def\BibTeX{
@@ -129,6 +126,41 @@ Got some tricks here (vspace will give you a br not a bunch of newlines)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section w/ Nested Subsections}
+\label{sec:section}
+
+Section w/ Nested Subsections
+\subsection{Section w/ Subsections}
+\label{subsec:subsec}
+
+% \part{Part - Level 0}
+% \label{part:level-0}
+% Part - Level 0
+
+\section{Section - Level 1}
+\label{sec:level-1}
+Section - Level 1
+
+\subsection{Subsection - Level 2}
+\label{subsec:level-2}
+Subsection - Level 2
+
+\subsubsection{Subsubsection - Level 3}
+\label{subsubsec:level-3}
+Subsubsection - Level 3
+
+\paragraph{Paragraph - Level 4}
+\label{para:level-4}
+Paragraph - Level 4
+
+% \subparagraph{Subparagraph - Level 5}
+% \label{subpara:level-5}
+% Subparagraph - Level 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Code}
 \label{subsec:code}
 
@@ -187,7 +219,7 @@ Externally load:
 Symbol
 \begin{itemize}
     \item Special characters: \&, \%, \$, \#, \_, \{, \}, \textasciitilde, \textasciicircum, \textbackslash
-    \item \LaTeX
+    \item \LaTeX \BibTeX
 \end{itemize}
 
 \subsection{ordered list}
