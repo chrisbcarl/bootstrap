@@ -1,0 +1,12 @@
+# package managers
+poetry
+
+# web
+flask
+
+# data-science
+matplotlib
+pandas
+scipy
+
+# media
