@@ -323,6 +323,8 @@ $$
         $$
         \binom{a}{b}
         $$
+    - "is modeled as" $X \sim \text{Normal}(\mu, \sigma^2)$
+    - iid (independent, identically distributed): $X_1, X_2, \cdots X_n \overset{\mathrm{iid}}{\sim} \text{Normal}(\mu, \sigma^2) \rightarrow \bar{X} \sim \text{Normal}(\mu, \frac{\sigma^2}{n})$
 - math fonts (Table 348 in [symbols-a4.pdf](./symbols-a4.pdf) or [by name](https://www.physicsread.com/latex-mathematical-font/))
     $$
     \begin{align*}
