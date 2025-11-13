@@ -6,15 +6,15 @@ try {
     # pdflatex ieee-conference-template-compiles.tex
     # https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex
     latexmk -C  # clean all aux files
-    Remove-Item "LaTeX.bbl" -ErrorAction SilentlyContinue
+    Remove-Item "BibTeX.bbl" -ErrorAction SilentlyContinue
     Write-Host -ForegroundColor Green "1st latex"
-    pdflatex LaTeX
+    pdflatex BibTeX
     Write-Host -ForegroundColor Green "bibtex"
-    bibtex LaTeX
+    bibtex BibTeX
     Write-Host -ForegroundColor Green "2nd latex"
-    pdflatex LaTeX
+    pdflatex BibTeX
     Write-Host -ForegroundColor Green "3rd latex"
-    pdflatex LaTeX
+    pdflatex BibTeX
 }
 finally {
     Set-Location $cwd
