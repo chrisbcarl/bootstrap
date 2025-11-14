@@ -30,7 +30,7 @@ choco install googledrive dropbox --yes
 choco install googlechrome firefox microsoft-edge opera --yes
 # media
 choco install k-litecodecpackmega --yes
-choco install gimp imagemagick audacity obs vlc qbittorrent ffmpeg --yes
+choco install gimp imagemagick ghostscript audacity obs vlc qbittorrent ffmpeg --yes
 # messaging
 choco install discord zoom --yes
 # networking

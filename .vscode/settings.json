@@ -19,7 +19,12 @@
         "**/*.rpyc": true,
         "**/*.rpa": true,
         "**/*.rpymc": true,
-        "**/cache/": true
+        "**/cache/": true,
+        // LaTeX
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.out": true,
     },
     // trailing-spaces
     "trailing-spaces.trimOnSave": true,
