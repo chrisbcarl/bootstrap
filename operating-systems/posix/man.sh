@@ -7,3 +7,6 @@ man stat  # loads page 1
 man 2 stat  # load page 2, system calls
 
 man nmcli atoi man  # read 3 man pages back to back
+
+# man pages
+sudo apt install manpages-posix manpages-posix-dev -y   # pthread_cond_init and others

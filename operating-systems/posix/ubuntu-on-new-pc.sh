@@ -23,6 +23,8 @@ sudo ln -s $(which python310) /usr/bin/python -f
 sudo apt install vim -y
 sudo apt install moreutils -y  # provides access to errno -l, useful in C programming with errno.h errorhandling lookup table
 
+# man pages
+sudo apt install manpages-posix manpages-posix-dev -y   # pthread_cond_init and others
 
 # quality of life
 sudo apt install network-manager -y
