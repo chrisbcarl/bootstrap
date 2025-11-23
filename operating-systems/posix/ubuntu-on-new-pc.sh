@@ -13,7 +13,7 @@ sudo apt install stress -y
 
 # devtools / languages
 sudo apt install build-essential linux-headers-$(uname -r) -y
-sudo apt install git -y
+sudo apt install git cmake -y
 sudo apt install dos2unix -y
 sudo apt install default-jdk -y
 sudo apt install -y gcc g++ make cmake gdb valgrind

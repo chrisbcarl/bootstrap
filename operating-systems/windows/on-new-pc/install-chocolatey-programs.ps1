@@ -22,6 +22,7 @@ choco install git git-lfs svn tortoisesvn sysinternals nginx rabbitmq docker-des
 choco install vscode sublimetext3 notepadplusplus --yes
 choco install visualstudio2022buildtools visualstudio2022community --yes
 choco install mingw --yes  # gets you gcc.exe, etc.
+cmd /c mklink /h C:\ProgramData\mingw64\mingw64\bin\make.exe C:\ProgramData\mingw64\mingw64\bin\mingw32-make.exe  # alias mingw make to make
 # utils - dope programs to have
 choco install 7zip putty winscp everything rufus spacesniffer grepwin --yes
 # cloud
