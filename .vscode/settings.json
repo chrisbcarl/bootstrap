@@ -28,6 +28,8 @@
     },
     // trailing-spaces
     "trailing-spaces.trimOnSave": true,
+    // intellisense
+    "terminal.integrated.suggest.enabled": false,
     // python
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
@@ -52,5 +54,27 @@
     "notebook.output.scrolling": true,
     "notebook.output.wordWrap": false,
     // jupyter
-    "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],  // FEATURE: ipynb-matplotlib-widgets
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "files.associations": {
+        "array": "cpp",
+        "atomic": "cpp",
+        "cwchar": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "ratio": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }, // FEATURE: ipynb-matplotlib-widgets
 }
