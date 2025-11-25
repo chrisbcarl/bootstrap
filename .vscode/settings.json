@@ -1,17 +1,24 @@
 {
-    // vscode
-    "editor.wordWrap": "off",
+    /* *********** vscode *********** */
+    // only works in ~/AppData/Roaming/Code/User/settings.json
+    "security.workspace.trust.enabled": false,
     "debug.inlineValues": "off",  // truly awful otherwise
-    // copilot
-    "chat.disableAIFeatures": false,
+    "debug.onTaskErrors": "abort",
+    "editor.wordWrap": "off",
+    "extensions.ignoreRecommendations": true,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "workbench.editor.empty.hint": "hidden",
+    // AI / copilot
+    "chat.disableAIFeatures": true,
     "chat.commandCenter.enabled": false,
     "chat.agent.enabled": false,
     // file explorer
+    "explorer.confirmDragAndDrop": false,
     "search.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
     },
-    "files.eol": "\n",
+    "files.eol": "\n",  // LF
     "files.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
@@ -26,11 +33,15 @@
         "**/*.blg": true,
         "**/*.out": true,
     },
+    /* *********** extensions *********** */
     // trailing-spaces
     "trailing-spaces.trimOnSave": true,
     // intellisense
     "terminal.integrated.suggest.enabled": false,
     // python
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": [],
+    "python.analysis.supportDocstringTemplate": false,
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
         "editor.defaultFormatter": "eeyore.yapf",
@@ -58,23 +69,75 @@
         "jsdelivr.com",
         "unpkg.com"
     ],
+    // C/C++
     "files.associations": {
+        "stdio.h": "c",
+        "errno.h": "c",
+        "typeinfo.h": "c",
+        "signal.h": "c",
         "array": "cpp",
         "atomic": "cpp",
+        "bit": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
         "cwchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
         "string": "cpp",
+        "unordered_map": "cpp",
         "vector": "cpp",
         "exception": "cpp",
-        "initializer_list": "cpp",
-        "iosfwd": "cpp",
-        "istream": "cpp",
-        "new": "cpp",
-        "ostream": "cpp",
-        "ratio": "cpp",
-        "sstream": "cpp",
-        "streambuf": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "random": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "utility": "cpp"
-    }, // FEATURE: ipynb-matplotlib-widgets
+        "utility": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "numbers": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp",
+        "list": "cpp",
+        "sstream": "cpp",
+        "string.h": "c",
+        "cstdarg": "cpp",
+        "fstream": "cpp",
+        "bitset": "cpp",
+        "ctime": "cpp",
+        "regex": "cpp",
+        "chrono": "cpp",
+        "charconv": "cpp",
+        "ratio": "cpp",
+        "format": "cpp",
+        "iomanip": "cpp",
+        "span": "cpp",
+        "variant": "cpp",
+        "getopt.h": "c",
+        "codecvt": "cpp",
+        "set": "cpp",
+        "_mingw_off_t.h": "c",
+        "pthread.h": "c",
+        "pthread_signal.h": "c"
+    },
 }
