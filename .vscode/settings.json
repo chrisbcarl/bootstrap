@@ -1,4 +1,5 @@
 {
+    // C:\Users\chris\AppData\Roaming\Code\User\settings.json
     /* *********** vscode *********** */
     // only works in ~/AppData/Roaming/Code/User/settings.json
     "security.workspace.trust.enabled": false,

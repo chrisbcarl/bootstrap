@@ -1,0 +1,13 @@
+// Place your key bindings in this file to override the defaults
+// C:\Users\chris\AppData\Roaming\Code\User\keybindings.json
+[
+    {
+        "key": "ctrl+shift+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
+    }
+]
