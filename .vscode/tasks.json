@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C/C++: g++ build active file",
+            // https://stackoverflow.com/a/74227370
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "C/C++: Clean",  // clean first, only "newly built" exes gdb correctly with vscode
+                "C/C++: g++ build"
+            ]
+        },
+        {
+            // https://microsoft.github.io/code-with-engineering-playbook/developer-experience/cross-platform-tasks/
+            "type": "shell",
+            "label": "C/C++: Clean",
+            "command": "rm",
+            // HYPER jank, but Remove-Item -SilentlyContinue still returns 1 exit code so...
+            "windows": { "command": "If", "args": ["(Test-Path", "${workspaceFolder}/dist/${fileBasenameNoExtension})", "{rm", "${workspaceFolder}/dist/${fileBasenameNoExtension}}", "else", "{echo", "0}"] },
+            "args": ["${workspaceFolder}/dist/${fileBasenameNoExtension}"],
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ build",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileDirname}/**.cc",
+                // "${fileDirname}/**.cpp",
+                "-I${fileDirname}",
+                "-o",
+                "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/dist"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "C/C++ Clean",
+        },
+    ]
+}

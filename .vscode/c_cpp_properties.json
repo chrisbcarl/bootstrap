@@ -1,0 +1,55 @@
+{
+    "configurations": [
+        {
+            "name": "posix",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/*/projects/*"  // 2025f/cmpe-180a/projects
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "_GNU_SOURCE",  // access to pipe2
+                "_POSIX_C_SOURCE"   // access to SIG_BLOCK
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "Win32-usual",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/*/projects/*"  // 2025f/cmpe-180a/projects
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/ProgramData/mingw64/mingw64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "Win32-custy",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/*/projects/*"  // 2025f/cmpe-180a/projects
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/dev/MinGW/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

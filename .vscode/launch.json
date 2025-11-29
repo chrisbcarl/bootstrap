@@ -11,5 +11,27 @@
             "program": "${file}",
             "console": "integratedTerminal"
         },
+        // https://stackoverflow.com/questions/61701704/vs-code-c-debugging
+        {
+            // https://stackoverflow.com/a/66541333
+            "name": "g++.exe - build and debug active",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/dist/${fileBasenameNoExtension}",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            // "MIMode": "gdb",
+            // "miDebuggerPath": "C:\\ProgramData\\mingw64\\mingw64\\bin\\g++.exe",
+            "setupCommands": [
+                {
+                    "description": "enable pretty print",
+                    "text": "--enable-pretty-printing",
+                    "ignoreFailures": true,
+                }
+            ],
+            "preLaunchTask": "C/C++: g++ build active file",
+        },
     ]
 }
