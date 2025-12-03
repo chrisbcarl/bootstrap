@@ -9,5 +9,10 @@
     {
         "key": "ctrl+m",
         "command": "-editor.action.toggleTabFocusMode"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
     }
 ]

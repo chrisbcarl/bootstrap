@@ -11,8 +11,9 @@
             "program": "${file}",
             "console": "integratedTerminal"
         },
-        // https://stackoverflow.com/questions/61701704/vs-code-c-debugging
         {
+            // https://stackoverflow.com/questions/61701704/vs-code-c-debugging
+            // https://code.visualstudio.com/docs/cpp/launch-json-reference
             // https://stackoverflow.com/a/66541333
             "name": "g++.exe - build and debug active",
             "type": "cppdbg",
