@@ -5,6 +5,22 @@ The example to run is compile.ps1 which depends on "LaTeX.tex" + "LaTeX.bib" to 
 https://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf
 https://www.bibtex.com/e/entry-types/
 https://guides.library.cornell.edu/c.php?g=901736&p=6490760
+
+NOTE:
+_ is a HARD character to deal with:
+
+  url       = {https://www.apathofhope.org/House_Rules_w_chgs.pdf},
+
+  causes eventual error:
+  ! Missing $ inserted.
+  <inserted text>
+                  $
+  l.88 ...ven't committed
+
+  Solution:
+    replace all _ with {\_}... not joking
+
+
 ```
 ```
 article - An article from a journal, magazine, newspaper, or periodical.
