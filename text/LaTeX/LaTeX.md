@@ -124,7 +124,7 @@
     [   \big[   \Big[   \bigg[  \Bigg[  \Bigg]  \bigg]  \Big]   \big]   ] \\
     \{  \big\{  \Big\{  \bigg\{ \Bigg\{ \Bigg\} \bigg\} \Big\}  \big\} \} \\
     $$
-- $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \} \$$ - escapes [via so](https://stackoverflow.com/a/5422751)
+- $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \} \$$ - escapes percent octothorp hashtag [via so](https://stackoverflow.com/a/5422751)
 - number theory
 $$
 \begin{aligned}
@@ -343,3 +343,7 @@ $$
     \mathnormal{3x^2 \in R \subset Q}   & \quad \text{math standard} \\
     \end{align*}
     $$
+
+
+# Hacks
+- left and right subscript, a prescript if you will ${}^{1}_{2}x^{3}_{4}$ - https://tex.stackexchange.com/a/305700

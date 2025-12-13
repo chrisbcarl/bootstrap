@@ -62,3 +62,15 @@ html = '''<path fill-rule="evenodd" clip-rule="evenodd" d="M10.3333 2.08496C14.7
 regex = r'''( ?[A-Za-z\d_-]+=["'][A-Za-z\-_\.,\d\[\]\(\) ;:\/\/]*["'] ?)'''
 result = re.sub(regex, '', html)
 print(result)
+
+# ungreedy, capture quotations, *?
+print('\n\n\nex) 8: remove HTML tag attributes')  # <p _data-start="hello_world:0.0; 0.1-0.3,0.4">
+text = '''
+Here we have a "quote" by a "great and respected author":
+    "Bentham's panopticon is "totaly bad" and should be studied."
+Honestly it's kind of strange how we keep getting suckered into reading about him.
+Weird quote sticking out " without anybody to "capture" it--WARNING: WILL CAUSE PROBLEMS.
+'''
+regex = r'''( ?[A-Za-z\d_-]+=["'][A-Za-z\-_\.,\d\[\]\(\) ;:\/\/]*["'] ?)'''
+result = re.sub(r'"(.*?)"', r"``\1''", text)
+print(result)
