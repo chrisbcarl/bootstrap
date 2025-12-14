@@ -125,6 +125,7 @@
     \{  \big\{  \Big\{  \bigg\{ \Bigg\{ \Bigg\} \bigg\} \Big\}  \big\} \} \\
     $$
 - $\backslash \$5.00 \# \% \& \~{a} \_ \^{b} \{ \} \$$ - escapes percent octothorp hashtag [via so](https://stackoverflow.com/a/5422751)
+    - backslash is not escapable, if you need it, you have to use the explicit `\backslash`
 - number theory
 $$
 \begin{aligned}
@@ -344,6 +345,8 @@ $$
     \end{align*}
     $$
 
+- Math symbols
+    - $\mathcal{N}$ - Normal Distribution
 
 # Hacks
 - left and right subscript, a prescript if you will ${}^{1}_{2}x^{3}_{4}$ - https://tex.stackexchange.com/a/305700
