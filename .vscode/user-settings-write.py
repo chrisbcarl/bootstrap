@@ -26,11 +26,11 @@ else:
     raise NotImplementedError(sys.platform)
 
 bootstrap_settings_json = os.path.join(os.path.dirname(__file__), 'settings.json')
-bootstrap_keybindings_json = os.path.join(os.path.dirname(__file__), 'settings.json')
+bootstrap_keybindings_json = os.path.join(os.path.dirname(__file__), 'keybindings.json')
 
 # copy bootstrap settings to user path
 print("copied to", shutil.copy2(bootstrap_settings_json, user_settings_json))
-print("copied to", shutil.copy2(bootstrap_keybindings_json, bootstrap_settings_json))
+print("copied to", shutil.copy2(bootstrap_keybindings_json, user_keyboard_json))
 
 # read the bootstrap/settings.json by clearing out all of the comments
 print("modifying the user vscode settings after copy")

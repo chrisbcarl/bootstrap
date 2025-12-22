@@ -8,6 +8,7 @@
     "editor.wordWrap": "off",
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.stickyScroll.enabled": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     "workbench.editor.empty.hint": "hidden",
     // AI / copilot
     "chat.disableAIFeatures": true,
