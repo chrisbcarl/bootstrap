@@ -6,6 +6,7 @@
     "debug.inlineValues": "off",  // truly awful otherwise
     "debug.onTaskErrors": "abort",
     "editor.wordWrap": "off",
+    "editor.unusualLineTerminators": "off",  // reading a PDF gives paragraph separators
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.stickyScroll.enabled": false,
     "terminal.integrated.enableMultiLinePasteWarning": "never",

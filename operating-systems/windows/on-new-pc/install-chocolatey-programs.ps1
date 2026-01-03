@@ -12,7 +12,7 @@ choco install python312 --yes
 choco install python310 --yes
 choco install nodejs dotnet --yes
 choco install dotnet-9.0-runtime dotnet-8.0-runtime --yes
-choco install miktex -y
+choco install wkhtmltopdf miktex rsvg-convert pandoc -y -y
 # databases
 choco install sqlserver-odbcdriver sql-server-management-studio --yes
 choco install sql-server-express --yes
