@@ -61,6 +61,7 @@ print('\n\n\nex) 8: remove HTML tag attributes')  # <p _data-start="hello_world:
 html = '''<path fill-rule="evenodd" clip-rule="evenodd" d="M10.3333 2.08496C14.7046 2.08496 18.2483 5.62867 18.2483 10C18.2483 14.3713 14.7046 17.915 10.3333 17.915C5.96192 17.915 2.41821 14.3713 2.41821 10C2.41821 5.62867 5.96192 2.08496 10.3333 2.08496ZM10.3333 3.41504C6.69646 3.41504 3.74829 6.3632 3.74829 10C3.74829 13.6368 6.69646 16.585 10.3333 16.585C13.97 16.585 16.9182 13.6368 16.9182 10C16.9182 6.3632 13.97 3.41504 10.3333 3.41504Z"></path></svg></div></div><div class="w-full" style="margin-bottom: 0px;"><div class="w-full"><div class="text-token-text-primary text-[14px] leading-5">Thought for 9m 10s</div></div><div class="QKycbG_markdown text-token-text-secondary text-[14px] leading-5 markdown prose dark:prose-invert w-full break-words light markdown-new-styling"><p data-start="0" data-end="4" data-is-last-node="" data-is-only-node="">Done</p></div></div></div></div></div></div></section>'''
 # regex = r'''( ?[A-Za-z\d_-]+=["'][A-Za-z\-_\.,\d\[\]\(\) ;:\/\/]*["'] ?)'''
 # this one is simpler I think, and avoids href/src matching, or you could jigger it so it only finds href n src
+# non-capturing group example
 result = re.sub(r'''\s*(?P<key>(?:(?!href|src)\b)[A-Za-z\d_-]+)\s*=\s*["'](?P<value>.*?)["']\s*''', '', html)
 print(result)
 
@@ -85,3 +86,31 @@ print('\n\n\nex) 11: unicode')
 text = ''' −​–'''
 result = re.sub(r'[^\x00-\x7F]+', r'', text)
 print(f'{result!r}')
+
+
+print('\n\nex) 12: repeating groups, like HTML list')
+text = '''
+# this definitley is
+- Personal Organization: Grocery lists, to-do lists, and packing lists can help manage daily tasks and avoid impulse purchases.
+- Project Management: Action lists for events, project tasks, and emergency contact lists are useful for organizing tasks and ensuring accountability.
+- Creative Planning: Brainstorming lists for ideas, reading lists for books or articles, and data lists for information collection can enhance creativity and organization.
+
+# this is not
+# In — long special weak if ten company work bored email daughter; Clear hour... Musician eleven result monument: yellow phone heavy upload measure thirsty nature, fast by already car my. Planet stay clock probably build scrolcount old!
+this-shouldnt capture
+nor--should this
+
+- is this a list? probably not, but maybe. arguably no.
+
+1. same.
+
+# this definitley is
+3. Personal Organization: Grocery lists, to-do lists, and packing lists can help manage daily tasks and avoid impulse purchases.
+  * plz
+    ** plz
+	 --plz plz plz
+0. Project Management: Action lists for events, project tasks, and emergency contact lists are useful for organizing tasks and ensuring accountability.
+'''
+for ele in re.findall(r'(?:[ \t]*(?:[\d+]\.|[-\*]+)\s*(?:.+)\n){2,}', text):
+    print(ele)
+    print('-------------')
