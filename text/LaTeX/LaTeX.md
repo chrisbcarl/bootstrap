@@ -11,6 +11,8 @@
 - guides / courses
     - [lshort--the bible](https://www.ctan.org/tex-archive/info/lshort/) for lots of lanugages which end up hosting [pdfs like this](https://mirror.las.iastate.edu/tex-archive/info/lshort/english/lshort.pdf)
     - [overleaf intro guide, see left hand side](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) but dont pay for it
+    - [Interactive Website Guide](https://latexguide.org/book-contents/chapter-09-writing-math-formulas/)
+    - [Another interactive guide](https://colinsauze.github.io/introduction-to-latex/07-equations/index.html)
 - really cool websites
     - [draw and get a symbol](https://detexify.kirelabs.org/classify.html)
 
