@@ -279,6 +279,29 @@ copy& More table copy$^{\mathrm{a}}$& &  \\
 \end{center}
 \end{table}
 
+\subsection{Single column table}
+Large figures and tables may span across both columns. Figure captions should be below the figures; table heads should appear above the tables.
+
+\begin{table}
+\small
+\caption{Single Column Table}
+\label{tabl2}
+\begin{tabularx}{\linewidth}{p{1.75cm}>{\raggedright\arraybackslash}Xl}
+\toprule
+Simulation   & Description                                              & Language \\
+\midrule
+Markov Chain:            & Simultaneous and ergodic simulations of Markov chains, to understand implementation.                                       & Python \\
+Multiarm bandit problem: & In order to compare greedy epsilon at different hyper-parameters \textbackslash{}varepsilon and optimistic value approach. & Python \\
+Tic-tac-toe: & Implemented in R, to illustrate learning from a data-set & R        \\
+Tic-tac-toe: & Implemented in Python.                                   & Python   \\
+Grid World:  & Implemented in R.                                        & R        \\
+Grid world:  & Implemented in Python.                                   & Python   \\
+AI gym:      & Discrete Cart-pole AI gym.                               & Python
+\end{tabularx}%
+\end{table}
+
+Insert figures and tables after they are cited in the text. Use the abbreviation, even at the beginning of a sentence.
+
 
 
 \begin{figure}[htbp]
