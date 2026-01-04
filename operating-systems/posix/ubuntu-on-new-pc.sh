@@ -35,5 +35,9 @@ sudo snap install code --classic  # https://documentation.ubuntu.com/ubuntu-for-
 sudo snap install vlc
 
 
+# misc
+sudo apt install cmatrix cowsay -y
+
+
 # warm restart
 sudo shutdown -r now
