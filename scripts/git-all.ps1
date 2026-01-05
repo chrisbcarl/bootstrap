@@ -5,8 +5,7 @@ Get-ChildItem | ForEach-Object {
         Write-Host -ForegroundColor Green $_;
         $FullArgs = @("-C", $_) + $ArgsCopy
         $cmd = "git $FullArgs"
-        Write-Host -ForegroundColor Cyan $cmd
-        # Write-Host $FullArgs
+        Write-Host -ForegroundColor Cyan "    $cmd"
         & git @FullArgs
         # Start-Process -FilePath 'git' -ArgumentList $FullArgs -Wait
         if ($LASTEXITCODE -ne 0) {
