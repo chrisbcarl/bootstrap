@@ -1,8 +1,8 @@
 {
-    // C:\Users\chris\AppData\Roaming\Code\User\settings.json
     /* *********** vscode *********** */
     // only works in ~/AppData/Roaming/Code/User/settings.json
     "security.workspace.trust.enabled": false,
+    // general
     "debug.inlineValues": "off",  // truly awful otherwise
     "debug.onTaskErrors": "abort",
     "editor.wordWrap": "off",
@@ -10,6 +10,7 @@
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.stickyScroll.enabled": false,
     "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "window.zoomLevel": 1,
     "workbench.editor.empty.hint": "hidden",
     // AI / copilot
     "chat.disableAIFeatures": true,
