@@ -24,18 +24,12 @@ Features are a way to "link" ideas together across multiple files. For example, 
 
 
 # Dev
-|version |author |deployed |created |feature-name |description |
---- | --- | --- | --- | --- | ---
-|0.~0~.~0~|author|20xx-yy-zz|20xx-yy-zz|`FEATURE: xxx`|whatever|
+|version    |author     |deployed   |created    |feature-name                           |description        |
+|---        | ---       | ---       | ---       | ---                                   | ---               |
+|0.~0~.~0~  |author     |20xx-yy-zz |20xx-yy-zz |`FEATURE: xxx`                         |whatever           |
 
 
 # Stage
-|version |author |deployed |created |feature-name |description |
---- | --- | --- | --- | --- | ---
-
-
-# Prod
-|version |author |deployed |created |feature-name |description |
---- | --- | --- | --- | --- | ---
-|0.0.0|chriscarl|2025-01-24|2025-01-24|`FEATURE: ipynb-matplotlib-widgets`|added %matplotlib widgets and all of the requirements to hit it|
-|0.0.0|chriscarl|2025-01-24|2025-01-24|`FEATURE: chriscarl-features`|added the features file|
+|version    |author     |deployed   |created    |feature-name                           |description        |
+|---        | ---       | ---       | ---       | ---                                   | ---               |
+|0.~0~.~0~  |author     |20xx-yy-zz |20xx-yy-zz |`FEATURE: xxx`                         |whatever           |

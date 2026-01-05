@@ -16,9 +16,9 @@ $script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
 if (Get-Yes -Prompt "Install - $script_short") {
     Write-Host -ForeGroundColor Cyan "    Please wait..."
     $proc = Start-Process `
-        powershell.exe `
-        "-noprofile", "-executionpolicy", "bypass", "-File", `
-        $script `
+        -Filepath powershell.exe `
+        -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
+        -NoNewWindow `
         -Verb RunAs `
         -PassThru -Wait  # note: PassThru necessary, https://stackoverflow.com/a/16018287
 
@@ -57,8 +57,9 @@ if (Get-Yes -Prompt "Install - $script_short") {
     )
     $proc = Start-Process `
         -FilePath powershell.exe `
-        -Verb RunAs `
         -ArgumentList $ArgumentList `
+        -NoNewWindow `
+        -Verb RunAs `
         -PassThru -Wait `  # note: PassThru necessary, https://stackoverflow.com/a/16018287
 
     if ($proc.ExitCode -ne 0) {
@@ -78,4 +79,22 @@ if (Get-Yes -Prompt "Install - poetry config") {
 
 if (Get-Yes -Prompt "Install - bootstrap .venv") {
     poetry install
+}
+
+
+$script = "$PSScriptRoot\.vscode\vscode-user-settings-write.py"
+$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
+if (Get-Yes -Prompt "Install - $script_short") {
+    Write-Host -ForeGroundColor Cyan "    Please wait..."
+    $proc = Start-Process `
+        -Filepath python.exe `
+        -ArgumentList $script `
+        -NoNewWindow `
+        -PassThru -Wait  # note: PassThru necessary, https://stackoverflow.com/a/16018287
+        # -Verb RunAs `
+
+    if ($proc.ExitCode -ne 0) {
+        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
+        exit $proc.ExitCode
+    }
 }

@@ -3,13 +3,15 @@
     // only works in ~/AppData/Roaming/Code/User/settings.json
     "security.workspace.trust.enabled": false,
     // general
+    // "breadcrumbs.enabled": false,
     "debug.inlineValues": "off",  // truly awful otherwise
     "debug.onTaskErrors": "abort",
     "editor.wordWrap": "off",
     "editor.unusualLineTerminators": "off",  // reading a PDF gives paragraph separators
     "extensions.ignoreRecommendations": true,
-    "terminal.integrated.stickyScroll.enabled": false,
+    "python.createEnvironment.trigger": "off",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.stickyScroll.enabled": false,
     "window.zoomLevel": 1,
     "workbench.editor.empty.hint": "hidden",
     // AI / copilot
@@ -46,6 +48,8 @@
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "python-envs.pythonProjects": [],
     "python.analysis.supportDocstringTemplate": false,
+    "python.useEnvironmentsExtension": false,
+    "python.terminal.activateEnvironment": true,
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "[python]": {
         "editor.defaultFormatter": "eeyore.yapf",
