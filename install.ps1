@@ -1,4 +1,14 @@
+<#
+'''
+Author:         Chris Carl
+Email:          chrisbcarl@outlook.com
+Date:           2026-01-05
+Description:
+    Terminal settings
 
+Updates:
+    2026-01-05 01:26 - install - added the terminal settings
+#>
 
 function Get-Yes {
     [CmdletBinding()]
@@ -15,12 +25,14 @@ $script = "$PSScriptRoot\languages\python\install\install-python-requirements.ps
 $script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
 if (Get-Yes -Prompt "Install - $script_short") {
     Write-Host -ForeGroundColor Cyan "    Please wait..."
+    # -NoNewWindow does not work with -Verb`
+    # note: PassThru necessary, https://stackoverflow.com/a/16018287
     $proc = Start-Process `
         -Filepath powershell.exe `
         -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
-        -NoNewWindow `
         -Verb RunAs `
-        -PassThru -Wait  # note: PassThru necessary, https://stackoverflow.com/a/16018287
+        -Verb RunAs `
+        -PassThru -Wait
 
     if ($proc.ExitCode -ne 0) {
         Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
@@ -55,13 +67,13 @@ if (Get-Yes -Prompt "Install - $script_short") {
         "&",
         "{$ScriptBlock}"
     )
+    # -NoNewWindow does not work with -Verb`
+    # note: PassThru necessary, https://stackoverflow.com/a/16018287
     $proc = Start-Process `
         -FilePath powershell.exe `
         -ArgumentList $ArgumentList `
-        -NoNewWindow `
         -Verb RunAs `
-        -PassThru -Wait `  # note: PassThru necessary, https://stackoverflow.com/a/16018287
-
+        -PassThru -Wait `
     if ($proc.ExitCode -ne 0) {
         Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
         exit $proc.ExitCode
@@ -86,15 +98,36 @@ $script = "$PSScriptRoot\.vscode\vscode-user-settings-write.py"
 $script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
 if (Get-Yes -Prompt "Install - $script_short") {
     Write-Host -ForeGroundColor Cyan "    Please wait..."
+    # note: PassThru necessary, https://stackoverflow.com/a/16018287
+    # -Verb RunAs `
     $proc = Start-Process `
         -Filepath python.exe `
         -ArgumentList $script `
         -NoNewWindow `
-        -PassThru -Wait  # note: PassThru necessary, https://stackoverflow.com/a/16018287
-        # -Verb RunAs `
+        -PassThru -Wait
 
     if ($proc.ExitCode -ne 0) {
         Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
         exit $proc.ExitCode
     }
 }
+
+
+$script = "$PSScriptRoot\operating-systems\windows\terminal\terminal-user-settings-write.py"
+$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
+if (Get-Yes -Prompt "Install - $script_short") {
+    Write-Host -ForeGroundColor Cyan "    Please wait..."
+    # note: PassThru necessary, https://stackoverflow.com/a/16018287
+    # -Verb RunAs `
+    $proc = Start-Process `
+        -Filepath python.exe `
+        -ArgumentList $script `
+        -NoNewWindow `
+        -PassThru -Wait
+
+    if ($proc.ExitCode -ne 0) {
+        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
+        exit $proc.ExitCode
+    }
+}
+

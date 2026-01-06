@@ -10,7 +10,7 @@ Description:
         read-replace-write any global-specific settings to the user path
 
 Updates:
-    2025-11-25 01:26 - user-settings-write - initial commit
+    2025-11-25 01:26 - vscode-user-settings-write - initial commit
 '''
 import os
 import sys
@@ -33,7 +33,7 @@ print("copied to", shutil.copy2(bootstrap_settings_json, user_settings_json))
 print("copied to", shutil.copy2(bootstrap_keybindings_json, user_keyboard_json))
 
 # read the bootstrap/settings.json by clearing out all of the comments
-print("modifying the user vscode settings after copy")
+print("modifying the vscode user settings after copy")
 with open(bootstrap_settings_json, 'r', encoding='utf-8') as r:
     bootstrap_content = r.read()
 

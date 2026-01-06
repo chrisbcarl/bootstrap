@@ -9,7 +9,6 @@
     "editor.wordWrap": "off",
     "editor.unusualLineTerminators": "off",  // reading a PDF gives paragraph separators
     "extensions.ignoreRecommendations": true,
-    "python.createEnvironment.trigger": "off",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.stickyScroll.enabled": false,
     "window.zoomLevel": 1,
@@ -48,9 +47,10 @@
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "python-envs.pythonProjects": [],
     "python.analysis.supportDocstringTemplate": false,
-    "python.useEnvironmentsExtension": false,
-    "python.terminal.activateEnvironment": true,
+    "python.createEnvironment.trigger": "off",
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.useEnvironmentsExtension": false,
     "[python]": {
         "editor.defaultFormatter": "eeyore.yapf",
         "editor.formatOnSave": true,
