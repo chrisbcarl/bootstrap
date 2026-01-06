@@ -180,6 +180,14 @@ if __name__ == '__main__':
             print_yellow(f'    "{src}" -> "{dst}"')
             shutil.copy(src, dst)
 
+        cmds = [
+            ['git', 'init'],
+            ['git', 'add', '-A'],
+            ['git', 'commit', '-m', 'initial commit'],
+        ]
+        run_commands(cmds, cwd=project_dirpath)
+        subprocess.check_call(['code', project_dirpath], shell=True)
+
     print_green("Done!")
     print("    Reminders:")
     print("        - chriscarl.python as a dev requirement to start generating cannonical files!")

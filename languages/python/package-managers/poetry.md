@@ -79,5 +79,6 @@
     ```powershell
     poetry env list --full-path
     poetry env remove /full/path/to/python python3.7 3.7 test-O3eWbxRl-py3.7 etc
+    # Access denied
     poetry env remove --all
     ```
