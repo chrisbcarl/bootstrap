@@ -90,7 +90,7 @@ if (Get-Yes -Prompt "Install - poetry config") {
 
 
 if (Get-Yes -Prompt "Install - bootstrap .venv") {
-    poetry install
+    poetry install --all-extras
 }
 
 

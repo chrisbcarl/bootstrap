@@ -82,3 +82,9 @@
     # Access denied
     poetry env remove --all
     ```
+
+# Need to Reinstall a Development Package?
+```bash
+pip uninstall development-package -y
+poetry install
+```

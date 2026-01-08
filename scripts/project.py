@@ -152,6 +152,7 @@ if __name__ == '__main__':
             with open(pyproject_toml, 'r', encoding='utf-8') as r:
                 content = r.read()
                 content = content.replace('dependencies = [', f'package-mode = {"true" if args.module_type else "false"}\ndependencies = [')
+                content = content.replace('description = ""', f'description = "{args.description}"')
 
             cmds = [
                 ['poetry', 'install'],
