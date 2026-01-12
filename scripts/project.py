@@ -151,11 +151,14 @@ if __name__ == '__main__':
             pyproject_toml = os.path.join(args.path, args.name, 'pyproject.toml')
             with open(pyproject_toml, 'r', encoding='utf-8') as r:
                 content = r.read()
-                content = content.replace('dependencies = [', f'package-mode = {"true" if args.module_type else "false"}\ndependencies = [')
-                content = content.replace('description = ""', f'description = "{args.description}"')
+
+            content = content.replace('dependencies = [', f'package-mode = {"true" if args.module_type else "false"}\ndependencies = [')
+            content = content.replace('description = ""', f'description = "{args.description}"')
+            content = content.replace('0.1.0', '0.0.0')
 
             cmds = [
-                ['poetry', 'install'],
+                ['poetry', 'install', '--all-extras'],
+                ['mypy', '--install-types', '--non-interactive'],
             ]
             run_commands(cmds, cwd=project_dirpath)
 
