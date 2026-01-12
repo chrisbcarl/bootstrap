@@ -73,7 +73,8 @@ if (Get-Yes -Prompt "Install - $script_short") {
         -FilePath powershell.exe `
         -ArgumentList $ArgumentList `
         -Verb RunAs `
-        -PassThru -Wait `
+        -PassThru -Wait
+
     if ($proc.ExitCode -ne 0) {
         Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
         exit $proc.ExitCode
