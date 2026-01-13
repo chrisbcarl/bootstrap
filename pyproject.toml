@@ -1,15 +1,55 @@
-[tool.poetry]
+[project]
 name = "bootstrap"
 version = "0.0.0"
 description = "Project that contains my methodologies, snippets, templates, code gen, etc."
-authors = ["Chris Carl <chrisbcarl@outlook.com>"]
-license = "MIT"
+authors = [{name = "Chris Carl", email = "chrisbcarl@outlook.com"}]
 readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python",
+    "Development Status :: 2 - Pre-Alpha",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+requires-python = ">=3.12,<3.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.chriscarl]
+codeword = 'chaos'
+created = '2024-11-21 17:22:00'
+modified = '2024-11-21 17:22:00'
+
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__"
+]
+ignore = ["ignoreme"]
+stubPath = "dist/stubs"
+# defineConstant = { DEBUG = true }
+reportAttributeAccessIssue = false  # ._MEIPASS
+
+
+[tool.poetry]
 package-mode = false
+packages = [
+    # https://python-poetry.org/docs/pyproject/#packages
+    {include = "chriscarl", from = "src"}
+]
+include = [
+    { path = "tests", format = "sdist" },
+    # it seems to include all files that are in the packages include section without the need to specify
+]
+repository = "https://github.com/chrisbcarl/bootstrap"
 
 
 [tool.poetry.dependencies]
-python = "^3.10,<3.14"
 jupyterlab = "^4.3.3"
 notebook = "^7.3.1"
 ipywidgets = "^8.1.5"
@@ -25,13 +65,3 @@ requests = "^2.32.4"
 
 [tool.poetry.group.data-science.dependencies]
 matplotlib = "^3.10.3"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
-[tool.chriscarl]
-codeword = 'chaos'
-created = '2024-11-21 17:22:00'
-modified = '2024-11-21 17:22:00'
