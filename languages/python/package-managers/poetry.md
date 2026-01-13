@@ -88,3 +88,9 @@
 pip uninstall development-package -y
 poetry install
 ```
+
+
+# Need to add a development package?
+```bash
+poetry add --editable /pth
+```

@@ -49,6 +49,9 @@
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.supportDocstringTemplate": false,
     "python.createEnvironment.trigger": "off",
+    // NOTE: UTTERLY FUCKING USELESS
+    // https://github.com/microsoft/vscode-python/wiki/Setting-descriptions#pythondefaultinterpreterpath
+    // If the venv doesnt exist before vscode FIRST boots up, it will never "attach", and an internal storage is used so you HAVE to gui it. its so fucking stupid
     "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
     "python.terminal.activateEnvironment": true,
     "python.useEnvironmentsExtension": false,
