@@ -39,6 +39,8 @@
         "**/*.out": true,
     },
     /* *********** extensions *********** */
+    // git built-in
+    "git.openRepositoryInParentFolders": "never",
     // trailing-spaces
     "trailing-spaces.trimOnSave": true,
     // intellisense
