@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <!-- //*[@id="whatever"] -->
+        <p id="whatever">
+            <a href="http://google.com">hello</a>
+            <!-- //input[@type="button"] -->
+            <input type="button" value="">
+        </p>
+        <!-- //*[contains(@class, 'other')] -->
+        <p class="some other class">
+            <!-- //p//input -->
+            <span>
+                <input type="checkbox" name="" id="">
+            </span>
+        </p>
+    </div>
+    <!--
+    https://stackoverflow.com/a/35928085
+    All elements:                                   //*
+    All elements with an attribute, a:              //*[@a]
+    All elements with an attribute a equal to v:    //*[@a='v']
+    All elements with any attribute:                //*[@*]
+    All elements with any attribute equal to v:     //*[@*='v']
+     -->
+</body>
+</html>

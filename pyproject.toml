@@ -36,6 +36,25 @@ stubPath = "dist/stubs"
 reportAttributeAccessIssue = false  # ._MEIPASS
 
 
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+addopts = [
+    # https://docs.pytest.org/en/latest/explanation/goodpractices.html#test-discovery
+    # https://docs.pytest.org/en/latest/explanation/goodpractices.html#which-import-mode
+    # allows you to have 2 test file names that are exaclty the same like a/test_lib.py and b/test_lib.py
+    "--import-mode=importlib",
+]
+
+
+[[tool.mypy.overrides]]
+module = [
+    'parameterized',
+]
+ignore_missing_imports = true
+
+
 [tool.poetry]
 package-mode = false
 packages = [
@@ -47,6 +66,20 @@ include = [
     # it seems to include all files that are in the packages include section without the need to specify
 ]
 repository = "https://github.com/chrisbcarl/bootstrap"
+
+
+[tool.poetry.urls]
+changelog = "https://github.com/chrisbcarl/bootstrap/blob/main/CHANGELOG.md"
+homepage = "https://chriscarl.com"
+# documentation = "https://readthedocs.org"
+# "bug tracker" = "https://github.com/me/spam/issues"
+
+
+[tool.poetry.scripts]
+# dev = 'chriscarl.tools.dev:main'
+# fib = 'chriscarl.tools.fib:main'
+# lf = 'chriscarl.tools.lf:main'
+# str = 'chriscarl.tools.str:main'
 
 
 [tool.poetry.dependencies]
