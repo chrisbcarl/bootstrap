@@ -60,6 +60,7 @@ ignore_missing_imports = true
 
 
 [tool.poetry]
+repository = "https://github.com/chrisbcarl/bootstrap"
 package-mode = false
 packages = [
     # https://python-poetry.org/docs/pyproject/#packages
@@ -69,7 +70,6 @@ include = [
     { path = "tests", format = "sdist" },
     # it seems to include all files that are in the packages include section without the need to specify
 ]
-repository = "https://github.com/chrisbcarl/bootstrap"
 
 
 [tool.poetry.urls]
@@ -81,24 +81,13 @@ homepage = "https://chriscarl.com"
 
 [tool.poetry.scripts]
 # dev = 'chriscarl.tools.dev:main'
-# fib = 'chriscarl.tools.fib:main'
-# lf = 'chriscarl.tools.lf:main'
-# str = 'chriscarl.tools.str:main'
 
 
+# poetry add package
 [tool.poetry.dependencies]
-jupyterlab = "^4.3.3"
-notebook = "^7.3.1"
-ipywidgets = "^8.1.5"
-ipympl = "^0.9.6"  # FEATURE: ipynb-matplotlib-widgets
+chriscarl = {develop = true, path="../chriscarl.python"}  # version = ">0.0.0"
 
 
-[tool.poetry.group.web.dependencies]
-flask = "^3.1.0"
-selenium = "^4.34.2"
-streamlit = "^1.46.1"
-requests = "^2.32.4"
-
-
-[tool.poetry.group.data-science.dependencies]
-matplotlib = "^3.10.3"
+# poetry add package --group dev
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.13.0"

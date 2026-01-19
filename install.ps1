@@ -31,7 +31,6 @@ if (Get-Yes -Prompt "Install - $script_short") {
         -Filepath powershell.exe `
         -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
         -Verb RunAs `
-        -Verb RunAs `
         -PassThru -Wait
 
     if ($proc.ExitCode -ne 0) {

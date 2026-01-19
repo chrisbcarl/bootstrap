@@ -36,13 +36,15 @@
             "preLaunchTask": "C/C++: g++ build active file",
         },
         {
-            "name": "[Python] Custy",
+            "name": "[project] new",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/scripts/project.py",
             "console": "integratedTerminal",
             "args": [
-                "--help",
+                "new",
+                "test", "custom test description",
+                "--dirpath", "/temp"
                 // "${command:pickArgs}"
             ],
             "justMyCode": true,
