@@ -231,5 +231,10 @@ if __name__ == '__main__':
         subprocess.check_call(['code', project_dirpath], shell=True)
 
     print_green("Done!")
-    print("    Reminders:")
-    print("        - chriscarl.python as a dev requirement to start generating cannonical files!")
+    reminders = [
+        # 'chriscarl.python as a dev requirement to start generating cannonical files!',  # added as part of pyproject
+    ]
+    if reminders:
+        print("    Reminders:")
+        for reminder in reminders:
+            print(f"        - {reminder}")
