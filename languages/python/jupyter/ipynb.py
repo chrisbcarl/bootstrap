@@ -141,13 +141,13 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 import json
 if IPYTHON_SHELL:
-    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
+    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8', newline='\n') as r:
         body = json.load(r)
         print(json.dumps(body['cells'][0], indent=2))
         print(json.dumps(body['cells'][1], indent=2))
 else:
     print('WARNING: NOT RUNNING AN IPYNB, THIS FILE IS NOT A JSON')
-    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8') as r:
+    with open(SCRIPT_FILEPATH, 'r', encoding='utf-8', newline='\n') as r:
         body = r.read()
         print(print(repr(body[50:150])))
 
@@ -266,6 +266,13 @@ button = widgets.Button(
 )
 display(button)
 button.on_click(print_widget_values)
+
+# more display
+from IPython.display import Markdown, HTML
+
+display(HTML('<p>paragraph</p></br><p>paragraph</p></br><p>paragraph</p>'))
+display(Markdown('|col|col|\n|---|---|\n|a|b|\n|1|2|'))
+display(Markdown(r'$\phi$'))
 
 # # Useful Magics <a id="useful-magics"></a>
 #

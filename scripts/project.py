@@ -182,6 +182,7 @@ if __name__ == '__main__':
                 os.remove(poetry_lock)
 
             cmds = [
+                ['poetry', 'add', 'pytest-cov', '--group', 'dev'],
                 ['poetry', 'install', '--all-extras'],
             ]
             run_commands(cmds, cwd=project_dirpath)
