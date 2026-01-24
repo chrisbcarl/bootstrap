@@ -57,6 +57,12 @@
     # poetry config virtualenvs.in-project --unset
     poetry install
     ```
+- use the default functionality:
+    ```powershell
+    poetry install  # WITHOUT configuring in-project, creates a new env SOMEWHERE
+    poetry env list --full-path  # this contains the associated created environment WHEREVER that is
+    & "$(poetry env list --full-path)/scripts/activate.ps1"
+    ```
 - misc cool funcs:
     ```powershell
     pipx inject poetry poetry-plugin-shell
@@ -72,6 +78,8 @@
     ```powershell
     # https://stackoverflow.com/a/76359919
     poetry remove torch torchvision torchaudio  # remove if you've already got it installed
+
+    # https://python-poetry.org/docs/repositories/#supplemental-package-sources
     poetry source add --priority explicit pytorch-cu128 https://download.pytorch.org/whl/cu128  # similar to --index-url in pip
     poetry add --source pytorch-cu128 torch torchvision torchaudio  # actually install
     ```
