@@ -54,6 +54,8 @@
                     hello?
 - text symbols - $`` <quoted text here> "$
 - $n ~ \mathrm{n} ~ \text{n} $ - ascii lower, all 3 styles separated by nbsp non breaking space
+- $\newpage$ - page break
+- $\appendix$ - appendix
 - $\neq, \leq, \geq \equiv \approx \cong \simeq \sim \propto \parallel$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/) - not equal, less than or equal, greater than or equal
 - $\sim$ - tilde
 - $\Phi ~ \phi$ - greek
