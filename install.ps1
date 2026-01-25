@@ -7,14 +7,24 @@ Description:
     Terminal settings
 
 Updates:
+    2026-01-25 14:31 - install - added git config and -Yes global
     2026-01-05 01:26 - install - added the terminal settings
 #>
+
+[CmdletBinding()]
+param (
+    [Parameter()][Switch]$Yes
+)
 
 function Get-Yes {
     [CmdletBinding()]
     param (
         [Parameter()][string]$Prompt
     )
+    if ($Yes) {
+        Write-Host -ForeGroundColor Cyan "$Prompt"
+        return $true
+    }
     Write-Host -ForeGroundColor Cyan "$Prompt (y/n)?" -NoNewline
     $confirmation = (Read-Host " ").ToLower()
     return ($confirmation.Count -gt 0) -and ($confirmation[0] -eq 'y')
