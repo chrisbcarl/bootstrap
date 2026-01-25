@@ -85,6 +85,7 @@ Examples:
         cd ~/src/chriscarl.python.data-science
         .venv/scripts/activate
         dev create core.lib.third.pandas --namespace
+        dev create tools.data_science --namespace --tool --force
 
     2) unaffiliated tool
         project new some-tool "its gonna be good" `
@@ -311,6 +312,7 @@ if __name__ == '__main__':
     args.dirpath = os.path.abspath(os.path.expanduser(args.dirpath))
     if not REGEX_AUTHOR.match(args.author):
         raise ValueError(f'--author not of the form "First Last <email@domain.com>"!')
+    project_dirpath = os.path.join(args.dirpath, args.name)
 
     # pprint.pprint(vars(args))
 
@@ -330,8 +332,14 @@ if __name__ == '__main__':
 
     print_green("Done!")
     reminders = [
-        # 'chriscarl.python as a dev requirement to start generating cannonical files!',  # added as part of pyproject
+        f'cd "{os.path.relpath(os.path.abspath(project_dirpath), os.getcwd())}"',
     ]
+    if not args.no_chriscarl:
+        reminders += [
+            '.venv/scripts/activate',
+            'dev create core.lib.third.pandas --namespace',
+            'dev create tools.data_science --namespace --tool --force',
+        ]
     if reminders:
         print("    Reminders:")
         for reminder in reminders:
