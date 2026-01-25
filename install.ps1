@@ -151,53 +151,80 @@ if (Get-Yes -Prompt "Install - $script_short") {
 
 
 $script_short = "src projects"
-if (Get-Yes -Prompt "Install - '$script_short'") {
+if (Get-Yes -Prompt "Install - $script_short") {
     $projects = @(
-        'chrisbcarl.sjsu',
-        'chriscarl.com',
+        # modules
+        'chriscarl.python.web',
+
+        # tools
         'chriscarl.tools.analyze-disk-performance',
+        'chriscarl.tools.calculators',
         'chriscarl.tools.downloaders',
-        'chriscarl.tools.youtube-utilities'
+        'chriscarl.tools.house',
+        'chriscarl.tools.youtube-utilities',
+
+        # other projects
+        'chrisbcarl.sjsu',
+        'chriscarl.com'
     )
     $heavy_projects = @(
         'pgp-aiml'
     )
 
     $cwd = Get-Location
-    $src = Set-Location (Get-Item "~/src").ToString()
-
-    git clone git@github.com:chrisbcarl/bootstrap.git
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($LASTEXITCODE)!"
-        exit $LASTEXITCODE
+    $src = (Get-Item "~/src").ToString()
+    if (-Not (Test-Path $src -ErrorAction SilentlyContinue)) {
+        New-Item -ItemType Directory -Path $src -ErrorAction SilentlyContinue
     }
-    Set-Location bootstrap
-    .\install.ps1 -Yes
-    Set-Location $src
-
-    git clone git@github.com:chrisbcarl/chriscarl.python
-    Set-Location chriscarl.python
-    poetry install
-    Set-Location $src
-
-    foreach($project in $projects) {
-        git clone git@github.com:chrisbcarl/$project
-        Set-Location $project
-        if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
-            poetry install
-        }
+    try {
         Set-Location $src
-    }
+        $src = Get-Location
 
-    foreach($heavy_project in $heavy_projects) {
-        git clone git@github.com:chrisbcarl/$heavy_project
-        Set-Location $heavy_project
-        if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
-            poetry install
+        if (-Not (Test-Path bootstrap -ErrorAction SilentlyContinue)) {
+            git clone git@github.com:chrisbcarl/bootstrap.git
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($LASTEXITCODE)!"
+                exit $LASTEXITCODE
+            }
+            Set-Location bootstrap
+            .\install.ps1 -Yes
+            Set-Location $src
         }
-        Set-Location $src
+
+        if (-Not (Test-Path chriscarl.python -ErrorAction SilentlyContinue)) {
+            git clone git@github.com:chrisbcarl/chriscarl.python
+            Set-Location chriscarl.python
+            poetry install
+            Set-Location $src
+        }
+
+        foreach($project in $projects) {
+            if (Test-Path $project -ErrorAction SilentlyContinue) {
+                continue
+            }
+            git clone git@github.com:chrisbcarl/$project
+            Set-Location $project
+            if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
+                poetry install
+            }
+            Set-Location $src
+        }
+
+        foreach($heavy_project in $heavy_projects) {
+            if (Test-Path $heavy_project -ErrorAction SilentlyContinue) {
+                continue
+            }
+            git clone git@github.com:chrisbcarl/$heavy_project
+            Set-Location $heavy_project
+            if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
+                poetry install
+            }
+            Set-Location $src
+        }
+    }
+    finally {
+        Set-Location $cwd
     }
 
-    Set-Location $cwd
 }
 
