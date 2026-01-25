@@ -89,6 +89,14 @@ if (Get-Yes -Prompt "Install - poetry config") {
 }
 
 
+if (Get-Yes -Prompt "Install - git config") {
+    git config --global user.email "chrisbcarl@outlook.com"
+    git config --global user.name "Chris Carl"
+    git config --global core.autocrlf false
+    git config --global core.eol lf
+}
+
+
 if (Get-Yes -Prompt "Install - bootstrap .venv") {
     poetry install --all-extras
 }
