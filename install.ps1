@@ -7,7 +7,7 @@ Description:
     Terminal settings
 
 Updates:
-    2026-01-25 14:31 - install - added git config and -Yes global
+    2026-01-25 14:31 - install - added git config, -Yes global, src projects
     2026-01-05 01:26 - install - added the terminal settings
 #>
 
@@ -147,5 +147,57 @@ if (Get-Yes -Prompt "Install - $script_short") {
         Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
         exit $proc.ExitCode
     }
+}
+
+
+$script_short = "src projects"
+if (Get-Yes -Prompt "Install - '$script_short'") {
+    $projects = @(
+        'chrisbcarl.sjsu',
+        'chriscarl.com',
+        'chriscarl.tools.analyze-disk-performance',
+        'chriscarl.tools.downloaders',
+        'chriscarl.tools.youtube-utilities'
+    )
+    $heavy_projects = @(
+        'pgp-aiml'
+    )
+
+    $cwd = Get-Location
+    $src = Set-Location (Get-Item "~/src").ToString()
+
+    git clone git@github.com:chrisbcarl/bootstrap.git
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($LASTEXITCODE)!"
+        exit $LASTEXITCODE
+    }
+    Set-Location bootstrap
+    .\install.ps1 -Yes
+    Set-Location $src
+
+    git clone git@github.com:chrisbcarl/chriscarl.python
+    Set-Location chriscarl.python
+    poetry install
+    Set-Location $src
+
+    foreach($project in $projects) {
+        git clone git@github.com:chrisbcarl/$project
+        Set-Location $project
+        if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
+            poetry install
+        }
+        Set-Location $src
+    }
+
+    foreach($heavy_project in $heavy_projects) {
+        git clone git@github.com:chrisbcarl/$heavy_project
+        Set-Location $heavy_project
+        if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
+            poetry install
+        }
+        Set-Location $src
+    }
+
+    Set-Location $cwd
 }
 
