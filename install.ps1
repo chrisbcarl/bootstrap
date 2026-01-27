@@ -157,6 +157,7 @@ if (Get-Yes -Prompt "Install - $script_short") {
         'chriscarl.python.web',
 
         # tools
+        'chriscarl.tools.academia',
         'chriscarl.tools.analyze-disk-performance',
         'chriscarl.tools.calculators',
         'chriscarl.tools.downloaders',
