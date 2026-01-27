@@ -188,7 +188,8 @@ if (Get-Yes -Prompt "Install - $script_short") {
                 exit $LASTEXITCODE
             }
             Set-Location bootstrap
-            .\install.ps1 -Yes
+            # .\install.ps1 -Yes  # TODO: figure out how to do this in order
+            poetry install
             Set-Location $src
         }
 
