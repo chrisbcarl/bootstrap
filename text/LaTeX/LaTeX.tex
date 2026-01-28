@@ -1,0 +1,52 @@
+% pdflatex text/LaTeX/LaTeX --output-directory text/LaTex
+
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\begin{document}
+
+textwidth horizontal rule\\
+\rule{\textwidth}{0.4pt}\\
+
+linewidth horizontal rule\\
+\rule{\linewidth}{1.0pt}\\
+
+\begin{math}
+\begin{aligned}
+  1,~ 000 &\\
++ 2,~ 000 &\\
+\rule{1.0cm}{0.1pt} &\\
+ 30,~ 000 &\\
+\end{aligned}
+\end{math}
+
+
+% https://tex.stackexchange.com/questions/19579/horizontal-line-spanning-the-entire-document-in-latex
+
+Below is a Line spanning the entire width of the page
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+Below is a 2cm long line
+
+\noindent\rule{2cm}{0.4pt}
+
+Below is a 4cm long line
+
+\noindent\rule{4cm}{0.4pt}
+
+Below is a 8cm long line
+
+\noindent\rule{8cm}{0.4pt}
+
+\newcommand{\hr}{
+    \begin{center}
+        \line(1,0){450}
+    \end{center}
+}
+
+hr below
+\hr
+hr above
+
+\end{document}
