@@ -1,7 +1,8 @@
 % pdflatex text/LaTeX/LaTeX-not-md --output-directory text/LaTex
 
 \documentclass{article}
-\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsmath,amssymb,amsfonts}   % \begin{math}, \mathbb{R}
+\usepackage{xcolor}  % \textcolor{}
 
 \begin{document}
 
@@ -21,24 +22,16 @@ linewidth horizontal rule\\
 \end{math}
 
 
+% https://thelinuxcode.com/latex-horizontal-line/
 % https://tex.stackexchange.com/questions/19579/horizontal-line-spanning-the-entire-document-in-latex
-
 Below is a Line spanning the entire width of the page
-
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-
 Below is a 2cm long line
-
 \noindent\rule{2cm}{0.4pt}
-
 Below is a 4cm long line
-
 \noindent\rule{4cm}{0.4pt}
-
 Below is a 8cm long line
-
 \noindent\rule{8cm}{0.4pt}
-
 \newcommand{\hr}{
     \begin{center}
         \line(1,0){450}
@@ -48,5 +41,8 @@ Below is a 8cm long line
 hr below
 \hr
 hr above
+
+
+blue \noindent\textcolor{blue}{\hrulefill} line on oneline it will fill as far as it can.
 
 \end{document}

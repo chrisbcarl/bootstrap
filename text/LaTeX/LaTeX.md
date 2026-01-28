@@ -320,40 +320,33 @@ $$
     & \therefore q \\
     \end{aligned}
     $$
-- horizontal lines
-$$
-\rule{4cm}{0.4pt}\\
-\begin{aligned}
- 1000& \\
-+ 2000& \\
-\rule{1cm}{0.0pt}&\\
-30000&
-\end{aligned}
-$$
+- horizontal lines, hr
+    $$
+    \rule{4cm}{0.4pt}\\
+    \begin{aligned}
+    1000 &\\
+    + 2000 &\\
+    \rule{1cm}{0.0pt} &\\
+    30000 &\\
+    \end{aligned}
 
-
-$$
-% must be in \documentclass{article}\begin{document}\end{document}...
-% https://tex.stackexchange.com/questions/19579/horizontal-line-spanning-the-entire-document-in-latex
-
-Below is a Line spanning the entire width of the page
-
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-
-Below is a 2cm long line
-
-\noindent\rule{2cm}{0.4pt}
-
-Below is a 4cm long line
-
-\noindent\rule{4cm}{0.4pt}
-
-Below is a 8cm long line
-
-\noindent\rule{8cm}{0.4pt}
-
-\newcommand{\hr}{\begin{center} \line(1,0){450} \end{center}}
-$$
+    % must be in \documentclass{article}\begin{document}\end{document}...
+    % https://tex.stackexchange.com/questions/19579/horizontal-line-spanning-the-entire-document-in-latex
+    % https://thelinuxcode.com/latex-horizontal-line/
+    Below is a Line spanning the entire width of the page
+    \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+    Below is a 2cm long line
+    \noindent\rule{2cm}{0.4pt}
+    Below is a 4cm long line
+    \noindent\rule{4cm}{0.4pt}
+    Below is a 8cm long line
+    \noindent\rule{8cm}{0.4pt}
+    \newcommand{\hr}{
+        \begin{center}
+            \line(1,0){450}
+        \end{center}
+    }
+    $$
 - linear algebra / statistics / machine learning / deep learning
     - sigmoid function or sigma field $\mathcal{F} \mathscr{F}$
     - gradient $\nabla$
