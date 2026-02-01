@@ -157,15 +157,15 @@ if (Get-Yes -Prompt "Install - $script_short") {
         'chriscarl.python.web',
 
         # tools
-        'chriscarl.tools.academia',
         'chriscarl.tools.analyze-disk-performance',
         'chriscarl.tools.calculators',
+        'chriscarl.tools.documents',
         'chriscarl.tools.downloaders',
         'chriscarl.tools.house',
         'chriscarl.tools.youtube-utilities',
 
         # other projects
-        'chrisbcarl.sjsu',
+        'chriscarl.sjsu',
         'chriscarl.com'
     )
     $heavy_projects = @(
