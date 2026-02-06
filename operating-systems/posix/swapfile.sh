@@ -1,4 +1,5 @@
 # https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
+# https://commandmasters.com/commands/fallocate-linux/
 sudo swapon --show
 free -h
 df -h
