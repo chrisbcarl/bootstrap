@@ -3,6 +3,7 @@ sudo swapon --show
 free -h
 df -h
 sudo fallocate -l 2G /swapfile
+sudo fallocate --collapse-range --length 1G /swapfile
 ls -lh /swapfile
 sudo chmod 600 /swapfile
 ls -lh /swapfile
