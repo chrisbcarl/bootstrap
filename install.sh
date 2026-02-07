@@ -1,5 +1,7 @@
 # run this from any new vm instance
 
+alias ll="ls -lah"
+
 sudo sh -c "yes | unminimize"
 sudo apt install unzip -y
 

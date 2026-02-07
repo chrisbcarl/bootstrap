@@ -1,3 +1,5 @@
+alias ll="ls -lah"
+
 sudo apt update -y
 sudo apt upgrade -y
 
