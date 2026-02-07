@@ -1,9 +1,9 @@
 # create a compute engine instance
-us-west1, e2-micro, SPOT, network: STANDARD, image-change-ubuntu
+#   - us-west1, e2-micro, SPOT, network: STANDARD, image-change-ubuntu
 
 
 # total google cloud adventure:
-cloud init
+gcloud init
 gcloud auth list
 gcloud projects list  | findstr "My First Project "  # numeric-scope-486007-a7
 
