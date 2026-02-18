@@ -6,6 +6,17 @@ param (
 $instance_micro_name = $null
 $instance_micro_ip = $null
 
+$gcloud = Get-Command gcloud -ErrorAction SilentlyContinue
+if ($null -eq $gcloud) {
+    Write-Warning "gcloud not installed!"
+    Write-Host "    https://docs.cloud.google.com/sdk/docs/install-sdk"
+    Write-Host -ForegroundColor Cyan @'
+    (New-Object Net.WebClient).DownloadFile("https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe", "$env:Temp\GoogleCloudSDKInstaller.exe")
+    & $env:Temp\GoogleCloudSDKInstaller.exe
+'@
+    exit 1
+}
+
 $output = (gcloud compute instances list)
 $headers = $output[0] -split "\s+"
 $rows = @()

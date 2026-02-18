@@ -1,3 +1,15 @@
+$gcloud = Get-Command gcloud -ErrorAction SilentlyContinue
+if ($null -eq $gcloud) {
+    Write-Warning "gcloud not installed!"
+    Write-Host "    https://docs.cloud.google.com/sdk/docs/install-sdk"
+    Write-Host -ForegroundColor Cyan @'
+    (New-Object Net.WebClient).DownloadFile("https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe", "$env:Temp\GoogleCloudSDKInstaller.exe")
+    & $env:Temp\GoogleCloudSDKInstaller.exe
+'@
+    exit 1
+}
+
+
 $ssh_dirpath = (Resolve-Path ~/.ssh).Path
 $items = (Get-ChildItem -Path $ssh_dirpath)
 $ssh_pub_key = $null
