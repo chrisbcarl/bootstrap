@@ -12,6 +12,12 @@ input_path=$(realpath "$PSScriptRoot/$dirname.cpp")
 output_path=$(realpath "$PSScriptRoot/$dirname.exe")
 
 
+[ -f "${BASH_SOURCE[0]}" ] && echo "file exists!" || echo "file not exists!"
+
+
+[ -d $PSScriptRoot ] && echo "dir exists!" || echo "dir not exists!"
+
+
 g++ $input_path -o $output_path
 if [ $? != 0 ]; then
     echo -e "${RED}Fix your shit! Exit code: $?${CLEAR}"
@@ -25,7 +31,7 @@ echo -e "${YELLOW}TESTING EXIT CODE 1${CLEAR}"
 declare -a cmds=(
     "$output_path -h"
 )
-for cmd in "${cmds[@]}" 
+for cmd in "${cmds[@]}"
 do
     echo ""
     echo -e "${CYAN}$cmd${CLEAR}"
@@ -47,7 +53,7 @@ declare -a cmds=(
     "$output_path 4 helo"
     "$output_path 5 helo"
 )
-for cmd in "${cmds[@]}" 
+for cmd in "${cmds[@]}"
 do
     echo ""
     echo -e "${CYAN}$cmd${CLEAR}"
@@ -65,7 +71,7 @@ declare -a cmds=(
     "$output_path -1 helo"
     "$output_path helo world"
 )
-for cmd in "${cmds[@]}" 
+for cmd in "${cmds[@]}"
 do
     echo ""
     echo -e "${CYAN}$cmd${CLEAR}"
