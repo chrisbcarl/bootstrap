@@ -12,6 +12,7 @@ input_path=$(realpath "$PSScriptRoot/$dirname.cpp")
 output_path=$(realpath "$PSScriptRoot/$dirname.exe")
 
 
+# https://linuxize.com/post/bash-check-if-file-exists/
 [ -f "${BASH_SOURCE[0]}" ] && echo "file exists!" || echo "file not exists!"
 
 
