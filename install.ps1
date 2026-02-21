@@ -158,6 +158,7 @@ if (Get-Yes -Prompt "Install - $script_short") {
 
         # tools
         'chriscarl.tools.analyze-disk-performance',
+        'chriscarl.tools.academia',
         'chriscarl.tools.calculators',
         'chriscarl.tools.documents',
         'chriscarl.tools.downloaders',
