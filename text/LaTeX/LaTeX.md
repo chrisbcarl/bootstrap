@@ -99,7 +99,7 @@
 - $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\iint^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
-- $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots
+- $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots, vector
 - [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
     - operators: $\neg \lnot \lor \land \oplus \otimes$
     - sayings: $\exists \nexists \forall \implies \iff \equiv$
@@ -113,6 +113,7 @@
     $$
     \overline{ABC} \\
     \overrightarrow{ABC} \\
+    \widehat{ABC} \\  % yhmath package required
     \hat{ABC} \\
     \tilde{ABC} \\
     $$
@@ -121,7 +122,7 @@
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
     $$
 - divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b a \pmod b a \pod b a \operatorname{div} b \equiv a \bmod c$
-- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as - $\checkmark \times \sim$
+- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as, degrees - $\checkmark \times \sim \degree$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
@@ -310,8 +311,8 @@ $$
 - janky proof but it looks ok:
     $$
     \begin{aligned}
-    \text{let } p &: it is hotter than 100 degrees today. \\
-                q &: the pollution is dangerous. \\
+    \text{let } p &: \text{it is hotter than 100} \degree \text{ today.} \\
+                q &: \text{the pollution is dangerous.} \\
     \\
     & p \lor q \\
     & \lnot p \\
@@ -351,6 +352,9 @@ $$
     - sigmoid function or sigma field $\mathcal{F} \mathscr{F}$
     - gradient $\nabla$
     - unit vectors (i and j without the dots): $\hat{\imath} \hat{\jmath}$
+        - vector: $\vec{\rm v} ~ \overrightarrow{vabd}$
+        - span: $\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$
+            - https://www.underleaf.ai/learn/latex/vector-spaces
     - combinatorics / binomial
         $$
         \binom{a}{b}
