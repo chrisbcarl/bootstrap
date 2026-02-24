@@ -1,0 +1,1 @@
+ps aux | grep program | grep -v grep
