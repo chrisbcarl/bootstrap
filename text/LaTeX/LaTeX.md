@@ -115,6 +115,7 @@
     \overrightarrow{ABC} \\
     \widehat{ABC} \\  % yhmath package required
     \hat{ABC} \\
+    \widehat{ABC} \\
     \tilde{ABC} \\
     $$
 - functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert $
