@@ -249,9 +249,9 @@ $$
         | header | header |
         | --- | --- |
         | $\Rho(A\|B)$ | $\text{escapes usually work well in this area}$ |
-- array / matrix
+- array / matrix, note boldface matrix symbol
     $$
-    A_{2\times2} = \left[
+    \mathbf{A}_{2\times2} = \left[
         {
             \begin{array}
                 {cc}
@@ -262,9 +262,9 @@ $$
         }
     \right]
     $$
-- matrix / pmatrix / parenthetical matrix
+- matrix / pmatrix / parenthetical matrix, note boldface matrix symbol
     $$
-    A_{2\times2} =
+    \mathbf{A}_{2\times2} =
         {
             \begin{pmatrix}
                 a_{11} & a_{12} & a_{13} & a_{14} \\
@@ -276,9 +276,9 @@ $$
         }
     $$
 - $\vdots \cdots \ddots$ - elipses
-- big matrix from https://latex-tutorial.com/ellipses-in-latex/
+- big matrix from https://latex-tutorial.com/ellipses-in-latex/, note boldface matrix symbol
 $$
-\begin{bmatrix}
+\mathbf{A} = \begin{bmatrix}
 -10 & -20 & 15 & 20 & -15 & -20 \\
 22 & -10 & \cdots & \cdots & -10 & -15 \\
 -11 & -10 & \cdots & \cdots & -10 & -10 \\
