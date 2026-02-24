@@ -1,2 +1,2 @@
 # media
-yt-dlp
+yt-dlp[default]
