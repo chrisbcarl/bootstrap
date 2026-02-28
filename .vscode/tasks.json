@@ -2,47 +2,155 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C/C++: g++ build active file",
+            "label": "on-launch",
+            "type": "shell",
+            "runOptions": {"runOn": "folderOpen"},
+            "command": "echo",
+            "args": [
+                "whats", "up"
+            ]
+        },
+        {
+            "label": "C: gcc clean and build",
             // https://stackoverflow.com/a/74227370
             "dependsOrder": "sequence",
             "dependsOn": [
-                "C/C++: Clean",  // clean first, only "newly built" exes gdb correctly with vscode
-                "C/C++: g++ build"
+                "C/C++: Clean", // clean first, only "newly built" exes gdb correctly with vscode
+                "C: gcc build"
+            ]
+        },
+        {
+            "label": "C++: g++ clean and build",
+            // https://stackoverflow.com/a/74227370
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "C/C++: Clean", // clean first, only "newly built" exes gdb correctly with vscode
+                "C++: g++ build"
             ]
         },
         {
             // https://microsoft.github.io/code-with-engineering-playbook/developer-experience/cross-platform-tasks/
             "type": "shell",
             "label": "C/C++: Clean",
-            "command": "rm",
-            // HYPER jank, but Remove-Item -SilentlyContinue still returns 1 exit code so...
-            "windows": { "command": "If", "args": ["(Test-Path", "${workspaceFolder}/dist/${fileBasenameNoExtension})", "{rm", "${workspaceFolder}/dist/${fileBasenameNoExtension}}", "else", "{echo", "0}"] },
-            "args": ["${workspaceFolder}/dist/${fileBasenameNoExtension}"],
+            "linux": {
+                "command": "[",
+                "args": [
+                    "-f",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}",
+                    "]",
+                    "&&",
+                    "rm",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}",
+                    "||",
+                    "echo",
+                    "ok",
+                ],
+            },
+            "windows": {
+                // HYPER jank, but Remove-Item -SilentlyContinue still returns 1 exit code so...
+                "command": "If",
+                "args": [
+                    "(Test-Path",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension})",
+                    "{",
+                    "rm",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}",
+                    "}",
+                    "else",
+                    "{",
+                    "echo",
+                    "ok",
+                    "}",
+                ]
+            },
         },
         {
-            "type": "cppbuild",
-            "label": "C/C++: g++ build",
-            "command": "g++",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${fileDirname}/**.cc",
-                // "${fileDirname}/**.cpp",
-                "-I${fileDirname}",
-                "-o",
-                "${workspaceFolder}/dist/${fileBasenameNoExtension}"
-            ],
+            "type": "shell",
+            "label": "C++: g++ build",
+            "linux": {
+                "command": "g++",
+                "args": [
+                    // os find files
+                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                    "$(", "find", "${fileDirname}", "-type", "f", "-name", "'*.cc'", "-o", "-name", "'*.cpp'", "-o", "-name", "'*.c'", "-print0", ")",
+                    // common
+                    "-fdiagnostics-color=always",
+                    "-g",
+                    "-I${fileDirname}",
+                    "-o",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ]
+            },
+            "windows": {
+                "command": "g++",
+                "args": [
+                    // os find files
+                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                    "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.cc,*.cpp,*.c).Fullname", "-Join", "' '", ")",
+
+                    // common
+                    "-fdiagnostics-color=always",
+                    "-g",
+                    "-I${fileDirname}",
+                    "-o",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ],
+            },
             "options": {
                 "cwd": "${workspaceFolder}/dist"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
+            // "problemMatcher": [
+            //     "$g++"
+            // ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": "C/C++ Clean",
+            "dependsOn": "C/C++: Clean",
+        },
+        {
+            "type": "shell",
+            "label": "C: gcc build",
+            "linux": {
+                "command": "gcc",
+                "args": [
+                    // os find files
+                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                    "$(", "find", "${fileDirname}", "-type", "f", "-name", "'*.c'", "-print0", ")",
+                    // common
+                    "-fdiagnostics-color=always",
+                    "-g",
+                    "-I${fileDirname}",
+                    "-o",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ]
+            },
+            "windows": {
+                "command": "gcc",
+                "args": [
+                    // os find files
+                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                    "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.c).Fullname", "-Join", "' '", ")",
+
+                    // common
+                    "-fdiagnostics-color=always",
+                    "-g",
+                    "-I${fileDirname}",
+                    "-o",
+                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ],
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/dist"
+            },
+            // "problemMatcher": [
+            //     "$gcc"
+            // ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "C/C++: Clean",
         },
     ]
 }

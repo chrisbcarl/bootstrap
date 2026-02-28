@@ -2,6 +2,7 @@
     /* *********** vscode *********** */
     // only works in ~/AppData/Roaming/Code/User/settings.json
     "security.workspace.trust.enabled": false,
+    "task.allowAutomaticTasks": "on",
     // general
     // "breadcrumbs.enabled": false,
     "debug.inlineValues": "off",  // truly awful otherwise
@@ -19,6 +20,7 @@
     "chat.agent.enabled": false,
     // file explorer
     "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
     "search.exclude": {
         "**/*py*cache*": true,  // covers ./.pytest_cache and __pycache__
         "**/*.venv*": true,
