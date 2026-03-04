@@ -82,3 +82,6 @@ do
         exit $?
     fi
 done
+
+# kill all shell children
+pkill -P $$  # kill all kids of a bash script, super effective
