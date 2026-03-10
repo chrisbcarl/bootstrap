@@ -84,4 +84,4 @@ do
 done
 
 # kill all shell children
-pkill -P $$  # kill all kids of a bash script, super effective
+pkill -P $$  # kill all kids of a bash script, super effective, https://stackoverflow.com/a/23336595
