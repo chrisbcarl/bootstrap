@@ -13,6 +13,7 @@
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.stickyScroll.enabled": false,
     "window.zoomLevel": 1,
+    "workbench.colorTheme": "Dark Modern",  // new default is VS Code Dark - https://github.com/Microsoft/vscode/issues/304791
     "workbench.editor.empty.hint": "hidden",
     // AI / copilot
     "chat.disableAIFeatures": true,

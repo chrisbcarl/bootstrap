@@ -84,6 +84,7 @@ print(result)
 
 print('\n\n\nex) 11: unicode')
 text = ''' −​–'''
+# [^\u0000-\u00FF]  # extended ascii
 result = re.sub(r'[^\x00-\x7F]+', r'', text)
 print(f'{result!r}')
 

@@ -6,6 +6,7 @@
     - [symbols in a wiki but its incomplete](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
     - [overleaf version](https://assets.ctfassets.net/nrgyaltdicpt/4e825etqMUW8vTF8drfRbw/d4f3d9adcb2980b80818f788e36316b2/A_quick_guide_to_LaTeX__Overleaf_version.pdf)
     - [LaTeX2e: An unofficial reference manual](https://latexref.xyz/Math-symbols.html)
+    - [2005 Symbols](https://sites.math.washington.edu/~reu/docs/latex_symbols.pdf)
 - issues / bugs
     - https://github.com/KaTeX/KaTeX/issues/2003
 - guides / courses
@@ -79,7 +80,7 @@
 - $1 \over {2}$ - alternate fraction
 - $\sum_{i=1}^n$ - sum small
 - $\displaystyle\sum_{i=1}^{n}( \bar{a} + \hat{b}^{i}_{i} )$ - sum big
-- $\displaystyle\prod_{i=1}^n \displaystyle\bigwedge_{i=1}^n  \displaystyle\bigcup_{i=1}^n  \displaystyle\bigvee_{i=1}^n  \displaystyle\bigcap_{i=1}^n  \displaystyle\bigoplus_{i=1}^n  \displaystyle\int_{i=1}^n  \displaystyle\oint_{i=1}^n$ - other sums, sum logic, sum conjunction, sum disjunction, sum union, sum disunion, product, etc.
+- $\displaystyle\prod_{i=1}^n \displaystyle\bigwedge_{i=1}^n  \displaystyle\bigcup_{i=1}^n  \displaystyle\bigvee_{i=1}^n  \displaystyle\bigcap_{i=1}^n  \displaystyle\bigoplus_{i=1}^n  \displaystyle\int_{a}^{b}  \displaystyle\oint_{a}^{b} \bigg\vert_{a}^{b}$ - other sums, sum logic, sum conjunction, sum disjunction, sum union, sum disunion, product, integral, evaluated at, etc.
 - $\mathbf {p} \text{ vs. } p \mathbf {\text{ doesnt work on text }} \text{text}$ - bold
 - displaystyle just means alternate display style
     $$
@@ -111,19 +112,23 @@
     - sayings / isms: $\in \notin$
 - overs:
     $$
-    \overline{ABC} \\
+    \bar{ABC} \\
+    \overline{ABC} \\  % overbar
     \overrightarrow{ABC} \\
-    \widehat{ABC} \\  % yhmath package required
+    \overset{iid}{\sim} \\  % overtext
     \hat{ABC} \\
-    \widehat{ABC} \\
+    \widehat{ABC} \\  % yhmath package required
     \tilde{ABC} \\
     $$
 - functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert $
     $$
-    \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert  % regular pipe doesnt work within sum
+    \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert \\  % regular pipe doesnt work within sum
+    Var(aX + b) = a^2Var(X) \\
+    \text{Var}(aX + b) = a^2\text{Var}(X) \\
+    \operatorname{Var}(aX + b) = a^2\operatorname{Var}(X) \\
     $$
 - divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b a \pmod b a \pod b a \operatorname{div} b \equiv a \bmod c$
-- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as, degrees - $\checkmark \times \sim \degree$
+- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as, degrees - $\checkmark \times \sim \degree \pounds$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
@@ -386,3 +391,4 @@ $$
 
 # Hacks
 - left and right subscript, a prescript if you will ${}^{1}_{2}x^{3}_{4}$ - https://tex.stackexchange.com/a/305700
+    - permutation/combination: ${}_{n}P_{r}, {}_{n}C_{r}$
