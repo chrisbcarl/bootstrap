@@ -31,6 +31,25 @@ function Get-Yes {
 }
 
 
+$script = "$PSScriptRoot\languages\python\install\uninstall-ms-store.ps1"
+$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
+if (Get-Yes -Prompt "Install - $script_short") {
+    Write-Host -ForeGroundColor Cyan "    Please wait..."
+    # -NoNewWindow does not work with -Verb`
+    # note: PassThru necessary, https://stackoverflow.com/a/16018287
+    $proc = Start-Process `
+        -Filepath powershell.exe `
+        -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
+        -Verb RunAs `
+        -PassThru -Wait
+
+    if ($proc.ExitCode -ne 0) {
+        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
+        exit $proc.ExitCode
+    }
+}
+
+
 $script = "$PSScriptRoot\languages\python\install\install-python-requirements.ps1"
 $script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
 if (Get-Yes -Prompt "Install - $script_short") {
