@@ -9,6 +9,7 @@ Example:
     project new -h (from anywhere if install.ps1 is used on the bootstrap project)
 
 Updates:
+    2026-04-03 14:11 - project - adding ignoreme dirpath
     2026-01-27 15:39 - project - re-org to make more understandable, added some docs, added auto-namespace
     2026-01-23 23:39 - project - project-new added external venv installation and no-git
     2026-01-19 00:37 - project - project-new uses correct pyproject.toml, made it a template
@@ -287,6 +288,9 @@ def post_common(args):
         run_commands(cmds, cwd=project_dirpath)
 
     subprocess.check_call(['code', project_dirpath], shell=True)
+
+    ignoreme_dirpath = os.path.join(project_dirpath, 'ignoreme')
+    os.makedirs(ignoreme_dirpath, exist_ok=True)
 
 
 if __name__ == '__main__':

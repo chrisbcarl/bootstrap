@@ -80,3 +80,9 @@ def func():
 $\pagebreak$
 
 # even if unnecessary
+
+
+latex / markdown really NEEDS sentences to end with periods... anything not terminated with a punctuation is confusing to latex conversion.
+
+> empty is good for markdown preview in vscode, not good for latex. eliminate > empties
+

@@ -1,3 +1,5 @@
+<hr>
+
 Refine, validate, or correct the provided answer to the provided question without embellishment. Output both the new answer and a list of changes.
 
 # Question
