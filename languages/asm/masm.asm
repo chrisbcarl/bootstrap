@@ -1,7 +1,31 @@
-ASM tricks:
+; https://www.wikihow.com/Use-MASM-in-Visual-Studio-2022
+; https://pastebin.com/4vwxHJ0x
+
+.386
+.model flat,stdcall
+.stack 4096
+
+; externally defined
+ExitProcess PROTO, dwExitCode:DWORD
+
+.data
+    array1 DWORD 1,2,3,4
+    array2 DWORD 4 DUP(?)
 
 .code
-    XOR AL,AL  # clears the register (everything that's the same is 0'd, all will be the same, so store 0 in AL)
+    main PROC
+        xor AX,AX                   ; clears the register (everything that's the same is 0'd, all will be the same, so store 0 in AL)
 
-    ; goto is bad because its a direct jump. its a hardcoded JMP 12345H.
-    ; call is a relative jump. it's a JMP with displacement relative to the next IP.
+        ; goto is bad because its a direct jump. its a hardcoded JMP 12345H.
+        ; call is a relative jump. it's a JMP with displacement relative to the next IP.
+
+        ; https://stackoverflow.com/a/26134736
+        mov esi, OFFSET array1      ; source pointer in esi
+        mov edi, OFFSET array2      ; destination in edi
+        mov ecx, LENGTHOF array1    ; number of dwords to copy
+        cld                         ; clear direction flag so that pointers are increasing
+        rep movsd                   ; copy ecx dwords
+
+        INVOKE ExitProcess,69
+    main ENDP
+    END main

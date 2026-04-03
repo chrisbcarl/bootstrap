@@ -1,8 +1,10 @@
 :: https://stackoverflow.com/a/33656038
 :: Basically you can add whatever shit you like
 :: %dpnx0 is the full script filepath
+:: CALL /? also explains this as per https://stackoverflow.com/a/14298769
 @echo off
 
+echo Current working directory:     %cd%
 echo Everything, dpnx0:             %~dpnx0
 echo Full path and filename:        %~f0
 echo Drive:                         %~d0
