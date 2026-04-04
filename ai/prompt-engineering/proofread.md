@@ -34,8 +34,8 @@ Given the provided dataset as a CSV and the analytical report PDF:
 
 The attached PDF is a submission for an undergraduate upper division probability and statistics class. For each question posed:
 
-1. Is the provided answer correct?
-2. Can the provided answer be improved for conciseness and clarity?
+1. Is the provided answer correct? If it is not, what is the correct answer?
+2. Can the provided answer be improved with better conciseness, more clarity, or illustrative formatting?
 
 
 <hr>
