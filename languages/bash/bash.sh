@@ -1,3 +1,9 @@
+# set -euxo pipefail  # http://redsymbol.net/articles/unofficial-bash-strict-mode/, https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425
+# -e: bash to immediately exit if any command [1] has a non-zero exit status
+# -u: undefined variable is an error $ echo "$nonexist"
+# -x: all executed commands are printed to the terminal.
+# -o pipefail: prevent errors in a pipeline from being masked. $ grep some-string /non/existent/file | sort
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
