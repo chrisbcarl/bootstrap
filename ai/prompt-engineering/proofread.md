@@ -43,7 +43,7 @@ The attached PDF is a submission for an undergraduate upper division probability
 
 The attached Markdown is a submission for an undergraduate microcontrollers and hardware design class featuring the Intel 8086-Core 2 microprocessors. For each question posed:
 
-1. Is the provided answer correct? If it is not, what is the correct answer?
+1. Is the provided answer correct? Respond with "correct" or "incorrect" first, followed by a discussion why it is incorrect?
 2. Can the provided answer be improved with better conciseness, more clarity, or illustrative formatting?
 
 
