@@ -1,0 +1,6 @@
+- gemma4
+    - overview1: https://ai.google.dev/gemma/docs/core
+- running
+    - prompt formatting: https://ai.google.dev/gemma/docs/core/prompt-formatting-gemma4
+    - overview2: https://ai.google.dev/gemma/docs/run
+- unsloth gemma 3 https://unsloth.ai/blog/gemma3

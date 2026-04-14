@@ -1,0 +1,13 @@
+; https://learn.microsoft.com/en-us/windows/wsl/wsl-config#main-wsl-settings
+[wsl2]
+networkingMode=mirrored
+
+
+; https://learn.microsoft.com/en-us/windows/wsl/wsl-config
+[gpu]
+enabled=true  ; default
+
+
+; https://learn.microsoft.com/en-us/windows/wsl/wsl-config#experimental-settings
+[experimental]
+hostAddressLoopback=true    ; default false
