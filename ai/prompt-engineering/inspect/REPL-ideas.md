@@ -1,0 +1,1 @@
+Record any CLI commands or network requests in the chat window so that this request can be refined in future prompts.

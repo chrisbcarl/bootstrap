@@ -323,7 +323,7 @@ $$
     & p \lor q \\
     & \lnot p \\
     \hline
-    & \blacksquare q \\
+    & \blacksquare q \\  % QED, qed
     & \therefore q \\
     \end{aligned}
     $$

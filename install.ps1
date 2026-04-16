@@ -230,6 +230,7 @@ if (Get-Yes -Prompt "Install - $script_short") {
             if (Test-Path "pyproject.toml" -ErrorAction SilentlyContinue) {
                 poetry install
             }
+            New-Item -ItemType Directory -Path "ignoreme" -ErrorAction SilentlyContinue
             Set-Location $src
         }
 
