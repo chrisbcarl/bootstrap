@@ -18,6 +18,7 @@ cp llama.cpp/build/bin/llama-* llama.cpp
 ```
 
 ## llama-cli
+- [2-core CPU + 8GB DDR2](https://github.com/ggml-org/llama.cpp/discussions/21136) / [gist](https://gist.github.com/0ut0flin3/a64a97d31eb3d0e9261f54206c3bacf3)
 ```bash
 llama-cli \
     -m path/to/your-model.gguf      \
