@@ -12,6 +12,7 @@ function Start-Prompt {
         [Parameter()][string]$Model=$ModelSm
     )
     $start = Get-Date
+    # CPU only, no reasoning/thinking, large output, large context, unsloth recommended code-type responses
     llama-cli `
         -m $Model `
         --n-gpu-layers 0 `
@@ -30,6 +31,6 @@ function Start-Prompt {
     $end = Get-Date
     Write-Host "$($end - $start)"
 }
-Start-Prompt -Prompt "powershell commandlet definition"
 
-Start-Prompt -Prompt "powershell commandlet definition" -Model $ModelLg
+# Start-Prompt -Prompt "powershell commandlet definition"
+# Start-Prompt -Prompt "powershell commandlet definition" -Model $ModelLg
