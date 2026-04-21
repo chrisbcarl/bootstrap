@@ -18,7 +18,8 @@ function Start-PromptEx {
         [Parameter()][string]$Model=$ModelSm,
         [Parameter()][switch]$Cpu,
         [Parameter()][switch]$Large,
-        [Parameter()][switch]$Thinking
+        [Parameter()][switch]$Thinking,
+        [Parameter()][switch]$Random
     )
     $start = Get-Date
     $arglist = @(
@@ -37,7 +38,7 @@ function Start-PromptEx {
     if (-Not $Cpu) {
         # default
         $arglist += @(
-            "--n-gpu-layers", "999"
+            "--n-gpu-layers", "auto"  # rather than 999
         )
     } else {
         $arglist += @(
@@ -66,6 +67,11 @@ function Start-PromptEx {
     if ($Verbose) {
         $arglist += @(
             "--verbose"
+        )
+    }
+    if (-Not $Random) {
+        $arglist += @(
+            "--seed", "69"
         )
     }
 
