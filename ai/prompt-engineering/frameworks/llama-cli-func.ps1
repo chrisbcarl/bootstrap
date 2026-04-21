@@ -1,5 +1,7 @@
+# https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf?download=true
 $ModelSm = "downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"
-$ModelLg = "downloads/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf"
+# https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q6_K_XL.gguf?download=true
+$ModelLg = "downloads/models/Qwen3.6-35B-A3B-UD-Q6_K_XL.gguf"
 
 function Start-Prompt {
     <#

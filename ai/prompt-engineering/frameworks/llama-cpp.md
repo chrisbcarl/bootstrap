@@ -2,8 +2,8 @@
 - [repo](https://github.com/ggml-org/llama.cpp)
 
 ```powershell
-winget install llama.cpp
-refreshenv
+winget install llama.cpp --accept-source-agreements --accept-package-agreements
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 llama-cli -h
 ```
 
