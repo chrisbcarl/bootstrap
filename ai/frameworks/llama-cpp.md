@@ -68,3 +68,6 @@ llama-server.exe `
     --mmproj "Downloads/models/mmproj/mmproj-F16_gemma-4-31B-it-GGUF.gguf"
 ```
 - if [model](https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q5_K_XL.gguf?download=true), then [mmproj](https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/mmproj-F16.gguf?download=true) and I just renamed it
+- documentation
+    - https://github.com/ggml-org/llama.cpp/blob/master/docs/multimodal.md
+    - https://github.com/ggml-org/llama.cpp/blob/master/tools/mtmd/README.md
