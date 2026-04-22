@@ -4,8 +4,10 @@ $ModelSm = "downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"  # 1.84GB
 $ModelLg = "downloads/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf"  # 26.6GB
 # https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q5_K_XL.gguf?download=true
 $ModelGm = "downloads/models/gemma-4-31B-it-UD-Q5_K_XL.gguf"  # 21.9GB
-# # https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF/resolve/main/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf?download=true
+# https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF/resolve/main/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf?download=true
 $Model33 = "downloads/models/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf"  # 27.7GB
+# https://huggingface.co/unsloth/gemma-3-27b-it-GGUF/resolve/main/gemma-3-27b-it-Q5_K_M.gguf?download=true
+$ModelMm = "downloads/models/gemma-3-27b-it-Q5_K_M.gguf"  # 19.3GB
 
 function Start-PromptEx {
     <#

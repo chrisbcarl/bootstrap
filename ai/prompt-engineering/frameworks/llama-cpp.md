@@ -60,3 +60,11 @@ curl -s --request POST \
     | python3 -m json.tool
 ```
 
+## Multi-Modal (images, audio etc)
+- WARNING: as of 2026-04-21, the only way to use multi-modal is llama-server
+```bash
+llama-server.exe `
+    -m "downloads/models/gemma-4-31B-it-UD-Q5_K_XL.gguf" `
+    --mmproj "Downloads/models/mmproj/mmproj-F16_gemma-4-31B-it-GGUF.gguf"
+```
+- if [model](https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q5_K_XL.gguf?download=true), then [mmproj](https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/mmproj-F16.gguf?download=true) and I just renamed it
