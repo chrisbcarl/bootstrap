@@ -7,6 +7,7 @@ Description:
     Terminal settings
 
 Updates:
+    2026-04-28 12:43 - install - refactor into a script invoking function, add ps-profile install
     2026-01-25 14:31 - install - added git config, -Yes global, src projects
     2026-01-05 01:26 - install - added the terminal settings
 #>
@@ -30,43 +31,58 @@ function Get-Yes {
     return ($confirmation.Count -gt 0) -and ($confirmation[0] -eq 'y')
 }
 
+function Invoke-ScriptInteractive {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)][string]$Exe,
+        [Parameter(Mandatory=$true)][string]$ScriptPath,
+        [Parameter()][switch]$Admin
+    )
+    $ScriptShort = $([IO.Path]::GetFileNameWithoutExtension($ScriptPath))
+    if (Get-Yes -Prompt "Install - $ScriptShort") {
+        Write-Host -ForeGroundColor Cyan "Install - $ScriptShort"
+        if ($exe -eq "powershell.exe") {
+            $ArgumentList = @("-noprofile", "-executionpolicy", "bypass", "-File", $ScriptPath)
+        } else {
+            $ArgumentList = $ScriptPath
+        }
+        if ($Admin) {
+            # -NoNewWindow does not work with -Verb`
+            # note: PassThru necessary, https://stackoverflow.com/a/16018287
+            $proc = Start-Process `
+                -Filepath $Exe `
+                -ArgumentList $ArgumentList `
+                -Verb RunAs `
+                -PassThru -Wait
+        } else {
+            $proc = Start-Process `
+                -Filepath $Exe `
+                -ArgumentList $ArgumentList `
+                -NoNewWindow `
+                -PassThru -Wait
+        }
 
-$script = "$PSScriptRoot\languages\python\install\uninstall-ms-store.ps1"
-$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
-if (Get-Yes -Prompt "Install - $script_short") {
-    Write-Host -ForeGroundColor Cyan "    Please wait..."
-    # -NoNewWindow does not work with -Verb`
-    # note: PassThru necessary, https://stackoverflow.com/a/16018287
-    $proc = Start-Process `
-        -Filepath powershell.exe `
-        -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
-        -Verb RunAs `
-        -PassThru -Wait
-
-    if ($proc.ExitCode -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-        exit $proc.ExitCode
+        if ($proc.ExitCode -ne 0) {
+            Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
+            exit $proc.ExitCode
+        }
     }
 }
 
 
-$script = "$PSScriptRoot\languages\python\install\install-python-requirements.ps1"
-$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
-if (Get-Yes -Prompt "Install - $script_short") {
-    Write-Host -ForeGroundColor Cyan "    Please wait..."
-    # -NoNewWindow does not work with -Verb`
-    # note: PassThru necessary, https://stackoverflow.com/a/16018287
-    $proc = Start-Process `
-        -Filepath powershell.exe `
-        -ArgumentList "-noprofile", "-executionpolicy", "bypass", "-File", $script `
-        -Verb RunAs `
-        -PassThru -Wait
+Invoke-ScriptInteractive `
+    -Exe "powershell.exe" `
+    -ScriptPath "$PSScriptRoot\operating-systems\windows\on-new-pc\install-ps-profile.ps1"
 
-    if ($proc.ExitCode -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-        exit $proc.ExitCode
-    }
-}
+Invoke-ScriptInteractive `
+    -Admin `
+    -Exe "powershell.exe" `
+    -ScriptPath "$PSScriptRoot\languages\python\install\uninstall-ms-store.ps1"
+
+Invoke-ScriptInteractive `
+    -Admin `
+    -Exe "powershell.exe" `
+    -ScriptPath "$PSScriptRoot\languages\python\install\install-python-requirements.ps1"
 
 
 $env_var_module = [IO.Path]::GetFullPath("$PSScriptRoot/languages/powershell/modules/env-var.psm1")
@@ -131,42 +147,14 @@ if (Get-Yes -Prompt "Install - bootstrap .venv") {
 }
 
 
-$script = "$PSScriptRoot\.vscode\vscode-user-settings-write.py"
-$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
-if (Get-Yes -Prompt "Install - $script_short") {
-    Write-Host -ForeGroundColor Cyan "    Please wait..."
-    # note: PassThru necessary, https://stackoverflow.com/a/16018287
-    # -Verb RunAs `
-    $proc = Start-Process `
-        -Filepath python.exe `
-        -ArgumentList $script `
-        -NoNewWindow `
-        -PassThru -Wait
-
-    if ($proc.ExitCode -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-        exit $proc.ExitCode
-    }
-}
+Invoke-ScriptInteractive `
+    -Exe "python.exe" `
+    -ScriptPath "$PSScriptRoot\.vscode\vscode-user-settings-write.py"
 
 
-$script = "$PSScriptRoot\operating-systems\windows\terminal\terminal-user-settings-write.py"
-$script_short = $([IO.Path]::GetFileNameWithoutExtension($script))
-if (Get-Yes -Prompt "Install - $script_short") {
-    Write-Host -ForeGroundColor Cyan "    Please wait..."
-    # note: PassThru necessary, https://stackoverflow.com/a/16018287
-    # -Verb RunAs `
-    $proc = Start-Process `
-        -Filepath python.exe `
-        -ArgumentList $script `
-        -NoNewWindow `
-        -PassThru -Wait
-
-    if ($proc.ExitCode -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-        exit $proc.ExitCode
-    }
-}
+Invoke-ScriptInteractive `
+    -Exe "python.exe" `
+    -ScriptPath "$PSScriptRoot\operating-systems\windows\terminal\terminal-user-settings-write.py"
 
 
 $script_short = "src projects"

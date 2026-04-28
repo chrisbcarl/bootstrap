@@ -281,6 +281,20 @@ $$
             \end{pmatrix}
         }
     $$
+- matrix bracketed with array equivalent
+    $$
+    (X'X)^{-1} = \begin{bmatrix}
+    0.893758 & -0.0282448 & -0.0175641 \\
+    -0.0282448 & 0.0013329 & 0.0001547 \\
+    -0.0175641 & 0.0001547 & 0.0009108
+    \end{bmatrix} = \left[ \begin{array}
+    {rrr}
+    0.893758 & -0.0282448 & -0.0175641 \\
+    -0.0282448 & 0.0013329 & 0.0001547 \\
+    -0.0175641 & 0.0001547 & 0.0009108
+    \end{array} \right]
+    $$
+
 - $\vdots \cdots \ddots$ - elipses
 - big matrix from https://latex-tutorial.com/ellipses-in-latex/, note boldface matrix symbol
 $$
