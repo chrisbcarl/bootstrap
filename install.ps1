@@ -17,6 +17,16 @@ param (
     [Parameter()][Switch]$Yes
 )
 
+
+$modules = @(
+    'languages\powershell\modules\env-var.psm1',
+    'languages\powershell\modules\start-process-invoke-script.psm1'
+)
+foreach ($module in $modules) {
+    Import-Module -Name $([IO.Path]::GetFullPath($module)) -Force
+}
+
+
 function Get-Yes {
     [CmdletBinding()]
     param (
@@ -31,6 +41,7 @@ function Get-Yes {
     return ($confirmation.Count -gt 0) -and ($confirmation[0] -eq 'y')
 }
 
+
 function Invoke-ScriptInteractive {
     [CmdletBinding()]
     param (
@@ -40,33 +51,38 @@ function Invoke-ScriptInteractive {
     )
     $ScriptShort = $([IO.Path]::GetFileNameWithoutExtension($ScriptPath))
     if (Get-Yes -Prompt "Install - $ScriptShort") {
-        Write-Host -ForeGroundColor Cyan "Install - $ScriptShort"
-        if ($exe -eq "powershell.exe") {
-            $ArgumentList = @("-noprofile", "-executionpolicy", "bypass", "-File", $ScriptPath)
-        } else {
-            $ArgumentList = $ScriptPath
-        }
         if ($Admin) {
-            # -NoNewWindow does not work with -Verb`
-            # note: PassThru necessary, https://stackoverflow.com/a/16018287
-            $proc = Start-Process `
-                -Filepath $Exe `
-                -ArgumentList $ArgumentList `
-                -Verb RunAs `
-                -PassThru -Wait
+            Invoke-Script -Exe $Exe -ScriptPath $ScriptPath -Admin
         } else {
-            $proc = Start-Process `
-                -Filepath $Exe `
-                -ArgumentList $ArgumentList `
-                -NoNewWindow `
-                -PassThru -Wait
-        }
-
-        if ($proc.ExitCode -ne 0) {
-            Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-            exit $proc.ExitCode
+            Invoke-Script -Exe $Exe -ScriptPath $ScriptPath
         }
     }
+}
+
+
+function Invoke-ScriptBlockInteractive {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)][string]$ScriptBlock,
+        [Parameter()][switch]$Admin
+    )
+    if (Get-Yes -Prompt "Install - $ScriptBlock") {
+        if ($Admin) {
+            Invoke-ScriptBlock -ScriptBlock $ScriptBlock -Admin
+        } else {
+            Invoke-ScriptBlock -ScriptBlock $ScriptBlock
+        }
+    }
+}
+
+
+if (Get-Yes -Prompt "Install - conda hook disable?") {
+    $ScriptBlock = @"
+        Import-Module -Name $([IO.Path]::GetFullPath('languages\powershell\modules\env-var.psm1')) -Force
+        Set-EnvVarRefresh -Key "CONDA_HOOK" -Value "0"
+        pause
+"@
+    Invoke-ScriptBlockInteractive -ScriptBlock $ScriptBlock -Admin
 }
 
 
@@ -74,19 +90,17 @@ Invoke-ScriptInteractive `
     -Exe "powershell.exe" `
     -ScriptPath "$PSScriptRoot\operating-systems\windows\on-new-pc\install-ps-profile.ps1"
 
+
 Invoke-ScriptInteractive `
     -Admin `
     -Exe "powershell.exe" `
     -ScriptPath "$PSScriptRoot\languages\python\install\uninstall-ms-store.ps1"
 
+
 Invoke-ScriptInteractive `
     -Admin `
     -Exe "powershell.exe" `
     -ScriptPath "$PSScriptRoot\languages\python\install\install-python-requirements.ps1"
-
-
-$env_var_module = [IO.Path]::GetFullPath("$PSScriptRoot/languages/powershell/modules/env-var.psm1")
-Import-Module -Name $env_var_module -Force
 
 
 $script_short = "PATH bootstrap/scripts"
@@ -105,24 +119,7 @@ if (Get-Yes -Prompt "Install - $script_short") {
         Write-Host '$system_path_text_clean'
         pause
 "@
-    Write-Host $ScriptBlock.ToString()
-    $ArgumentList = @(
-        "-Command",
-        "&",
-        "{$ScriptBlock}"
-    )
-    # -NoNewWindow does not work with -Verb`
-    # note: PassThru necessary, https://stackoverflow.com/a/16018287
-    $proc = Start-Process `
-        -FilePath powershell.exe `
-        -ArgumentList $ArgumentList `
-        -Verb RunAs `
-        -PassThru -Wait
-
-    if ($proc.ExitCode -ne 0) {
-        Write-Host -ForeGroundColor DarkRed "FAILED: $script_short, ec $($proc.ExitCode)!"
-        exit $proc.ExitCode
-    }
+    Invoke-ScriptBlock -ScriptBlock $ScriptBlock
 
     Write-Host -ForegroundColor Yellow  "SYSTEM PATH Before - $system_path_text_raw"
     Write-Host -ForegroundColor Green   "SYSTEM PATH After  - $system_path_text_clean"

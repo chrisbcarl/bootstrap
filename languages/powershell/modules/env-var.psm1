@@ -1,3 +1,5 @@
+Import-Module -Name "$PSScriptRoot/is-admin.psm1" -Force
+
 function Get-CleanPath {
     <#
     -Content "%VARNAME%;C:\Whatever\\;C:\Whatever;C:\Python310"
@@ -13,7 +15,8 @@ function Get-CleanPath {
     )
     $visited = @{}
     $clean_path = @()
-    $Content -split ';' | ForEach-Object {
+    $tokens = $Content -split ';'
+    foreach ($_ in $tokens) {
         if (-Not $RemoveList.Contains($_)){
             $token = "$_\" -replace "\\{2,}","\"
             $token = $token.replace('\;', ';')
@@ -39,3 +42,24 @@ function Get-CleanPath {
     $variable_text = $clean_path -join ';'
     return $variable_text
 }
+
+function Set-EnvVarRefresh {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)][string]$Key,
+        [Parameter(Mandatory=$true)][string]$Value
+    )
+    if (-not (Get-IsAdmin)) {
+        throw [System.Exception]::new("not admin!")
+    }
+    $SystemRegKey = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+    New-ItemProperty -Path $SystemRegKey `
+        -Name $Key -Value $Value `
+        -PropertyType ExpandString -Force
+    #also includes default, options params -- '', 'DoNotExpandEnvironmentNames'
+    $Expanded = (Get-Item -Path $SystemRegKey).GetValue($Key)
+    [System.Environment]::SetEnvironmentVariable($Key, $Expanded)
+}
+
+
+Export-ModuleMember -Function Get-CleanPath,Set-EnvVarRefresh

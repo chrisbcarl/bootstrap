@@ -1,18 +1,13 @@
-if (-Not (Get-Command llama-cli.exe -ErrorAction SilentlyContinue)) {
-    Write-Warning "llama.cpp not installed! install llama.cpp first!"
-    return
-}
-
 # https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf?download=true
-$env:ModelSm = "downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"  # 1.84GB
+$env:ModelSm = "$($env:USERPROFILE)/downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"  # 1.84GB
 # https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf?download=true
-$env:ModelLg = "downloads/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf"  # 26.6GB
+$env:ModelLg = "$($env:USERPROFILE)/downloads/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf"  # 26.6GB
 # https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q5_K_XL.gguf?download=true
-$env:ModelGm = "downloads/models/gemma-4-31B-it-UD-Q5_K_XL.gguf"  # 21.9GB
+$env:ModelGm = "$($env:USERPROFILE)/downloads/models/gemma-4-31B-it-UD-Q5_K_XL.gguf"  # 21.9GB
 # https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF/resolve/main/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf?download=true
-$env:Model33 = "downloads/models/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf"  # 27.7GB
+$env:Model33 = "$($env:USERPROFILE)/downloads/models/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf"  # 27.7GB
 # https://huggingface.co/unsloth/gemma-3-27b-it-GGUF/resolve/main/gemma-3-27b-it-Q5_K_M.gguf?download=true
-$env:ModelMm = "downloads/models/gemma-3-27b-it-Q5_K_M.gguf"  # 19.3GB
+$env:ModelMm = "$($env:USERPROFILE)/downloads/models/gemma-3-27b-it-Q5_K_M.gguf"  # 19.3GB
 
 function Start-PromptEx {
     <#
@@ -98,3 +93,8 @@ function Start-PromptEx {
 }
 
 # Start-PromptEx -Prompt "llama-cli move thinking phase away from CPU to GPU" -Model $ModelGm -Verbose
+if (-Not (Get-Command llama-cli.exe -ErrorAction SilentlyContinue)) {
+    Write-Warning "llama.cpp not installed! install llama.cpp first!"
+} else {
+    Export-ModuleMember -Function Start-PromptEx
+}
