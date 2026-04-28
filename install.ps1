@@ -19,8 +19,8 @@ param (
 
 
 $modules = @(
-    'languages\powershell\modules\env-var.psm1',
-    'languages\powershell\modules\start-process-invoke-script.psm1'
+    "$PSScriptRoot\languages\powershell\modules\env-var.psm1",
+    "$PSScriptRoot\languages\powershell\modules\start-process-invoke-script.psm1"
 )
 foreach ($module in $modules) {
     Import-Module -Name $([IO.Path]::GetFullPath($module)) -Force
@@ -76,13 +76,18 @@ function Invoke-ScriptBlockInteractive {
 }
 
 
-if (Get-Yes -Prompt "Install - conda hook disable?") {
-    $ScriptBlock = @"
-        Import-Module -Name $([IO.Path]::GetFullPath('languages\powershell\modules\env-var.psm1')) -Force
-        Set-EnvVarRefresh -Key "CONDA_HOOK" -Value "0"
-        pause
+
+if (-Not $Yes) {
+    if (Get-Yes -Prompt "Install - conda hook toggle, current val $($env:CONDA_HOOK)?") {
+        $conda_hook = $(if ($env:CONDA_HOOK -eq "1") { "0" } else { "1" })
+        $env_var = [IO.Path]::GetFullPath("$PSScriptRoot\languages\powershell\modules\env-var.psm1")
+        $ScriptBlock = @"
+            Import-Module -Name "$env_var" -Force
+            Set-EnvVarRefresh -Key "CONDA_HOOK" -Value "$conda_hook"
+            pause
 "@
-    Invoke-ScriptBlockInteractive -ScriptBlock $ScriptBlock -Admin
+        Invoke-ScriptBlockInteractive -ScriptBlock $ScriptBlock -Admin
+    }
 }
 
 
@@ -119,7 +124,7 @@ if (Get-Yes -Prompt "Install - $script_short") {
         Write-Host '$system_path_text_clean'
         pause
 "@
-    Invoke-ScriptBlock -ScriptBlock $ScriptBlock
+    Invoke-ScriptBlock -ScriptBlock $ScriptBlock -Admin
 
     Write-Host -ForegroundColor Yellow  "SYSTEM PATH Before - $system_path_text_raw"
     Write-Host -ForegroundColor Green   "SYSTEM PATH After  - $system_path_text_clean"

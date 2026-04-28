@@ -19,5 +19,3 @@ Get-ChildItem -Path $PSScriptRoot -Filter "*.psm1" | ForEach-Object {
     Import-Module -Name $_.FullName -Force
 }
 #endregion
-
-Write-Host -ForegroundColor Green "Done!"
