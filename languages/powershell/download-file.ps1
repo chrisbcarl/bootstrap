@@ -20,6 +20,7 @@ foreach ($url in $URLS) {
     Write-Host -ForegroundColor Green "downloading $basename from $url to '$filepath'"
     try {
         $WEB_CLIENT.DownloadFile($url, $filepath)
+        # WARNING:
         # Invoke-WebRequest -Uri $url -OutFile $filepath  # slow somehow
         Write-Host -ForegroundColor Green "'$filepath'"
     } catch {
