@@ -7,6 +7,11 @@ Get-WmiObject -Class Win32_Processor | Select-Object Name, Manufacturer, Caption
 # CoreCount                     :
 # VirtualizationFirmwareEnabled : True
 
+# OR
+# https://learn.microsoft.com/en-us/answers/questions/1611742/how-to-check-whether-virtualization-is-enabled-or
+(Get-ComputerInfo -Property "HyperV*").HyperVisorPresent  # non-admin, main one
+bcdedit | findstr hypervisorlaunchtype  # administrator, assert Auto
+
 wsl --install  # the foundation that docker actually runs on
 wsl --shutdown  # WARNING: shutdown wsl if ram usage too high TODO: doesnt actually shut things down... not sure why
 
@@ -15,6 +20,7 @@ choco install docker-desktop docker-cli -y
 
 # full lifecycle example:
 docker pull fedora:rawhide
+docker pull ubuntu  # latest
 # launch the image with a bunch of options, -itd most important, sets interactive, tty, daemon
 docker run -itd --name fedora --memory="512m" --cpuset-cpus="3-6" --gpus all -v c:\temp:/tmp/c-temp -e DB_HOST=localhost -p 5000:5000 fedora:rawhide
 docker ps -a  # list image instances
@@ -29,7 +35,7 @@ dnf check-update
 dnf upgrade -y
 dnf group install development-tools -y
 dnf install tmux nvtop htop stress -y
-exit
+exit  # once interracted with, it stops
 
 # image is now stopped
 docker ps -a  # fedora is stopped because you exited
