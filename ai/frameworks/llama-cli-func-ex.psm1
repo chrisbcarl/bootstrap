@@ -9,7 +9,7 @@ $env:Model33 = "$($env:USERPROFILE)/downloads/models/Llama-3.3-70B-Instruct-UD-I
 # https://huggingface.co/unsloth/gemma-3-27b-it-GGUF/resolve/main/gemma-3-27b-it-Q5_K_M.gguf?download=true
 $env:ModelMm = "$($env:USERPROFILE)/downloads/models/gemma-3-27b-it-Q5_K_M.gguf"  # 19.3GB
 
-function Start-PromptEx {
+function Invoke-Prompt {
     <#
     https://unsloth.ai/docs/models/qwen3.6#llama.cpp-guides
     see https://unsloth.ai/docs/models/qwen3.6#llama.cpp-guides#qwen3.6-35b-a3b
@@ -92,9 +92,9 @@ function Start-PromptEx {
     return $proc.ExitCode
 }
 
-# Start-PromptEx -Prompt "llama-cli move thinking phase away from CPU to GPU" -Model $ModelGm -Verbose
+# Invoke-Prompt -Prompt "llama-cli move thinking phase away from CPU to GPU" -Model $ModelGm -Verbose
 if (-Not (Get-Command llama-cli.exe -ErrorAction SilentlyContinue)) {
     Write-Warning "llama.cpp not installed! install llama.cpp first!"
 } else {
-    Export-ModuleMember -Function Start-PromptEx
+    Export-ModuleMember -Function Invoke-Prompt
 }
