@@ -20,6 +20,7 @@ function Invoke-Prompt {
         [Parameter()][string]$Model=$env:ModelSm,
         [Parameter()][switch]$Cpu,
         [Parameter()][switch]$Large,
+        [Parameter()][switch]$Huge,
         [Parameter()][switch]$Thinking,
         [Parameter()][switch]$Random
     )
@@ -47,11 +48,16 @@ function Invoke-Prompt {
             "--n-gpu-layers", "0"
         )
     }
-    if (-Not $Large) {
+    if ((-Not $Large) -and (-Not $Huge)) {
         # default (not necessarily defaults of model/llama-cli)
         $arglist += @(
             "-n", "512",
             "--ctx-size", "512"
+        )
+    } elseif ($huge) {
+        $arglist += @(
+            "-n", "32768",
+            "--ctx-size", "32768"
         )
     } else {
         $arglist += @(

@@ -120,7 +120,7 @@
     \widehat{ABC} \\  % yhmath package required
     \tilde{ABC} \\
     $$
-- functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert $
+- functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert \operatorname{function-Name-Anything}(x, y, z)$
     $$
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert \\  % regular pipe doesnt work within sum
     Var(aX + b) = a^2Var(X) \\

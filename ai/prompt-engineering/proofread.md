@@ -1,9 +1,9 @@
 <!--Simplistic-->
 
 
-This PDF applies ~~Principle Component Analysis (PCA) to a small dataset~~ for the purposes of an academic assignment.
+This ~~PDF~~ applies ~~Principle Component Analysis (PCA) to a small dataset~~ for the purposes of an academic assignment.
 
-Analyze the PDF for mistakes in theory, methodology, or conclusion. List these areas for improvement.
+Analyze the ~~PDF~~ for mistakes in theory, methodology, or conclusion. List these areas for improvement.
 
 <hr>
 
@@ -11,7 +11,7 @@ Analyze the PDF for mistakes in theory, methodology, or conclusion. List these a
 <!--Better-->
 
 
-The attached PDF is a submission for an ~~undergraduate upper division probability and statistics~~ class.
+The attached ~~PDF~~ is a submission for an ~~undergraduate upper division probability and statistics~~ class.
 
 For each question posed:
 1. Is the provided answer correct? Respond with "correct" or "incorrect" first, followed by a discussion why it is incorrect?

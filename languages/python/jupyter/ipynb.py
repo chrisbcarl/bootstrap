@@ -116,7 +116,13 @@ else:
         res = subprocess.check_output('which latex', universal_newlines=True)
         latex_exists = bool(res)
 
-plt.rcParams.update({'text.usetex': latex_exists})  # , 'font.family': 'Helvetica'  # requires latex installed
+plt.rcParams.update(
+    {
+        'text.usetex': latex_exists,  # , 'font.family': 'Helvetica'  # requires latex installed
+        'text.latex.preamble': r'\usepackage{amsmath}',  # https://stackoverflow.com/a/23856968  \text command
+    }
+
+)
 
 # command to tell the notebook to plt.show() IN THE NOTEBOOK, otherwise you call plt.show()
 get_ipython().run_line_magic('matplotlib', 'inline')

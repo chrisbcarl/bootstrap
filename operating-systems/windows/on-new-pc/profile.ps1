@@ -15,7 +15,11 @@ if ([System.Environment]::GetEnvironmentVariable('CONDA_HOOK') -and ($env:CONDA_
 #region module import
 Write-Host -ForegroundColor Cyan "psm1 imports..."
 Get-ChildItem -Path $PSScriptRoot -Filter "*.psm1" | ForEach-Object {
-    Write-Host -ForegroundColor Cyan "    $_"
     Import-Module -Name $_.FullName -Force
+    $ModuleName = [IO.Path]::GetFileNameWithoutExtension($_.Name)  # must be base name
+    Write-Host -ForegroundColor Cyan "    $ModuleName.psm1"
+    Get-Command -Module $ModuleName | ForEach-Object {
+        Write-Host "        * $($_.Name)"  # Invoke-Prompt, whatever
+    }
 }
 #endregion
