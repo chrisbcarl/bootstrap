@@ -1,22 +1,23 @@
 function Get-FileDownload {
     [CmdletBinding()]
     param (
+        [Parameter(Mandatory=$true)][string[]]$Urls,
         [Parameter()][string]$Destination="$env:USERPROFILE\downloads",
-        [Parameter()][string[]]$Urls
+        [Parameter()][switch]$Force
     )
 
     $WEB_CLIENT = New-Object System.Net.WebClient
 
     $errors = @()
-    foreach ($url in $URLS) {
+    foreach ($url in $Urls) {
         if ($null -eq $url) {
             continue
         }
         $basename = $url.Split('/')
         $basename = $basename[$basename.Count - 1]
         $basename = $basename.Split('?')[0]
-        $filepath = [IO.Path]::GetFullPath("$OUTPUT_DIRPATH/$basename")
-        if (Test-Path -Path $filepath -ErrorAction SilentlyContinue) {
+        $filepath = [IO.Path]::GetFullPath("$Destination/$basename")
+        if ((-Not $Force) -and (Test-Path -Path $filepath -ErrorAction SilentlyContinue)) {
             Write-Host -ForegroundColor Green "$basename exists at '$filepath'"
             continue
         }
@@ -27,7 +28,7 @@ function Get-FileDownload {
             # Invoke-WebRequest -Uri $url -OutFile $filepath  # slow somehow
             Write-Host -ForegroundColor Green "'$filepath'"
         } catch {
-            $errors += @(url)
+            $errors += @($url)
         }
     }
 
