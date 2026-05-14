@@ -52,3 +52,5 @@ function Start-ElevatedContextBlock {
     exit $ec
 }
 
+Export-ModuleMember -Function Start-ElevatedContextBlock
+

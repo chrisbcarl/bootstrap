@@ -1,11 +1,24 @@
 # https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf?download=true
-$env:ModelSm = "$($env:USERPROFILE)/downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"  # 1.84GB
+$env:ModelTn = "$($env:USERPROFILE)/downloads/models/Llama-3.2-1B-Instruct-UD-Q8_K_XL.gguf"  # 1B, 1.84GB
+
+# https://huggingface.co/unsloth/granite-4.0-h-tiny-GGUF/resolve/main/granite-4.0-h-tiny-UD-Q4_K_XL.gguf?download=true
+$env:ModelSm = "$($env:USERPROFILE)/downloads/models/granite-4.0-h-tiny-UD-Q4_K_XL.gguf"  # 7B, 3.9GB
+
+# https://huggingface.co/unsloth/Ministral-3-14B-Reasoning-2512-GGUF/resolve/main/Ministral-3-14B-Reasoning-2512-UD-Q4_K_XL.gguf?download=true
+$env:ModelMd = "$($env:USERPROFILE)/downloads/models/Ministral-3-14B-Reasoning-2512-UD-Q4_K_XL.gguf"  # 14B, 8.1GB
+
 # https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf?download=true
-$env:ModelLg = "$($env:USERPROFILE)/downloads/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf"  # 26.6GB
+$env:ModelLg = "$($env:USERPROFILE)/downloads/models/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf"  # 35B, 26.6GB
+
+# https://huggingface.co/unsloth/granite-4.0-h-small-GGUF/resolve/main/granite-4.0-h-small-UD-Q4_K_XL.gguf?download=true
+$env:ModelMs = "$($env:USERPROFILE)/downloads/models/granite-4.0-h-small-UD-Q4_K_XL.gguf"  # 32B, 18.3GB
+
 # https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q5_K_XL.gguf?download=true
 $env:ModelGm = "$($env:USERPROFILE)/downloads/models/gemma-4-31B-it-UD-Q5_K_XL.gguf"  # 21.9GB
+
 # https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF/resolve/main/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf?download=true
 $env:Model33 = "$($env:USERPROFILE)/downloads/models/Llama-3.3-70B-Instruct-UD-IQ3_XXS.gguf"  # 27.7GB
+
 # https://huggingface.co/unsloth/gemma-3-27b-it-GGUF/resolve/main/gemma-3-27b-it-Q5_K_M.gguf?download=true
 $env:ModelMm = "$($env:USERPROFILE)/downloads/models/gemma-3-27b-it-Q5_K_M.gguf"  # 19.3GB
 

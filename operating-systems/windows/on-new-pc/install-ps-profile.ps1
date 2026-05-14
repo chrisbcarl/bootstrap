@@ -1,6 +1,7 @@
 $BootstrapRoot = [IO.Path]::GetFullPath("$PSScriptRoot\..\..\..\")
 $KnownModules = @(
-    "$BootstrapRoot\ai\frameworks\llama-cli-func-ex.psm1"
+    "$BootstrapRoot\languages\powershell\modules",          # directory
+    "$BootstrapRoot\ai\frameworks\llama-cli-func-ex.psm1"   # module
 )
 
 foreach ($KnownModule in $KnownModules) {
@@ -19,7 +20,13 @@ New-Item -ItemType Directory -Path $profile_ps1_dst -ErrorAction SilentlyContinu
 Write-Host -ForegroundColor Cyan "Installing profile.ps1 and accompanying modules..."
 Copy-Item -Path $profile_ps1_src -Destination $profile_ps1_dst -Force
 foreach ($KnownModule in $KnownModules) {
-    Copy-Item -Path $KnownModule -Destination $profile_ps1_dst -Force
+    if (Test-Path $KnownModule -PathType Container) {
+        Get-ChildItem -Path $KnownModule -Filter "*.psm1" | ForEach-Object {
+            Copy-Item -Path $_.FullName -Destination $profile_ps1_dst -Force
+        }
+    } else {
+        Copy-Item -Path $KnownModule -Destination $profile_ps1_dst -Force
+    }
 }
 
 Write-Host -ForegroundColor Green "Done!"

@@ -11,3 +11,5 @@ function Invoke-AsAdmin {
         exit
     }
 }
+
+Export-ModuleMember -Function Get-IsAdmin,Invoke-AsAdmin
