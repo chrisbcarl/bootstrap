@@ -9,7 +9,14 @@ function Get-FileDownload {
     $WEB_CLIENT = New-Object System.Net.WebClient
 
     $errors = @()
+    $idx = 0
+    $Activity = "Downloading"
     foreach ($url in $Urls) {
+        $PercentComplete = ($idx / $Urls.Count * 100)
+        $Status = "$idx / $($Urls.Count) - $url @ $PercentComplete%"
+        Write-Progress -Activity $Activity -Status $Status -PercentComplete $PercentComplete
+        $idx += 1
+
         if ($null -eq $url) {
             continue
         }
@@ -21,7 +28,6 @@ function Get-FileDownload {
             Write-Host -ForegroundColor Green "$basename exists at '$filepath'"
             continue
         }
-        Write-Host -ForegroundColor Green "downloading $basename from $url to '$filepath'"
         try {
             $WEB_CLIENT.DownloadFile($url, $filepath)
             # WARNING:
