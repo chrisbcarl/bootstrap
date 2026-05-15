@@ -10,55 +10,61 @@ In the context of an ~~undergraduate operating systems course~~, evaluate the up
 - Create 1 output file: a downloadable Markdown file containing the formatted questions and answers.
     - the file should contain the same structure order as the rules with the same headings depth.
 - Explanations should be concise. Do not over-explain or over-elaberate per answer.
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}` should be replaced by an appropriate description of the currently running LLM. Examples include `Google Gemini 3.1 Pro`, `Anthropic Opus 4.7 Adaptive`, `OpenAI ChatGPT 5.5 Thinking Extended`.
-
+- `[{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})` should be replaced by an appropriate description of the currently running LLM and a link to the current session if discoverable. If such a link is not discoverable, use backticks for emphasis. Examples include:
+    - `Meta Llama 3.1`
+    - `Mistral Large 2`
+    - `Alibaba Qwen 3.6 Flash`
+    - `Deepseek v4 Flash`
+    - [Google Gemini 3.1 Pro](https://gemini.google.com/app/3b503bfde7d9fe46)
+    - [Anthropic Claude Opus 4.7 Adaptive](https://claude.ai/chat/51e78585-3c6f-45b8-a712-0d013ca764d8)
+    - [OpenAI ChatGPT 5.5 Thinking Extended](https://chatgpt.com/g/g-p-68d5f31414548191bb80984a98400b43-operating-systems/c/6a0455ea-e378-8330-8f09-e3fa8a5cdf3b)
 
 ### Acronyms
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
-|acronym|meaning           |
-|---    |---               |
-|ABC    |Alpha Beta Charlie|
-|DEF    |Delta Echo Foxtrot|
-|GHI    |Golf Hotel Indigo |
-|XYZ    |X-ray Yankee Zulu |
+    |acronym|meaning           |
+    |---    |---               |
+    |ABC    |Alpha Beta Charlie|
+    |DEF    |Delta Echo Foxtrot|
+    |GHI    |Golf Hotel Indigo |
+    |XYZ    |X-ray Yankee Zulu |
 
 ### Definitions
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
-|term     |definition                |
-|---      |---                       |
-|Life     |The result of living      |
-|Liberty  |Freedom from and fredom to|
-|Happiness|Self-actualization        |
+    |term     |definition                |
+    |---      |---                       |
+    |Life     |The result of living      |
+    |Liberty  |Freedom from and fredom to|
+    |Happiness|Self-actualization        |
 
 ### Fill In the Blank
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
-1. Question text that used underscores for the blank should use <u>underline</u> for the answer.
-    - other options include: {explain-other-options}
-2. A second fill in the <u>blank</u>.
-    - other options include: {explain-other-options}
+    1. Question text that used underscores for the blank should use <u>underline</u> for the answer.
+        - other options include: {explain-other-options}
+    2. A second fill in the <u>blank</u>.
+        - other options include: {explain-other-options}
 
 ### Multiple Choice
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
-1. A multiple choice question should be responded to in-line.
-    - (a) `[ ]` A only;
-    - (b) `[ ]` B only;
-    - (c) `[x]` A and B;
-    - (d) `[ ]` something else;
-    - reasoning: {explain-reasoning}
-2. A multi-choice multiple choice question.
-    - (a) `[ ]` A only;
-    - (b) `[ ]` B only;
-    - (c) `[x]` A and B;
-    - (d) `[x]` something else;
-    - reasoning: {explain-reasoning}
+    1. A multiple choice question should be responded to in-line.
+        - (a) `[ ]` A only;
+        - (b) `[ ]` B only;
+        - (c) `[x]` A and B;
+        - (d) `[ ]` something else;
+        - reasoning: {explain-reasoning}
+    2. A multi-choice multiple choice question.
+        - (a) `[ ]` A only;
+        - (b) `[ ]` B only;
+        - (c) `[x]` A and B;
+        - (d) `[x]` something else;
+        - reasoning: {explain-reasoning}
 
 ### Essay
 
@@ -73,7 +79,7 @@ $$
 # any code used in the question prompt
 ```
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
     {answer-line-1}
 
@@ -92,7 +98,7 @@ $$
 # any code used in the question prompt
 ```
 
-- `{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}`
+- [{model-vendor} {model-product} {model-version} {model-extended-or-standard-thinking}]({model-session-link})
 
     {answer-line-1}
 

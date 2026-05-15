@@ -32,21 +32,21 @@ In the context of an ~~undergraduate operating systems course~~, evaluate the up
 
 ### Fill In the Blank
 
-1. Question text with `______` used for the blank.
+1. Question text with `______` used for the `______`.
 2. A second fill in the `______`.
 
 ### Multiple Choice
 
 1. A multiple choice question should be responded to in-line.
-    - (a) `[ ]` A only;
-    - (b) `[ ]` B only;
-    - (c) `[ ]` A and B;
-    - (d) `[ ]` something else;
+    - (a) `[ ]` A only
+    - (b) `[ ]` B only
+    - (c) `[ ]` A and B
+    - (d) `[ ]` something else
 2. A multi-choice multiple choice question.
-    - (a) `[ ]` A only;
-    - (b) `[ ]` B only;
-    - (c) `[ ]` A and B;
-    - (d) `[ ]` something else;
+    - (a) `[ ]` A only
+    - (b) `[ ]` B only
+    - (c) `[ ]` A and B
+    - (d) `[ ]` something else
 
 ### Essay
 
