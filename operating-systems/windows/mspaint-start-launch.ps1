@@ -1,3 +1,3 @@
-Get-ChildItem -Path "pngs-dirpath" | ForEach-Object {
+Get-ChildItem | ForEach-Object {
     Start-Process mspaint.exe -ArgumentList $_.FullName
 }
