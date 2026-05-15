@@ -1,7 +1,7 @@
 $BootstrapRoot = [IO.Path]::GetFullPath("$PSScriptRoot\..\..\..\")
 $KnownModules = @(
-    "$BootstrapRoot\languages\powershell\modules",          # directory
-    "$BootstrapRoot\ai\frameworks\llama-cli-func-ex.psm1"   # module
+    "$BootstrapRoot\languages\powershell\modules"          # directory
+    # "$BootstrapRoot\ai\frameworks\llama-cli-func-ex.psm1"   # module
 )
 
 foreach ($KnownModule in $KnownModules) {
