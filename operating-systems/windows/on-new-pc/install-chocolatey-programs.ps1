@@ -88,7 +88,7 @@ visualstudio2022buildtools visualstudio2022community
         slim=$true;
         postcmds=@();
         packages=@"
-7zip putty winscp everything rufus spacesniffer grepwin
+7zip putty winscp everything rufus spacesniffer grepwin imgburn
 "@;
     };
     cloud = @{
