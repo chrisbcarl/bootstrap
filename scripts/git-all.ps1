@@ -1,4 +1,27 @@
-$count = 0
+[CmdletBinding()]
+param (
+    [Parameter()][Switch]$Launch
+)
+
+$Count = 0
+
+
+if ($Launch) {
+    Write-Host -ForegroundColor Green "Launching if there is unfinished work..."
+    Get-ChildItem | ForEach-Object {
+        if (Test-Path -Path "$_/.git" -ErrorAction SilentlyContinue) {
+            $FullArgs = @("-C", $_, 'status')
+            $output = & git @FullArgs
+            if ($output -like '*not staged for commit:*') {
+                Write-Host -ForegroundColor Cyan "    code $_"
+                code $_
+                $Count += 1
+            }
+        }
+    }
+    exit 0
+}
+
 $ArgsCopy = $args
 Get-ChildItem | ForEach-Object {
     if (Test-Path -Path "$($_.FullName)/.git" -ErrorAction SilentlyContinue) {
@@ -12,10 +35,13 @@ Get-ChildItem | ForEach-Object {
             Write-Warning "FAILED: $cmd"
             exit $LASTEXITCODE
         }
-        $count += 1
+        $Count += 1
     }
 }
-if ($count -eq 0) {
+
+if ($Count -eq 0) {
     Write-Warning "No git repositories found--try different directory?"
     exit 1
+} else {
+    Write-Host -ForegroundColor Green "Processed $Count git repositories."
 }
