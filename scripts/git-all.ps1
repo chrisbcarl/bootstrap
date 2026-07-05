@@ -1,7 +1,22 @@
-[CmdletBinding()]
-param (
-    [Parameter()][Switch]$Launch
-)
+<#
+cd ~/src
+git-all -Launch
+git-all pull
+#>
+
+# NOTE: CANNOT use param-block, because we're trying to pass $args to git unadultered...
+$Launch = $false
+if ("-Launch" -in $args) {
+    $idx = $args.IndexOf("-Launch")
+    $args = $args[0..$($idx - 1)] + $args[$($idx + 1)..$($args.Count)]
+    $Launch = $true
+}
+if ("-launch" -in $args) {
+    $idx = $args.IndexOf("-launch")
+    $args = $args[0..$($idx - 1)] + $args[$($idx + 1)..$($args.Count)]
+    $Launch = $true
+}
+
 
 $Count = 0
 
