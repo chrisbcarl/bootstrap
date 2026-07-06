@@ -40,6 +40,8 @@ foreach ($filepath in $filepaths) {
         # $cmd = "$cmd -alpha off -auto-threshold otsu"
         # https://github.com/ImageMagick/ImageMagick/discussions/6282
         # $cmd = "$cmd -contrast-stretch 10x70%"
+        # NOTE: really good on detached single page scans:
+        #   -alpha off -colorspace gray -contrast-stretch "5x50%"
         # $cmd = "$cmd -level 40,90%"
         # https://gemini.google.com/app/0ebb599209aceacb
         #   gemini-3t@20260324: Create a magick command line invocation that converts each uploaded image into the *most* legible black and white render. Enumerate the steps evaluated to reach the final invocation.
