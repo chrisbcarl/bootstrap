@@ -20,7 +20,17 @@ Start-Transcript -Path $transcript -Force
 
 
 # NOTE: allows gci to get drives like Get-ChildItem 'C:'
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Type DWord -Value 1
+$fs = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem"
+if ($fs.LongPathsEnabled -ne 1) {
+    Write-Warning "LongPathsEnabled disabled!"
+    if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Write-Warning "Rerun as Admin!"
+        exit 1
+    }
+    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Type DWord -Value 1
+    Write-Warning "Rerun!"
+    exit 1
+}
 
 
 try {
@@ -146,7 +156,7 @@ if ($TimeMismatches.Count -gt 0) {
 
 
 $Missing | ForEach-Object {Split-Path $_ -Parent} | ForEach-Object {
-    New-Item -ItemType Directory -Path $_ -ErrorAction SilentlyContinue
+    $null = New-Item -ItemType Directory -Path "$DestinationPath\$_" -ErrorAction SilentlyContinue
 }
 $ErrorMissing = @()
 $idx = 0
@@ -166,14 +176,17 @@ foreach ($item in $Missing) {
 }
 
 
-Write-Host -ForegroundColor Cyan "=== Missing Copy Results ==="
 if ($ErrorMissing.Count -gt 0) {
-    Write-Host -ForegroundColor Yellow "Missing Copy Failures: $($ErrorMissing.Count)"
+    Write-Host -ForegroundColor Yellow "=== Missing Copy Results - Failures: $($ErrorMissing.Count) ==="
     $ErrorMissing | ForEach-Object { Write-Host "  - $_" }
+} else {
+    Write-Host -ForegroundColor Green "=== Missing Copy Results - Success! ==="
 }
 
 
+Write-Host "Done."
 Stop-Transcript
+Copy-Item -Path $transcript -Destination $DestinationPath
 if ($Missing.Count -eq 0 -and $Extra.Count -eq 0 -and $SizeMismatches.Count -eq 0 -and $TimeMismatches.Count -eq 0) {
     Write-Host -ForegroundColor Green "All files match successfully!"
     exit 0
