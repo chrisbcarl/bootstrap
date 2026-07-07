@@ -179,8 +179,6 @@ foreach ($item in $Missing) {
 if ($ErrorMissing.Count -gt 0) {
     Write-Host -ForegroundColor Yellow "=== Missing Copy Results - Failures: $($ErrorMissing.Count) ==="
     $ErrorMissing | ForEach-Object { Write-Host "  - $_" }
-} else {
-    Write-Host -ForegroundColor Green "=== Missing Copy Results - Success! ==="
 }
 
 
