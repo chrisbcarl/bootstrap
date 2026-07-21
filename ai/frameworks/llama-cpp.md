@@ -2,9 +2,12 @@
 - [repo](https://github.com/ggml-org/llama.cpp)
 
 ```powershell
+# install WITHOUT admin privileges
 winget install llama.cpp --accept-source-agreements --accept-package-agreements
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 llama-cli -h
+
+winget upgrade llama.cpp --accept-source-agreements --accept-package-agreements
 ```
 
 ```bash
@@ -16,6 +19,76 @@ cmake llama.cpp -B llama.cpp/build \
 cmake --build llama.cpp/build --config Release -j --clean-first --target llama-cli llama-mtmd-cli llama-server llama-gguf-split
 cp llama.cpp/build/bin/llama-* llama.cpp
 ```
+
+## Build w/ Cuda
+- resources I used:
+    - windows
+        - https://help.visokio.com/support/solutions/articles/42000115649-how-to-run-local-llms-on-windows-with-nvidia-llama-cpp-cuda-
+            - reminder about CUDA 12.8
+        - https://aleksandarhaber.com/how-to-compile-and-build-the-gpu-version-of-llama-cpp-from-source-and-run-llm-models-on-gpu/
+            - some alternate ideas
+        - https://github.com/py-sandy/llama.cpp-windows-builder
+            - bulk of logic and flow, theirs uses a checking system
+    - linux
+        - https://ecorbari.medium.com/running-local-llms-on-ubuntu-with-nvidia-gpu-using-llama-cpp-2ec2e010c040
+
+### Windows
+- open powershell
+```powershell
+winget source update --accept-package-agreements --accept-source-agreements
+
+# overall sourced from https://github.com/py-sandy/llama.cpp-windows-builder
+# install CUDA sdk 12.8.0 (13 is bricked in some ways)
+winget install --id Nvidia.CUDA --version "12.8.0" --accept-package-agreements --accept-source-agreements
+
+# download source for build tools / bootstrappers
+mkdir build
+mkdir repos
+cd repos
+git clone https://github.com/microsoft/vcpkg.git
+git clone https://github.com/ggml-org/llama.cpp.git
+```
+- launch CMD
+```batch
+:: get some windows build tools
+call vcpkg\bootstrap-vcpkg.bat
+vcpkg\vcpkg.exe install curl:x64-windows  # optional: if you already have curl, good
+
+:: download Visual Studio Community, find the installer
+& "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" `
+    -latest -products * `
+    -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+    -property installationPath
+:: returns where the best vctools location is, use that location below
+
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+where cmake
+
+:: figure out where vcpkg.cmake is
+cmake -S .\llama.cpp -B .\build ^
+    -G Ninja ^
+    -DGGML_CUDA=ON ^
+    -DGGML_CUDA_GRAPHS=ON ^
+    -DGGML_CUDA_FA_ALL_QUANTS=ON ^
+    -DLLAMA_CURL=ON ^
+    -DCMAKE_CUDA_ARCHITECTURES=native ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_TOOLCHAIN_FILE="C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\scripts\buildsystems\vcpkg.cmake" ^
+    -DVCPKG_TARGET_TRIPLET=x64-windows ^
+    -DCMAKE_CXX_FLAGS="/W0"
+
+cmake --build .\build -j %NUMBER_OF_PROCESSORS%
+```
+- exit to get back to powershell
+```powershell
+build\bin\llama-cli --list-devices
+
+# reminder to add this new llama-cli to the PATH
+
+# remove WITHOUT admin privileges
+winget remove llama.cpp --accept-source-agreements
+```
+
 
 # WARNING: confirm that GPU shows up
 ```powershell
