@@ -7,8 +7,9 @@
     // "breadcrumbs.enabled": false,
     "debug.inlineValues": "off",  // truly awful otherwise
     "debug.onTaskErrors": "abort",
-    "editor.wordWrap": "off",
+    "editor.largeFileOptimizations": false,
     "editor.unusualLineTerminators": "off",  // reading a PDF gives paragraph separators
+    "editor.wordWrap": "off",
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.stickyScroll.enabled": false,
