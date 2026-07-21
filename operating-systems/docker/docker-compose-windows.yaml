@@ -1,0 +1,33 @@
+services:
+    windows:
+      image: dockurr/windows
+      container_name: windows
+      environment:
+          VERSION: "10"
+          DISK_SIZE: "128G"
+          RAM_SIZE: "32G"
+          CPU_CORES: "8"
+          USERNAME: "Docker"
+          PASSWORD: "admin"
+      devices:
+          - /dev/kvm
+          - /dev/net/tun
+      cap_add:
+          - NET_ADMIN
+      ports:
+          - 8006:8006
+          - 3389:3389/tcp
+          - 3389:3389/udp
+      volumes:
+          - C:/temp/dockurr/w10/storage:/storage
+          - C:/temp/dockurr/w10/shared:/shared
+          - C:/temp/dockurr/iso/en-us_windows_10_business_editions_version_22h2_updated_july_2024_x64_dvd_c004521a.iso:/boot.iso
+      networks:
+          vlan:
+              ipv4_address: 192.168.0.100
+      restart: always
+      stop_grace_period: 2m
+
+networks:
+    vlan:
+        external: true
