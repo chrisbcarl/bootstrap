@@ -152,5 +152,27 @@
             },
             "dependsOn": "C/C++: Clean",
         },
+        {
+            "label": "scriptlets",
+            "type": "shell",
+            "runOptions": {"runOn": "folderOpen"},
+            "windows": {
+                "command": "&",
+                "args": [
+                    ".vscode/tasks/scriptlets.ps1"
+                ]
+            },
+        },
+        {
+            "label": "servers",
+            "type": "shell",
+            "runOptions": {"runOn": "folderOpen"},
+            "windows": {
+                "command": "&",
+                "args": [
+                    ".vscode/tasks/servers.ps1"
+                ]
+            },
+        },
     ]
 }
