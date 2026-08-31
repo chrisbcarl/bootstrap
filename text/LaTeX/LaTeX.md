@@ -315,7 +315,7 @@ $$
     -0.0175641 & 0.0001547 & 0.0009108
     \end{array} \right]
     $$
-- gaussian elimination, swap, scale, eliminate, augmented matrices
+- linear algebra - gaussian elimination, swap, scale, eliminate, augmented matrices
     $$
     \left[\begin{array}{cccc|c}
     1 & 2 & -1 & 3 & 4\\
@@ -335,6 +335,8 @@ $$
     0 & 0 & 0 & 0 & 0
     \end{array}\right]
     $$
+    - more linear algebra
+        - $\ell(1)$ - the diagonal/length, etc.
 - $\vdots \cdots \ddots$ - elipses
 - big matrix from https://latex-tutorial.com/ellipses-in-latex/, note boldface matrix symbol
 $$
