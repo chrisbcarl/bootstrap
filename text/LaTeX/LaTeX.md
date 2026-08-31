@@ -128,7 +128,7 @@
     \operatorname{Var}(aX + b) = a^2\operatorname{Var}(X) \\
     $$
 - divides / indivisible / modulo: $\mid \nmid a \bmod b \quad a \mod b a \pmod b a \pod b a \operatorname{div} b \equiv a \bmod c$
-- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as, degrees - $\checkmark \times \sim \degree \pounds$
+- misc anything, check, x mark x-mark xbox x-box x box, cross, multiply, wide tilde, is distributed as, degrees, box around, boxed - $\checkmark \times \sim \degree \pounds \boxed{6.9}$
 - [big braces big brackets](https://tex.stackexchange.com/a/38870)
     $$
     (   \big(   \Big(   \bigg(  \Bigg(  \Bigg)  \bigg)  \Big)   \big)   ) \\
@@ -255,6 +255,13 @@ $$
         | header | header |
         | --- | --- |
         | $\Rho(A\|B)$ | $\text{escapes usually work well in this area}$ |
+- matrix transpose
+    $$
+    \mathbf{M}^T\\
+    \mathbf{M}^{\intercal}\\
+    \mathbf{M}^{\top}\\
+    $$
+- **NOTE:** DO NOT USE ARRAY, it doesnt work well unless parameterized with the alignment. just use bmatrix for simplicity
 - array / matrix, note boldface matrix symbol
     $$
     \mathbf{A}_{2\times2} = \left[
@@ -280,6 +287,20 @@ $$
                 a_{51} & a_{52} & a_{53} & a_{54} \\
             \end{pmatrix}
         }
+    $$
+- vector
+    $$
+    \overrightarrow{v} = \overset{\rightarrow}{\mathbf{v}} = \vec{v} = v = \left[\begin{array}{rrr} 1 & 1 & 2 & 1 \end{array}\right]
+    \\
+    \overrightarrow{vector} = \overset{\rightarrow}{\mathbf{vector}} = \vec{vector} = vector = \left[\begin{array}{rrr} 1 & 1 & 2 & 1 \end{array}\right]
+    $$
+- augmented matrix
+    $$
+    \left[\begin{array}{rrr|c}
+    1&1&2&1\\
+    2&-1&-1&2\\
+    -1&1&-1&0
+    \end{array}\right]
     $$
 - matrix bracketed with array equivalent
     $$
