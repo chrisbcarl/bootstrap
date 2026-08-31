@@ -315,7 +315,26 @@ $$
     -0.0175641 & 0.0001547 & 0.0009108
     \end{array} \right]
     $$
-
+- gaussian elimination, swap, scale, eliminate, augmented matrices
+    $$
+    \left[\begin{array}{cccc|c}
+    1 & 2 & -1 & 3 & 4\\
+    2 & 4 & -1 & 8 & 11\\
+    -1 & -2 & 2 & -1 & -1
+    \end{array}\right]
+    \xrightarrow{\substack{R_2 \leftarrow R_2 - 2R_1\\ R_3 \leftarrow R_3 + R_1}}
+    \left[\begin{array}{cccc|c}
+    1 & 2 & -1 & 3 & 4\\
+    0 & 0 & 1 & 2 & 3\\
+    0 & 0 & 1 & 2 & 3
+    \end{array}\right]
+    \xrightarrow{R_3 - R_2}
+    \left[\begin{array}{cccc|c}
+    1 & 2 & -1 & 3 & 4\\
+    0 & 0 & 1 & 2 & 3\\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
 - $\vdots \cdots \ddots$ - elipses
 - big matrix from https://latex-tutorial.com/ellipses-in-latex/, note boldface matrix symbol
 $$
@@ -402,6 +421,14 @@ $$
         $$
     - "is modeled as" $X \sim \text{Normal}(\mu, \sigma^2)$
     - iid (independent, identically distributed): $X_1, X_2, \cdots X_n \overset{\mathrm{iid}}{\sim} \text{Normal}(\mu, \sigma^2) \rightarrow \bar{X} \sim \text{Normal}(\mu, \frac{\sigma^2}{n})$
+- emphasis, bolding, italics, underlining
+    $$
+    \textbf{bold} \\
+    \textit{italic} \\
+    \emph{italic} \\
+    \underline{bold} \\
+    \underline{\textbf{\textit{combo}}}
+    $$
 - math fonts (Table 348 in [symbols-a4.pdf](./symbols-a4.pdf) or [by name](https://www.physicsread.com/latex-mathematical-font/))
     $$
     \begin{align*}
