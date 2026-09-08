@@ -96,8 +96,6 @@
             {1 \over\displaystyle a_3 +
             {1 \over\displaystyle a_4}}}}
     $$
-- $\lim_{x\to\infty} f(x) \displaystyle\lim_{x\to\infty} f(x)$ - limit
-- $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw \qquad \displaystyle\iint^{10}_{13} \frac{\partial{x}}{\partial{y}}$ - integral
 - $\sqrt{4i} \space \sqrt[3]{4i} \space \sqrt[n]{4i}$ - roots
 - $\log(10) \qquad \log_{10}(10) \qquad \log_{(e+1)}(10) \qquad \ln(e)$ - logs
 - $\inf \infty \R \mathbb{R} \mathbb{C} \neg \iff \implies \cong \angle \triangle \overrightarrow{\rm AB} \partial \arccos \arctan \cosh \dots $ - symbols infinity, sets, negate, iff if only if congruence, elipses, dots, vector
@@ -122,6 +120,10 @@
     $$
 - functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert \operatorname{function-Name-Anything}(x, y, z)$
     $$
+    % maps to or rightarrow
+    \operatorname{floor}: \mathbb{R} \mapsto \mathbb{Z}\\
+    \operatorname{floor}: \mathbb{R} \rightarrow \mathbb{Z}\\
+    \operatorname{floor}: \mathbb{R} \to \mathbb{Z}\\
     \displaystyle\sum^{n}_{k=1} x^k, \vert x \vert \\  % regular pipe doesnt work within sum
     Var(aX + b) = a^2Var(X) \\
     \text{Var}(aX + b) = a^2\text{Var}(X) \\
@@ -452,6 +454,33 @@ $$
 
 - Math symbols
     - $\mathcal{N}$ - Normal Distribution
+
+# Spacing
+$$
+dudvdw \\
+\,du\,dv\,dw \\
+\ du\ dv\ dw \\
+$$
+
+# Symbols
+- proportional $\propto$
+
+# Probability
+
+# Statistics
+
+# Calculus
+- derivatives:
+    - prime: $x', x^{\prime}$
+    - double prime: $x'', x^{\prime\prime}$
+    - partial del $\frac{\partial}{\partial x}$
+    - gradient $\nabla$
+    - $\lim_{x\to\infty} f(x) \displaystyle\lim_{x\to\infty} f(x)$ - limit
+- integration
+    - integrals $\iiint^{E}_{V} \mu(u,v,w) \,du\,dv\,dw$
+    - double integral $\displaystyle\iint^{10}_{13} \frac{\partial{x}}{\partial{y}}$
+
+# Linear Algebra
 
 # Hacks
 - left and right subscript, a prescript if you will ${}^{1}_{2}x^{3}_{4}$ - https://tex.stackexchange.com/a/305700
