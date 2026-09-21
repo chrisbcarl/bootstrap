@@ -1,3 +1,14 @@
+# MASM
+VSCode Markdown is called x86asm
+
+```x86asm
+.text
+    main PROC
+        mov AX, BX      ; comment
+    main ENDP
+```
+
+
 # Errors
 - `Symbol not defined: ffh` - must be same size as register, so AL can have FFH but AX must have 00FFH...
 - A2006: undefined symbol: DGROUP
