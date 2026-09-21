@@ -13,6 +13,7 @@ ignoreme**
 *.bbl
 *.blg
 *.out
+*.jar
 
 
 # certificates, PKI, and configs
