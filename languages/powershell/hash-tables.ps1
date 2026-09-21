@@ -21,3 +21,8 @@ foreach ($item in $hash_table.GetEnumerator()) {
     $Value = $item.Value
     Write-Host "$Key - $Value"
 }
+
+# WARNING: DO NOT USE!!! correct object properties, but write-host doesn't do anything...
+$hash_table | ForEach-Object {
+    Write-Host "$($_.Name) - $($_.Value)"
+}
