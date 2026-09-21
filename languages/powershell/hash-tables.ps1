@@ -15,6 +15,8 @@ Write-Host ($null -eq $hash_table["b"])
 
 $hash_table["d"] = 3.14
 
+$hash_table.Remove('b')
+
 
 foreach ($item in $hash_table.GetEnumerator()) {
     $Key = $item.Key

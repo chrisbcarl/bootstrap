@@ -161,5 +161,5 @@
         "_mingw_off_t.h": "c",
         "pthread.h": "c",
         "pthread_signal.h": "c"
-    },
+    }
 }
