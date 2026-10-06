@@ -1,3 +1,9 @@
+# Other Great Cheatsheets
+- [adam-p](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+
+# Mine
+
 # H1
 ## H2
 ### H3
@@ -68,15 +74,13 @@ def func():
 
 </div>
 
-# Other Great Cheatsheets
-- [adam-p](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 
 # force page break
 
 <div style="page-break-after: always;"></div>
 
-<!-- using latex actually... -->
+<!-- using latex, does not render in vscode, renders in pandoc -->
 $\pagebreak$
 
 # even if unnecessary
@@ -86,3 +90,13 @@ latex / markdown really NEEDS sentences to end with periods... anything not term
 
 > empty is good for markdown preview in vscode, not good for latex. eliminate > empties
 
+# Hiding Content within a Toggle
+Say you need to present things like a quiz with solutions. Say this is the question.
+
+<details><summary>Here is the answer</summary>
+<!-- blank line needed even after the comment for markdown to render as usual-->
+
+```
+42
+```
+</details>
