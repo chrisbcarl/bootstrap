@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{landscape, textwidth=27cm}
+
+\usepackage{circuitikz}
+
+% https://tex.stackexchange.com/a/32863
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+
+
+\begin{document}
+
+
+% https://www.overleaf.com/learn/latex/CircuiTikz_package
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-] (6,0)
+  to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
+  to [R, l_=$R_R$] (6,4)
+  to [short, i_=$\underline{i}^s_R$] (5,4)
+  (0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+  to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+  to [R, l=$R_s$] (3,4)
+  to [L, l=$L_{\sigma}$] (5,4)
+  to [short, i_=$\underline{i}^s_M$] (5,3)
+  to [L, l_=$L_M$] (5,0);
+\end{circuitikz}
+
+
+% https://www.overleaf.com/project/6ab44922ac91063ee9ab4455
+\newcommand{\bipole}[1]{%
+\texttt{#1}\kern5pt \hfill
+\begin{circuitikz}%
+\draw (0,0) to[ #1 ] (2,0);
+\end{circuitikz}%
+\hspace{5mm}%
+}
+\renewcommand{\arraystretch}{3}
+\begin{center}
+\begin{tabular}{lll}
+\bipole{capacitor} & \bipole{polar capacitor} & \bipole{variable capacitor}\\
+\bipole{cute inductor} & \bipole{variable cute inductor} & \bipole{american inductor}\\
+\bipole{variable american inductor} & \bipole{european inductor} & \bipole{variable european inductor}\\
+\bipole{transmission line} & \bipole{vsourcesin} & \bipole{isourcesin}\\
+\bipole{closing switch} & \bipole{opening switch} & \bipole{push button}\\
+\end{tabular}
+\end{center}
+
+
+% https://www.overleaf.com/project/6ab44925d4ed6617c2c2714c
+% \newcommand{\bipole}[1]{%
+% \texttt{#1}\kern5pt \hfill
+% \begin{circuitikz}%
+% \draw (0,0) to[ #1 ] (2,0);
+% \end{circuitikz}%
+% \hspace{5mm}%
+% }
+\renewcommand{\arraystretch}{3}
+\begin{center}
+\begin{tabular}{lll}
+\bipole{empty diode} & \bipole{empty Schottky diode} & \bipole{empty Zener diode}\\
+\bipole{empty tunnel diode} & \bipole{photodiode} & \bipole{empty diode}\\
+\bipole{empty varcap} & \bipole{full diode} & \bipole{full Schottky diode}\\
+\bipole{full Zener diode} & \bipole{full tunnel diode} & \bipole{full photodiode}\\
+\bipole{full led} & \bipole{full varcap} & \bipole{squid}\\
+\bipole{barrier} & & \\
+\end{tabular}
+\end{center}
+
+
+
+% https://www.overleaf.com/project/6ab44925d4ed6617c2c271b0
+% \newcommand{\bipole}[1]{%
+% \texttt{#1}\kern5pt \hfill
+% \begin{circuitikz}%
+% \draw (0,0) to[ #1 ] (2,0);
+% \end{circuitikz}%
+% \hspace{5mm}%
+% }
+\renewcommand{\arraystretch}{3}
+\begin{center}
+\begin{tabular}{lll}
+\bipole{ammeter} & \bipole{voltmeter} & \bipole{short}\\
+\bipole{open} & \bipole{lamp} & \bipole{generic}\\
+\bipole{tgeneric} & \bipole{ageneric} & \bipole{fullgeneric}\\
+\bipole{tfullgeneric} & \bipole{memristor} & \bipole{american resistor}\\
+\bipole{vR} & \bipole{american potentiometer} & \bipole{european resistor}\\
+\bipole{european resistor} & \bipole{european potentiometer} & \bipole{varistor}\\
+\bipole{photoresistor} & \bipole{thermocouple} & \bipole{thermistor}\\
+\bipole{thermistor ntc} & \bipole{fuse} & \bipole{afuse}\\
+\bipole{battery} & \bipole{battery1} & \bipole{european voltage source}\\
+\bipole{american voltage source} & \bipole{european current source} & \bipole{american current source}\\
+\end{tabular}
+\end{center}
+
+
+% https://tex.stackexchange.com/a/9568
+\ctikzset{bipoles/length=.6cm}
+\newcommand\esymbol[1]{\begin{circuitikz}
+\draw (0,0) to [#1] (1,0); \end{circuitikz}}
+
+This is a diode \esymbol{diode} and this is a resistor \esymbol{generic}
+
+
+% https://tex.stackexchange.com/a/32843
+\begin{circuitikz} \draw
+(0,2) node[and port] (myand1) {}
+(0,0) node[and port] (myand2) {}
+(2,1) node[xnor port] (myxnor) {}
+(myand1.out) -- (myxnor.in 1)
+(myand2.out) -- (myxnor.in 2);
+\end{circuitikz}
+
+
+% https://tex.stackexchange.com/a/32863
+\tikzstyle{branch}=[fill,shape=circle,minimum size=3pt,inner sep=0pt]
+\begin{tikzpicture}[label distance=2mm]
+
+    \node (x3) at (0,0) {$x_3$};
+    \node (x2) at (1,0) {$x_2$};
+    \node (x1) at (2,0) {$x_1$};
+    \node (x0) at (3,0) {$x_0$};
+
+    \node[not gate US, draw, rotate=-90] at ($(x2)+(0.5,-1)$) (Not2) {};
+    \node[not gate US, draw, rotate=-90] at ($(x1)+(0.5,-1)$) (Not1) {};
+    \node[not gate US, draw, rotate=-90] at ($(x0)+(0.5,-1)$) (Not0) {};
+
+    \node[or gate US, draw, logic gate inputs=nnn] at ($(x0)+(2,-2)$) (Or1) {};
+    \node[or gate US, draw, logic gate inputs=nnnn] at ($(Or1)+(0,-1)$) (Or2) {};
+    \node[or gate US, draw, logic gate inputs=nnn] at ($(Or2)+(0,-1)$) (Or3) {};
+    \node[xor gate US, draw, logic gate inputs=nn] at ($(Or3)+(0,-1)$) (Xor1) {};
+    \node[and gate US, draw, logic gate inputs=nn, anchor=input 1] at ($(Or3.output)+(1,0)$) (And1) {};
+    \node[nor gate US, draw, logic gate inputs=nn, anchor=input 1] at ($(Or2.output -| And1.output)+(1,0)$) (Nor1) {};
+    \node[and gate US, draw, logic gate inputs=nn, anchor=input 1] at ($(Or1.output -| Nor1.output)+(1,0)$) (And2) {};
+
+    \foreach \i in {2,1,0}
+    {
+        \path (x\i) -- coordinate (punt\i) (x\i |- Not\i.input);
+        \draw (punt\i) node[branch] {} -| (Not\i.input);
+    }
+    \draw (x3) |- (Or2.input 1);
+    \draw (x3 |- Or1.input 1) node[branch] {} -- (Or1.input 1);
+    \draw (x2) |- (Xor1.input 1);
+    \draw (x2 |- Or3.input 1) node[branch] {} -- (Or3.input 1);
+    \draw (Not2.output) |- (Or2.input 2);
+    \draw (x1) |- (Or3.input 2);
+    \draw (x1 |- Or1.input 2) node[branch] {} -- (Or1.input 2);
+    \draw (Not1.output) |- (Xor1.input 2);
+    \draw (Not1.output |- Or2.input 3) node[branch] {} -- (Or2.input 3);
+    \draw (x0) |- (Or2.input 4);
+    \draw (Not0.output) |- (Or3.input 3);
+    \draw (Not0.output |- Or1.input 3) node[branch] {} -- (Or1.input 3);
+    \draw (Or3.output) -- (And1.input 1);
+    \draw (Xor1.output) -- ([xshift=0.5cm]Xor1.output) |- (And1.input 2);
+    \draw (Or2.output) -- (Nor1.input 1);
+    \draw (And1.output) -- ([xshift=0.5cm]And1.output) |- (Nor1.input 2);
+    \draw (Or1.output) -- (And2.input 1);
+    \draw (Nor1.output) -- ([xshift=0.5cm]Nor1.output) |- (And2.input 2);
+    \draw (And2.output) -- ([xshift=0.5cm]And2.output) node[above] {$f_1$};
+\end{tikzpicture}
+
+
+\end{document}

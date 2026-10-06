@@ -48,6 +48,8 @@ python312
 python310
 nodejs dotnet
 dotnet-9.0-runtime dotnet-8.0-runtime
+openjdk
+strawberryperl
 wkhtmltopdf miktex rsvg-convert pandoc
 "@;
     };
