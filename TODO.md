@@ -1,6 +1,12 @@
-latex katex italics based on font
-
-# powershell download using bits:
+- git-all pull
+    - if one of them fails, it stops the entire run, do parallel
+- project-all update (where it installs/upgrades project.toml)
+    - settings.json was modified, note if there are any changes, etc.
+    - reruns install from bootstrap, etc.
+    - pip install --upgrade yt-dlp
+    - when i do choco install, only use the top-level packages that I installed during  - setup...
+- latex katex italics based on font
+- powershell download using bits:
 ```powershell
 # https://powershellfaqs.com/download-file-from-url-in-powershell/
 # TEST WEBSITE FOR FILES: http://speed.transip.nl/

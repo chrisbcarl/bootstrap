@@ -62,6 +62,7 @@ vcpkg\vcpkg.exe install curl:x64-windows  # optional: if you already have curl, 
 :: returns where the best vctools location is, use that location below
 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 where cmake
 
 :: figure out where vcpkg.cmake is
