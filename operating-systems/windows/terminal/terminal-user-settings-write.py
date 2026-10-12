@@ -5,6 +5,10 @@ Date:           2026-01-05
 Description:
     Terminal settings
 
+TODO:
+    actually using the project settings and updating the local file...
+    JSONC problems honestly.
+
 Updates:
     2026-01-05 01:26 - terminal-user-settings-write - initial commit
 '''

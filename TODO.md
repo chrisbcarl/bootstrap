@@ -1,3 +1,5 @@
+- jsonc
+    - lots of jsonc problems, vscode settings, terminal settings, etc.
 - git-all pull
     - if one of them fails, it stops the entire run, do parallel
 - project-all update (where it installs/upgrades project.toml)
