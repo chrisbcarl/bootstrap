@@ -27,7 +27,9 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "_GNU_SOURCE",  // access to pipe2
+                "_POSIX_C_SOURCE"   // access to SIG_BLOCK
             ],
             "compilerPath": "C:/ProgramData/mingw64/mingw64/bin/g++.exe",
             "cStandard": "c11",

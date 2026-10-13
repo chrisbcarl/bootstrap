@@ -30,6 +30,7 @@ ignoreme**
 **.git
 
 # compiled output
+**/bin
 **/dist
 **/build
 **/backups

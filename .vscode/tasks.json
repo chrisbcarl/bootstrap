@@ -82,22 +82,28 @@
                 ]
             },
             "windows": {
-                "command": "g++",
+                "command": "powershell",
                 "args": [
-                    // os find files
-                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
-                    "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.cc,*.cpp,*.c).Fullname", "-Join", "' '", ")",
+                    "${workspaceFolder}/.vscode/tasks/gc+-build.ps1", "-e", "g++", "-d", "${relativeFileDirname}", "-m", "${file}", "-o", "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ]
 
-                    // common
-                    "-fdiagnostics-color=always",
-                    "-g",
-                    "-I${fileDirname}",
-                    "-o",
-                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
-                ],
+                /* this one kinda works if you only have .c files and .h in a flat hierarchy */
+                // "command": "g++",
+                // "args": [
+                //     // os find files
+                //     // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                //     "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.cc,*.cpp,*.c).Fullname", "-Join", "' '", ")",
+
+                //     // common
+                //     "-fdiagnostics-color=always",
+                //     "-g",
+                //     "-I${fileDirname}",
+                //     "-o",
+                //     "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                // ],
             },
             "options": {
-                "cwd": "${workspaceFolder}/dist"
+                "cwd": "${workspaceFolder}"
             },
             // "problemMatcher": [
             //     "$g++"
@@ -112,6 +118,7 @@
             "type": "shell",
             "label": "C: gcc build",
             "linux": {
+                // TODO: a bash script a bit more robust like gc+-build
                 "command": "gcc",
                 "args": [
                     // os find files
@@ -126,22 +133,28 @@
                 ]
             },
             "windows": {
-                "command": "gcc",
+                "command": "powershell",
                 "args": [
-                    // os find files
-                    // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
-                    "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.c).Fullname", "-Join", "' '", ")",
+                    "${workspaceFolder}/.vscode/tasks/gc+-build.ps1", "-e", "gcc", "-d", "${relativeFileDirname}", "-m", "${file}", "-o", "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                ]
 
-                    // common
-                    "-fdiagnostics-color=always",
-                    "-g",
-                    "-I${fileDirname}",
-                    "-o",
-                    "${workspaceFolder}/dist/${fileBasenameNoExtension}"
-                ],
+                /* this one kinda works if you only have .c files and .h in a flat hierarchy */
+                // "command": "gcc",
+                // "args": [
+                //     // os find files
+                //     // MORE HYPERJANK to avoid surrounding it with single quotes and breaking shit
+                //     "$(", "$(", "Get-ChildItem", "-Path", "${fileDirname}", "-Recurse", "-File", "-Include", "*.c).Fullname", "-Join", "' '", ")",
+
+                //     // common
+                //     "-fdiagnostics-color=always",
+                //     "-g",
+                //     "-I${fileDirname}",
+                //     "-o",
+                //     "${workspaceFolder}/dist/${fileBasenameNoExtension}"
+                // ],
             },
             "options": {
-                "cwd": "${workspaceFolder}/dist"
+                "cwd": "${workspaceFolder}"
             },
             // "problemMatcher": [
             //     "$gcc"
@@ -152,6 +165,7 @@
             },
             "dependsOn": "C/C++: Clean",
         },
+        // long-running and project helping tasks that start on vscode launch
         {
             "label": "scriptlets",
             "type": "shell",
