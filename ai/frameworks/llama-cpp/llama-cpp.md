@@ -29,6 +29,7 @@ cp llama.cpp/build/bin/llama-* llama.cpp
             - some alternate ideas
         - https://github.com/py-sandy/llama.cpp-windows-builder
             - bulk of logic and flow, theirs uses a checking system
+        - OpenVino for NPU: https://medium.com/openvino-toolkit/openvino-lands-in-llama-cpp-run-gguf-models-on-intel-cpu-gpu-and-npu-d6fca1d633e8
     - linux
         - https://ecorbari.medium.com/running-local-llms-on-ubuntu-with-nvidia-gpu-using-llama-cpp-2ec2e010c040
 
@@ -55,24 +56,27 @@ call vcpkg\bootstrap-vcpkg.bat
 vcpkg\vcpkg.exe install curl:x64-windows  # optional: if you already have curl, good
 
 :: download Visual Studio Community, find the installer
-& "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" `
-    -latest -products * `
-    -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" ^
+    -latest -products * ^
+    -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 ^
     -property installationPath
 :: returns where the best vctools location is, use that location below
 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-where cmake
 
 :: figure out where vcpkg.cmake is
+where cmake
+
+:: NOTE: full command for Intel NPU + Nvidia CUDA, remove what you dont need
 cmake -S .\llama.cpp -B .\build ^
     -G Ninja ^
+    -DGGML_OPENVINO=ON ^
+    -DCMAKE_BUILD_TYPE=Release ^
     -DGGML_CUDA=ON ^
     -DGGML_CUDA_GRAPHS=ON ^
     -DGGML_CUDA_FA_ALL_QUANTS=ON ^
-    -DLLAMA_CURL=ON ^
     -DCMAKE_CUDA_ARCHITECTURES=native ^
-    -DCMAKE_BUILD_TYPE=Release ^
+    -DLLAMA_CURL=ON ^
     -DCMAKE_TOOLCHAIN_FILE="C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\scripts\buildsystems\vcpkg.cmake" ^
     -DVCPKG_TARGET_TRIPLET=x64-windows ^
     -DCMAKE_CXX_FLAGS="/W0"
@@ -90,8 +94,10 @@ winget remove llama.cpp --accept-source-agreements
 ```
 
 
-# WARNING: confirm that GPU shows up
-```powershell
+# WARNING: confirm that GPU shows up, NPU option
+```batch
+set GGML_OPENVINO_DEVICE=NPU
+
 llama-cli --list-devices
 ```
 

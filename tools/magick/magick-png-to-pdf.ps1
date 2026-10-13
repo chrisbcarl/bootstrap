@@ -1,3 +1,5 @@
+# choco install imagemagick ghostscript -y  # pdf rasterization for magick
+
 [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)][string]$Path,
