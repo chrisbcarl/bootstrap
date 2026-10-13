@@ -60,11 +60,14 @@
         "**/*.blg": true,
         "**/*.out": true,
     },
-    /* *********** extensions *********** */
-    // git built-in
-    "git.openRepositoryInParentFolders": "never",
+    /* *********** 3rd party extensions *********** */
+    // docx
+    "docxreader.showOutline": false,
     // trailing-spaces
     "trailing-spaces.trimOnSave": true,
+    /* *********** 1st party / built-in extensions *********** */
+    // git built-in
+    "git.openRepositoryInParentFolders": "never",
     // intellisense
     "terminal.integrated.suggest.enabled": false,
     // python
@@ -175,5 +178,5 @@
         "_mingw_off_t.h": "c",
         "pthread.h": "c",
         "pthread_signal.h": "c"
-    }
+    },
 }

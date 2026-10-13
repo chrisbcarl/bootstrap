@@ -51,6 +51,18 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "guid": "{07c9b1fe-5b1b-529e-ba1c-3a718ae01a98}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{47e183c7-6b1c-5122-ad72-9b967e2e01df}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
                 "guid": "{25c0f3fd-3d2e-50a7-a927-cd0199e2b7e5}",
                 "hidden": true,
                 "name": "Developer Command Prompt for VS 2022 (2)",
@@ -85,6 +97,12 @@
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
                 "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{7a87e004-c6f8-56d8-a133-ac8de40b6c80}",
+                "hidden": false,
+                "name": "Ubuntu-24.04",
+                "source": "Microsoft.WSL"
             }
         ]
     },
