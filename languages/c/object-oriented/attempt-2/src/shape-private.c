@@ -1,6 +1,11 @@
 /*
 Encapsulation:
-    - Data Hiding:
+    - Data
+        - structs
+    - Behavior
+        - there's no way to achieve obj.method() in c
+        - has to be methods acting on objects
+    - Data Hiding
         - everything in src is private, since these files are not bundled with releases of compiled libs
         - as such, we have access to the entire shape_t struct as usual
 */
@@ -38,16 +43,37 @@ shape_t* shape_t_construct(const shape_vt_t* vt, double x, double y) {
 shape_t* shape_t_create(double x, double y) {
     return shape_t_construct(&shape_vt, x, y);
 }
+// defined
+double shape_t_get_x(const shape_t* this) {
+    return this->x;
+}
+void shape_t_set_x(shape_t* this, double value) {
+    this->x = value;
+}
+double shape_t_get_y(const shape_t* this) {
+    return this->y;
+}
+void shape_t_set_y(shape_t* this, double value) {
+    this->x = value;
+}
+// virtual
+double shape_t_area(const shape_t* this) {
+    return this->vt->area(this);
+}
+double shape_t_perimeter(const shape_t* this) {
+    return this->vt->perimeter(this);
+}
+// virtual default
+void shape_t_print(const shape_t* this) {
+    if (this->vt->print == shape_t_print) {
+        // if not poly
+        printf("%s<%0.3f, %0.3f>\n", this->vt->class, this->x, this->y);
+    } else {
+        // else do the morph
+        this->vt->print(this);
+    }
+}
 void shape_t_destroy(shape_t* this) {
     free(this);
     printf("destroyed shape_t 0x%p\n", (void*) this);
 }
-// defined
-double shape_t_get_x(const shape_t* this) {return this->x;}
-void shape_t_set_x(shape_t* this, double value) {this->x = value;}
-double shape_t_get_y(const shape_t* this) {return this->y;}
-void shape_t_set_y(shape_t* this, double value) {this->x = value;}
-void shape_t_print(const shape_t* this) {printf("%s<%0.3f, %0.3f>\n", this->vt->class, this->x, this->y);}
-// virtual
-double shape_t_area(const shape_t* this) {return this->vt->area(this);}
-double shape_t_perimeter(const shape_t* this) {return this->vt->perimeter(this);}

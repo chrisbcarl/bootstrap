@@ -2,6 +2,8 @@
     - lots of jsonc problems, vscode settings, terminal settings, etc.
 - git-all pull
     - if one of them fails, it stops the entire run, do parallel
+    - same goes for pushing
+        - push or pull only if a remote exists
 - project-all update (where it installs/upgrades project.toml)
     - settings.json was modified, note if there are any changes, etc.
     - reruns install from bootstrap, etc.

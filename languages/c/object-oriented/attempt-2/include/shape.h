@@ -11,8 +11,8 @@ Encapsulation:
 #ifndef H_SHAPE
 #define H_SHAPE
 
-typedef struct shape_t shape_t;  // data-hiding
 typedef struct shape_vt_t shape_vt_t;  // data-hiding
+typedef struct shape_t shape_t;  // data-hiding
 
 // behavior
 shape_t* shape_t_construct(const shape_vt_t* vt, double x, double y);

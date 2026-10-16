@@ -2,7 +2,6 @@
 Inheritance:
     - we pass shape_t to all of these methods, because we just need the shape virtual table
     - when we need the expanded square methods, we will upcast the shape to a square and call ITS virtual table
-
 */
 
 #ifndef H_SQUARE
@@ -12,10 +11,10 @@ Inheritance:
 
 #include <shape.h>  // include only the public stuff
 
-typedef struct square_t square_t;  // data-hide
 typedef struct square_vt_t square_vt_t;  // data-hide
+typedef struct square_t square_t;  // data-hide
 
-square_t* square_t_construct(double x, double y);
+shape_t* square_t_construct(double x, double y);
 square_t* square_t_from_shape_t(const shape_t* this);
 shape_t* square_t_to_shape_t(const square_t* this);
 
