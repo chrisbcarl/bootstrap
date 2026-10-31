@@ -39,6 +39,7 @@
     a\: b  \\  % 4/18 of \quad (= 4 mu)
     a\; b  \\  % 5/18 of \quad (= 5 mu)
     a\! b  \\  % -3/18 of \quad (= -3 mu)
+    a\  b  \\  % ? mu
     a\quad b \\  % 18 mu
     a\qquad b \\  % 36 mu
     a\medspace b \\
@@ -76,7 +77,7 @@
 - $\bar{X} \hat{X}$ - bar    hat
 - $X_{(i + 1)}$ - subscript underscript
 - $X^{(i + 1)}$ - superscript upperscript
-- $\frac{1 + 1}{n - 1}$ - fraction
+- $\frac{1 + 1}{n - 1} \dfrac{1 + 1}{n - 1}$ - fraction
 - $1 \over {2}$ - alternate fraction
 - $\sum_{i=1}^n$ - sum small
 - $\displaystyle\sum_{i=1}^{n}( \bar{a} + \hat{b}^{i}_{i} )$ - sum big
@@ -118,7 +119,21 @@
     \widehat{ABC} \\  % yhmath package required
     \tilde{ABC} \\
     $$
-- functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \Vert doublepipe \Vert \operatorname{function-Name-Anything}(x, y, z)$
+- unders:
+    $$
+    \begin{aligned}
+    \underset{T \subseteq [n],\ \mid T \mid = P}{\argmax} \\
+    \\
+    \underbrace{\argmax}_{T \subseteq [n],\ \mid T \mid} \\
+    \\
+    \operatorname*{arg\,max}_{T \subseteq [n],\ \mid T \mid = P}^{lol} \\
+    \end{aligned}
+    $$
+- multiline
+    $$
+    {\substack{\mathbf{v}^\top  A\mathbf{v},\ A \text{ symmetric} \\ (X^\top X)^\top  = X^\top X}} = 2
+    $$
+- functions, compose, ceiling floor, abs pipe - $f \circ g; f \bullet g \lceil h \rceil \lfloor h \rfloor \quad | reg pipe | \quad \vert abs \vert \quad \mid abs \mid \quad \Vert doublepipe \Vert \operatorname{function-Name-Anything}(x, y, z)$
     $$
     % maps to or rightarrow
     \operatorname{floor}: \mathbb{R} \mapsto \mathbb{Z}\\
@@ -465,7 +480,11 @@ $$
 # Symbols
 - proportional $\propto$
 
+# Algebra
+- absolute value: $\vert -69 \vert = 69$
+
 # Probability
+- conditional probability: $p(A \mid B) = \dfrac{p(B \mid A) \cdot p(A)}{p(B)}$
 
 # Statistics
 
