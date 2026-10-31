@@ -20,16 +20,17 @@ Encapsulation:
 
 typedef struct shape_vt_t {
     const char* class;
-    void (*destroy)(shape_t*);
     // defined
     double (*get_x)(const shape_t*);
     void (*set_x)(shape_t*, double);
     double (*get_y)(const shape_t*);
     void (*set_y)(shape_t*, double);
-    void (*print)(const shape_t*);
     // virtual
     double (*area)(const shape_t*);
     double (*perimeter)(const shape_t*);
+    // virtual default
+    void (*print)(const shape_t*);
+    void (*destroy)(shape_t*);
 } shape_vt_t;  // polymorphism (since any derived class can assign different functions to the table)
 
 extern const shape_vt_t shape_vt;  // to be implemented in shape-private.c but visible in square/circle.c
