@@ -14,6 +14,8 @@ python "apps/github-issue-creator/github-issue-creator.py" `
     --repo "chrisbcarl/bootstrap" `
     --dry-run
 
+# Setup
+
 ```powershell
 choco install gh -y
 gh auth login  # skip ssh option
