@@ -9,10 +9,10 @@ Description:
 Comes from "gh extension install ntsk/gh-issue-bulk-create", so it uses that same ethos, but no. no i'm not gonna waste my time learning Go.
 
 python "apps/github-issue-creator/github-issue-creator.py" `
-    --template "./apps/github-issue-creator/issue-template.md" `
-    --csv "./apps/github-issue-creator/issues.csv" `
+    csv "./apps/github-issue-creator/issues.csv" `
+    --body-template-filepath "./apps/github-issue-creator/issue-template.md" `
     --repo "chrisbcarl/bootstrap" `
-    --dry-run
+    --dry
 
 # Setup
 
@@ -79,7 +79,7 @@ $ gh issue create --milestone <name>
 OPTIONS = list(OrderedDict((option, None) for option in OPTIONS))
 OPTIONS_REQUIRED = ['milestone', 'title', 'label', 'assignee']
 DEFAULT_REPO = 'chrisbcarl/bootstrap'
-DEFAULT_BODY_TEMPLATE_FILEPATH = os.path.join(SCRIPT_DIRPATH, '../.github/artifacts/issue-template.md')
+DEFAULT_BODY_TEMPLATE_FILEPATH = os.path.join(SCRIPT_DIRPATH, 'issue-template.md')
 TEMP_DIRPATH = '/temp' if sys.platform == 'win32' else '/tmp'
 
 
