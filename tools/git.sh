@@ -1,9 +1,16 @@
+# config basics
 git config --global user.name "Chris Carl"
 git config --global user.email "chrisbcarl@outlook.com"
 
-git config --global pull.rebase false  # makes merge the default rather than rebase
 
+# config personal
+git config --global pull.rebase false  # makes merge the default rather than rebase
 git config --global core.autocrlf false  # set everything to LF rather than CRLF
+
+
+# remove stale remote branches
+git fetch origin
+git remote prune origin
 
 
 # merge 2 repositories - merge project b INTO project a - (modified from) https://stackoverflow.com/a/10548919
