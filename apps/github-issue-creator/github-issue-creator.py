@@ -7,10 +7,12 @@ Date:           2026-11-05
 Description:
 
 Comes from "gh extension install ntsk/gh-issue-bulk-create", so it uses that same ethos, but no. no i'm not gonna waste my time learning Go.
+[gh issue create](https://cli.github.com/manual/gh_issue_create)
+[gh issue list](https://cli.github.com/manual/gh_issue_list)
 
 python "apps/github-issue-creator/github-issue-creator.py" `
     csv "./apps/github-issue-creator/issues.csv" `
-    --body-template-filepath "./apps/github-issue-creator/issue-template.md" `
+    --issue-template-filepath "./apps/github-issue-creator/issue-template.md" `
     --repo "chrisbcarl/bootstrap" `
     --dry
 
@@ -39,12 +41,14 @@ Press Enter to open https://github.com/login/device in your browser...
 ```
 
 Updates:
+    2026-11-09 - github-issue-creator - deduplicate and blocked-by title supported
     2026-11-05 - github-issue-creator - initial commit
 '''
 
 import os
 import sys
 import csv
+import json
 import shutil
 import logging
 import tempfile
@@ -93,11 +97,12 @@ def add_common_arguments(parser):
     for option in OPTIONS:
         group.add_argument(f'--{option}', type=str, nargs='*', help='if this is provided, it will override every entry in the csv with THIS value for THIS key')
     group.add_argument(
-        '--body-template-filepath',
+        '--issue-template-filepath',
         type=str,
         default=DEFAULT_BODY_TEMPLATE_FILEPATH,
         help='Issue body template, templated by any keys in the csv headers, including the required ones.'
     )
+    group.add_argument('--duplicate', action='store_true', help='if passed, allow duplicates. (could get ugly)')
 
     group = parser.add_argument_group('common')
     group.add_argument('--dry', '-d', action='store_true', help='dont actually run?')
@@ -118,6 +123,7 @@ def dict_to_cmd_args(dick, repo):
 
 
 def main():
+    # type: () -> int
     parser = argparse.ArgumentParser(prog=PROG, description=__doc__, formatter_class=NiceFormatter)
 
     subparser_root = parser.add_subparsers(help='which mode do you want?')
@@ -144,7 +150,13 @@ def main():
 
     logging.basicConfig(level=args.log_level, format="%(asctime)s - %(message)s")  # %(name)s - %(levelname)s -
 
-    with open(args.body_template_filepath, 'r', encoding='utf-8') as r:
+    LOGGER.info('polling current issues...')
+    issues_json_str = subprocess.check_output(['gh', 'issue', 'list', '--repo', args.repo, '--json', 'id,title,number'], universal_newlines=True)
+    issues_list = json.loads(issues_json_str)
+    issue_number_title_map = {issue['number']: issue['title'] for issue in issues_list}
+    issue_title_number_map = {v: k for k, v in issue_number_title_map.items()}
+
+    with open(args.issue_template_filepath, 'r', encoding='utf-8') as r:
         template = r.read()
 
     with open(f'{TEMP_DIRPATH}/{PROG}', 'r+', encoding='utf-8') as rw:
@@ -161,11 +173,23 @@ def main():
                 reader = csv.DictReader(r)
                 rows = list(reader)
 
+            dupes_warned = False
             for r, row in enumerate(rows):
+                title = row['title']
+                if title in issue_title_number_map:
+                    if args.duplicate:
+                        LOGGER.warning('duplicate entry %d: %r exists as issue %d!', r, title, issue_title_number_map[title])
+                    else:
+                        if not dupes_warned:
+                            LOGGER.warning('duplicates detected! (override with --duplicate)')
+                            dupes_warned = True
+                        LOGGER.warning('skipping entry %d - #%d: %r', r, issue_title_number_map[title], title)
+                        continue
+
                 row.update(overrides)
                 if not (required in row for required in OPTIONS_REQUIRED):
                     LOGGER.error('"%s" does not have all required options enumerated! %s', args.filepath, OPTIONS_REQUIRED)
-                    sys.exit(1)
+                    return 1
                 cmd = dict_to_cmd_args(row, args.repo)
                 if 'body' not in row:
                     body_filepath = os.path.join(dirpath, f'{r}-body.md')
@@ -178,17 +202,35 @@ def main():
             cmds.append(cmd)
 
         for cmd in cmds:
+            title_idx = cmd.index('--title')  # must be there
+            title = cmd[title_idx + 1]
+            try:
+                # replace any --blocked-by arg with the actual number if a string was used...
+                blocked_by_idx = cmd.index('--blocked-by')
+                if blocked_by_idx > -1:
+                    title = cmd[blocked_by_idx + 1]
+                    if title in issue_title_number_map:
+                        cmd[blocked_by_idx + 1] = str(issue_title_number_map[title])
+            except ValueError:
+                pass
+
             LOGGER.info(subprocess.list2cmdline(cmd))
             if not args.dry:
-                rc = subprocess.Popen(cmd).wait()
-                if rc != 0:
-                    sys.exit(rc)
+                # Creating issue in chrisbcarl/bootstrap
+                # https://github.com/chrisbcarl/bootstrap/issues/23
+                try:
+                    output = subprocess.check_output(cmd, universal_newlines=True)
+                    number = int(output.strip().split('/')[-1])
+                    issue_title_number_map[number] = title
+                    LOGGER.info('created issue #%d: %r', number, title)
+                except subprocess.CalledProcessError as cpe:
+                    return cpe.returncode
     finally:
         if not args.dry:
             shutil.rmtree(dirpath)
 
-    sys.exit(0)
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
