@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={font=\small}]
+
+%style             (start col, start row)       text fill                                   body    (end col, end row)
+  \draw[->, thick] (0, 3)                   -- node[midway, above]                          {100}   (4, 4);
+  \draw[->, thick] (0, 1.5)                 -- node[midway, fill=white, inner sep=2pt]      {100}   (4, 3);
+  \draw[->, thick] (0, 1.5)                 -- node[pos=0.69, fill=white, inner sep=2pt]    {69}    (4, 2);
+  \draw[->, thick] (0, 0)                   -- node[midway, sloped, above]                  {100}   (4, 1);
+
+\end{tikzpicture}
+\end{document}
