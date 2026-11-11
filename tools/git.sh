@@ -12,6 +12,7 @@ git config --global core.autocrlf false  # set everything to LF rather than CRLF
 git fetch origin
 git remote prune origin
 git fetch origin --prune  # best, all-in-one
+git pull --prune  # also best, all-in-one
 
 
 # merge 2 repositories - merge project b INTO project a - (modified from) https://stackoverflow.com/a/10548919
