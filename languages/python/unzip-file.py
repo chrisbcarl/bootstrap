@@ -6,7 +6,7 @@ import zipfile
 import os
 
 
-def unzip_file(zip_path, extract_to, password=None):
+def unzip_file(zip_path, extract_to, password=None, print_progress=True):
     if not os.path.isfile(zip_path):
         raise FileNotFoundError(f"ZIP file not found: {zip_path}")
     os.makedirs(extract_to, exist_ok=True)
@@ -16,9 +16,14 @@ def unzip_file(zip_path, extract_to, password=None):
             for member in zip_ref.infolist():
                 # Prevent Zip Slip vulnerability
                 extracted_path = os.path.join(extract_to, member.filename)
+                if member.filename.startswith('__MACOSX/._') or member.filename.split('/')[-1].startswith('._'):
+                    continue
+
                 if not os.path.realpath(extracted_path).startswith(os.path.realpath(extract_to)):
                     raise Exception(f"Unsafe file path detected: {member.filename}")
 
+                if print_progress:
+                    print(member)
                 zip_ref.extract(member, path=extract_to, pwd=pwd)
     except zipfile.BadZipFile:
         raise zipfile.BadZipFile(f"Invalid ZIP file: {zip_path}")
