@@ -24,7 +24,15 @@ def unzip_file(zip_path, extract_to, password=None, print_progress=True):
 
                 if print_progress:
                     print(member)
-                zip_ref.extract(member, path=extract_to, pwd=pwd)
+                if not os.path.exists(extracted_path):
+                    zip_ref.extract(member, path=extract_to, pwd=pwd)
+
+                basename, ext = os.path.splitext(member.filename)
+
+                if ext == '.zip':
+                    unzip_file(
+                        os.path.join(extract_to, member.filename), os.path.join(extract_to, member.filename[-len(basename)]), password=password, print_progress=print_progress
+                    )
     except zipfile.BadZipFile:
         raise zipfile.BadZipFile(f"Invalid ZIP file: {zip_path}")
     except RuntimeError as e:

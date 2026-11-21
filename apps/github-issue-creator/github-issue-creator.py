@@ -159,13 +159,18 @@ def main():
     with open(args.issue_template_filepath, 'r', encoding='utf-8') as r:
         template = r.read()
 
-    with open(f'{TEMP_DIRPATH}/{PROG}', 'r+', encoding='utf-8') as rw:
-        content = rw.read().strip()
-        if os.path.isdir(content):
-            dirpath = content
-        else:
-            dirpath = tempfile.mkdtemp()
-            rw.write(dirpath)
+    previous_run = os.path.abspath(f'{TEMP_DIRPATH}/{PROG}')
+    dirpath = ''
+    if os.path.isfile(previous_run):
+        with open(previous_run, 'r', encoding='utf-8') as r:
+            content = r.read().strip()
+            if os.path.isdir(content):
+                dirpath = content
+
+    dirpath = dirpath or tempfile.mkdtemp()
+    with open(previous_run, 'w', encoding='utf-8') as w:
+        w.write(dirpath)
+
     try:
         cmds = []
         if args.mode == 'csv':
