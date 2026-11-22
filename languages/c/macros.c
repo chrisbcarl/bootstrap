@@ -35,8 +35,8 @@ typedef enum {
     OP_JUMP = ISA_OP(1, 1, 0, 0),   // IS a jump, 1 operands, not an alu thingy, instruction variant # 0
     OP_LOAD = ISA_OP(0, 2, 0, 0),   // not a jump, 2 operands, not an alu thingy, instruction variant # 0
     OP_NOT = ISA_OP(0, 2, 1, 0),    // not a jump, 2 operands, IS an alu thingy, instruction variant # 0
-    OP_CMP = ISA_OP(0, 3, 1, 0),    // not a jump, 3 operands, IS an alu thingy, instruction variant # 0
-    OP_ADD = ISA_OP(0, 3, 1, 1),    // not a jump, 3 operands, IS an alu thingy, instruction variant # 1
+    OP_CMP = ISA_OP(0, 3, 1, 0),    // not a jump, 3 operands, IS an alu thingy, instruction variant # 0 -- becomes 0x70
+    OP_ADD = ISA_OP(0, 3, 1, 1),    // not a jump, 3 operands, IS an alu thingy, instruction variant # 1 -- becomes 0x71
 } opcodes;
 
 // variadic functions
@@ -49,5 +49,14 @@ typedef enum {
 int main() {
     hello(world);  // expands to `fprintf("hello world\n!")`
     assert (1 + 1 == 2, "otherwise the world doesnt make any %d sense...", 420);
+
+    fprintf(stdout, "HALT: 0x%x\n", OP_HALT);
+    fprintf(stdout, "PUSH: 0x%x\n", OP_PUSH);
+    fprintf(stdout, "JUMP: 0x%x\n", OP_JUMP);
+    fprintf(stdout, "LOAD: 0x%x\n", OP_LOAD);
+    fprintf(stdout, "NOT : 0x%x\n", OP_NOT);
+    fprintf(stdout, "CMP : 0x%x\n", OP_CMP);
+    fprintf(stdout, "ADD : 0x%x\n", OP_ADD);
+
     die("this was fun\n");
 }
