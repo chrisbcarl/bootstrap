@@ -1,4 +1,5 @@
 # WSL Nvtop Error
+[self-built nvtop crashes on WSL Debian 12](https://github.com/Syllo/nvtop/issues/382)
 ```
 nvtop: ./src/extract_gpuinfo.c:222: gpuinfo_populate_process_info: Assertion `device->processes[j].gpu_memory_percentage <= 100' failed.
                                                                                                                                         Aborted (core dumped)
