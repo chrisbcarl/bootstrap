@@ -251,7 +251,7 @@ $$
     \mathnormal{3x^2 \in R \subset Q}   & \quad \text{math standard} \\
     \end{align*}
     $$
-- horizontal lines, hr
+- horizontal lines, horizontal rule, hr
     $$
     \rule{4cm}{0.4pt}\\
     \begin{aligned}

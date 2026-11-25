@@ -42,6 +42,11 @@ Vertical
 ======
 Lines
 ------
+Also Works
+---
+Horizontal Rule
+</hr>
+Horizontal Rule
 
 > Blockquote
 > Same quote
