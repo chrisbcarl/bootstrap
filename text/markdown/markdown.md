@@ -105,3 +105,14 @@ Say you need to present things like a quiz with solutions. Say this is the quest
 42
 ```
 </details>
+
+# Flowcharts
+```mermaid
+flowchart LR
+    A["Input: 16 × 16 × 8"] --> B["Filter 1: 3 × 3 × 8"]
+    A --> C["Filter 2: 3 × 3 × 8"]
+    A --> D["... 16 filters total"]
+    B --> E["Output channel 1: 8 × 8"]
+    C --> F["Output channel 2: 8 × 8"]
+    D --> G["... 16 channels total"]
+```

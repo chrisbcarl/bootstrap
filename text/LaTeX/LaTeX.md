@@ -411,6 +411,7 @@ $$
 - $\neq, \leq, \geq \equiv, \approx, \thickapprox, \cong, \simeq, \sim$ - [comparators](https://www.geeksforgeeks.org/relational-operators-in-latex/) - not equal, less than or equal, greater than or equal, almost equal, ~=, sort of equal, sortof, semi-equal, semi equal, congruence, similar, etc.
 - $\not \quad \not\geq \quad \not\parallel \quad \not\neq$ - useful to convert a bunch of stuff to the opposite symbol, regardless of sense
 - $\propto$ - proportional
+- $x \gets x \leftarrow x := x$ -  assignment
 - [logic](https://en.wikipedia.org/wiki/List_of_logic_symbols)
     - $\neg, \lnot, \lor, \land, \oplus, \otimes$ - operators
     - $\exists, \nexists, \forall, \implies, \to, \rightarrow, \leftrightarrow, \iff, \equiv$ - if and only if - sayings
@@ -646,3 +647,9 @@ $$
     - [Another interactive guide](https://colinsauze.github.io/introduction-to-latex/07-equations/index.html)
 - really cool websites
     - [draw and get a symbol](https://detexify.kirelabs.org/classify.html)
+
+
+# Common Errors:
+|error                |reasons                                                                                     |
+|---                  |---                                                                                         |
+|! Missing $ inserted.|unescaped underscores somewhere nearby? even basic stuff like `this_seems_fine` just isnt...|
